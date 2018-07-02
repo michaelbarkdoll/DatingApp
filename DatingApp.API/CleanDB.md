@@ -19,3 +19,11 @@ cd DatingAPP.SPA
 npm install
 ng serve
 ````
+
+
+## these will likely install with npm install when we clone and get ready to ng serve in the previous step.
+````
+cd DatingApp\DatingApp.SPA
+npm install bootstrap@3.3.7 --save
+npm install font-awesome --save
+````
