@@ -1,2 +1,14 @@
 {
+  // Define paired characters and their shared color group
+  "bracketPairColorizer.consecutivePairColors": [
+    "()",
+    "[]",
+    "{}",
+    [
+      "Black",
+      "Orchid",
+      "Blue"
+    ],
+    "Red"
+  ]
 }
