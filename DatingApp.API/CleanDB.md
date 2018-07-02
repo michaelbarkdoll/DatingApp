@@ -15,7 +15,7 @@ dotnet watch run
 
 ````
 npm install -g @angular/cli@1.7.4
-npm install
 cd DatingAPP.SPA
+npm install
 ng serve
 ````
