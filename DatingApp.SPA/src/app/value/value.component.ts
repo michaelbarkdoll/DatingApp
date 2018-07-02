@@ -7,6 +7,7 @@ import { Http } from '@angular/http';
   styleUrls: ['./value.component.css']
 })
 export class ValueComponent implements OnInit {
+  // values property for storing values
   values: any;
 
   constructor(private http: Http) { }
