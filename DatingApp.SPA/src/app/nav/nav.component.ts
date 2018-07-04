@@ -23,4 +23,17 @@ export class NavComponent implements OnInit {
     });
   }
 
+  logout() {
+    this.authService.userToken = null;
+    localStorage.removeItem('token');
+    console.log('logged out');
+  }
+
+  loggedIn() {
+    // Just check if there is a token inside localStorage
+    const token = localStorage.getItem('token');
+    // If there is a variable in our token then we'll return true, if not then false
+    return !!token;
+  }
+
 }
