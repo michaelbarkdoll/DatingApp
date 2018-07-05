@@ -22,8 +22,8 @@ namespace DatingApp.API.Controllers {
 
         [HttpPost ("register")]
         public async Task<IActionResult> Register ([FromBody] UserForRegisterDto userForRegisterDto) {
-
-            userForRegisterDto.Username = userForRegisterDto.Username.ToLower ();
+            if(!string.IsNullOrEmpty(userForRegisterDto.Username))
+                userForRegisterDto.Username = userForRegisterDto.Username.ToLower ();
 
             if (await _repo.UserExists (userForRegisterDto.Username))
                 ModelState.AddModelError ("Username", "Username is already exists");
@@ -43,6 +43,7 @@ namespace DatingApp.API.Controllers {
 
         [HttpPost ("login")]
         public async Task<IActionResult> Login ([FromBody] UserForLoginDto userForLoginDto) {
+            throw new Exception ("computer says no!");
             var userFromRepo = await _repo.Login (userForLoginDto.Username.ToLower (), userForLoginDto.Password);
 
             // In repository we return null if the password doesn't match
@@ -55,7 +56,7 @@ namespace DatingApp.API.Controllers {
             // Need to create a key to sign our token, so it can be validated by the server
             // For now as a hard coded string on our controller, but we'll soon remove it and put it in our configuration
             // Key must be coded as a bytesarray
-            var key = Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value);
+            var key = Encoding.ASCII.GetBytes (_config.GetSection ("AppSettings:Token").Value);
             //var key = Encoding.ASCII.GetBytes ("super secret key");
             var tokenDescriptor = new SecurityTokenDescriptor {
                 Subject = new ClaimsIdentity (new Claim[] {

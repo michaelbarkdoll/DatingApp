@@ -27,3 +27,14 @@ cd DatingApp\DatingApp.SPA
 npm install bootstrap@3.3.7 --save
 npm install font-awesome --save
 ````
+
+
+## Launch in dotnet API in development mode:
+````
+$ echo $ASPNETCORE_ENVIRONMENT
+
+$ export ASPNETCORE_ENVIRONMENT="Development"
+$ echo $ASPNETCORE_ENVIRONMENT
+Development
+cisadmin@asura:~/DatingApp/DatingApp.API$
+````
