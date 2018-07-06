@@ -15,7 +15,7 @@
           <li><a href="#">Lists</a></li>
           <li><a href="#">Messages</a></li>
         </ul>
-
+        
         <form *ngIf="!loggedIn()" #loginForm="ngForm" class="navbar-form navbar-right" (ngSubmit)="login()">
           <div class="form-group">
             <input type="text" #username="ngModel" placeholder="Email" class="form-control" required name="username" [(ngModel)]="model.username">
