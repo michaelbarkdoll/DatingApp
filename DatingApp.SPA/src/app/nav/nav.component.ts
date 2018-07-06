@@ -31,10 +31,11 @@ export class NavComponent implements OnInit {
   }
 
   loggedIn() {
+    return this.authService.loggedIn();
     // Just check if there is a token inside localStorage
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     // If there is a variable in our token then we'll return true, if not then false
-    return !!token;
+    // return !!token;
   }
 
 }

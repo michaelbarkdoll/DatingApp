@@ -4,12 +4,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
+import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class AuthService {
     // Provide location of the API for auth service
     baseUrl = 'http://localhost:5000/api/auth/';
     userToken: any;
+    decodedToken: any;
+    jwtHelper: JwtHelper = new JwtHelper();
 
     // Inject into constructor the http service for angular
     constructor(private http: Http) { }
@@ -23,6 +26,8 @@ export class AuthService {
             const user = response.json();
             if (user) {
                 localStorage.setItem('token', user.tokenString);
+                this.decodedToken = this.jwtHelper.decodeToken(user.tokenString);
+                console.log(this.decodedToken);
                 this.userToken = user.tokenString;
             }
         }).catch(this.handleError);
@@ -33,6 +38,10 @@ export class AuthService {
         // All we're returning from this register method at the moment from the api is status code of 201
         //  so we really don't need to pass anything back or map anything back to our component in this case.
         return this.http.post(this.baseUrl + 'register', model, this.requestOptions()).catch(this.handleError);
+    }
+
+    loggedIn() {
+        return tokenNotExpired('token');
     }
 
     private requestOptions() {
