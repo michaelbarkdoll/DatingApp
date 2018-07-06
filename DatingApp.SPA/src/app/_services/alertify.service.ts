@@ -10,10 +10,9 @@ confirm(message: string, okCallback: () => any) {
     alertify.confirm(message, function(e) {
         if (e) {
             okCallback();
-        }
-        // else statement being empty means,
-        // If the cancel button is clicked the dialog will disappear
-        else {
+        } else {
+            // else statement being empty means,
+            // If the cancel button is clicked the dialog will disappear
         }
     });
 }
