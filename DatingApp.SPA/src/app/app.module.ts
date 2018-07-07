@@ -1,3 +1,4 @@
+import { UserService } from './_services/user.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+
 
 
 
@@ -39,7 +41,8 @@ import { appRoutes } from './routes';
     providers: [
         AuthService,
         AlertifyService,
-        AuthGuard
+        AuthGuard,
+        UserService
     ],
     bootstrap: [AppComponent]
 })
