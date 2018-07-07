@@ -17,6 +17,7 @@ import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
+import { MemberCardComponent } from './members/member-card/member-card.component';
 
 
 
@@ -28,6 +29,7 @@ import { appRoutes } from './routes';
       HomeComponent,
       RegisterComponent,
       MemberListComponent,
+      MemberCardComponent,
       ListsComponent,
       MessagesComponent
    ],
