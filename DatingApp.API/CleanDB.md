@@ -38,3 +38,7 @@ $ echo $ASPNETCORE_ENVIRONMENT
 Development
 cisadmin@asura:~/DatingApp/DatingApp.API$
 ````
+
+````
+$Env:ASPNETCORE_ENVIRONMENT="Development"
+````
