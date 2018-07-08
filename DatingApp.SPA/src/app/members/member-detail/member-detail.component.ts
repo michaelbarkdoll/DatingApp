@@ -17,9 +17,13 @@ export class MemberDetailComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.loadUser();
+    // this.loadUser();
+    this.route.data.subscribe(data => {
+      this.user = data['user'];
+    });
   }
 
+  /*
   // members/2
   loadUser() {
     // Need to access the url itself
@@ -29,4 +33,5 @@ export class MemberDetailComponent implements OnInit {
       this.alertify.error(error);
     });
   }
+  */
 }
