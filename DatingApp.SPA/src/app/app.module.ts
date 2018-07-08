@@ -3,7 +3,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -42,7 +42,8 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
       FormsModule,
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes),
-      AuthModule
+      AuthModule,
+      TabsModule.forRoot()
    ],
     providers: [
         AuthService,
