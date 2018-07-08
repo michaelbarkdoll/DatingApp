@@ -18,6 +18,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
 import { MemberCardComponent } from './members/member-card/member-card.component';
+import { AuthModule } from './auth/auth.module';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
 
 
 
@@ -30,6 +32,7 @@ import { MemberCardComponent } from './members/member-card/member-card.component
       RegisterComponent,
       MemberListComponent,
       MemberCardComponent,
+      MemberDetailComponent,
       ListsComponent,
       MessagesComponent
    ],
@@ -38,7 +41,8 @@ import { MemberCardComponent } from './members/member-card/member-card.component
       HttpModule,
       FormsModule,
       BsDropdownModule.forRoot(),
-      RouterModule.forRoot(appRoutes)
+      RouterModule.forRoot(appRoutes),
+      AuthModule
    ],
     providers: [
         AuthService,
