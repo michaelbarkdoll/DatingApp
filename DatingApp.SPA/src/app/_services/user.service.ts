@@ -45,6 +45,10 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    updateUser(id: number, user: User) {
+        return this.authHttp.put(this.baseUrl + '/users/' + id, user).catch(this.handleError);
+    }
+
     // We passed in the header
     private handleError(error: any) {
         // Get the error from the header
