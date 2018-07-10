@@ -26,7 +26,7 @@ namespace DatingApp.API.Controllers {
                 userForRegisterDto.Username = userForRegisterDto.Username.ToLower ();
 
             if (await _repo.UserExists (userForRegisterDto.Username))
-                ModelState.AddModelError ("Username", "Username is already exists");
+                ModelState.AddModelError ("Username", "Username already exists");
 
             //validate request
             if (!ModelState.IsValid)
