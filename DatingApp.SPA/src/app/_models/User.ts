@@ -1,4 +1,5 @@
 import { Photo } from './Photo';
+import { UserBachelorDetails } from './UserBachelorDetails';
 
 export interface User {
     id: number;
@@ -15,4 +16,6 @@ export interface User {
     introduction?: string;
     lookingFor?: string;
     photos?: Photo[];
+    advisor: string;
+    userBachelorDetails: UserBachelorDetails;
 }

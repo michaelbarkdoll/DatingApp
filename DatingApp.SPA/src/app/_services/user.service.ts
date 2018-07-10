@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { Http, RequestOptions, Headers } from '../../../node_modules/@angular/http';
-import { AuthHttp } from '../../../node_modules/angular2-jwt';
+import { Http, RequestOptions, Headers } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 
 
 @Injectable()
