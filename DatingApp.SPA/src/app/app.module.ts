@@ -26,6 +26,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { StudentListComponent } from './students/student-list/student-list.component';
 
 
 
@@ -38,6 +39,7 @@ import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.gu
       MemberListComponent,
       MemberCardComponent,
       MemberDetailComponent,
+      StudentListComponent,
       ListsComponent,
       MessagesComponent,
       MemberEditComponent

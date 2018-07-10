@@ -1,0 +1,13 @@
+.row {
+    display: flex;
+  }
+  
+  .row-title {
+    background: lightgrey;
+  }
+  
+  .row > div {
+    flex: 1;
+    border: 1px solid grey;
+  }
+  
