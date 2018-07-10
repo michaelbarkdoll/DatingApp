@@ -27,6 +27,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { StudentListComponent } from './students/student-list/student-list.component';
+import { StudentEditComponent } from './students/student-edit/student-edit.component';
 
 
 
@@ -42,7 +43,8 @@ import { StudentListComponent } from './students/student-list/student-list.compo
       StudentListComponent,
       ListsComponent,
       MessagesComponent,
-      MemberEditComponent
+      MemberEditComponent,
+      StudentEditComponent
    ],
    imports: [
       BrowserModule,
