@@ -19,3 +19,10 @@ MemberEditComponent
 MemberEditResolver
 
 PreventUnsavedChangesGuard
+
+
+- move http://localhost:4200/students student profile view from:
+  - http://localhost:4200/members/1
+  - to:
+  - http://localhost:4200/students/1
+  - Note: There exists http://localhost:4200/student/edit/1
