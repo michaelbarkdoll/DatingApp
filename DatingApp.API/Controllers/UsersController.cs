@@ -125,5 +125,21 @@ namespace DatingApp.API.Controllers
 
             throw new Exception($"Updating user {id} failed on save");
         }
+
+        [HttpGet("detailedusers")]
+        public async Task<IActionResult> GetDetailedUsersAsAdmin() 
+        {
+            // Gets the claim principle for the user executing the action. (The user from token essentially)
+            // Gets the id of the current user
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if(! await _repo.GetUserLevelAdmin(currentUserId))
+                return Unauthorized();
+
+            var users = await _repo.GetUsers();
+            var usersToReturn = _mapper.Map<IEnumerable<UserForDetailedDto>>(users);
+
+            return Ok(usersToReturn);
+        }
     }
 }

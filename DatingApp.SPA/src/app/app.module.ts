@@ -32,6 +32,7 @@ import { StudentEditResolver } from './_resolvers/student-edit-resolver';
 import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved-changes-student-edit.guard';
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
+import { StudentListResolver } from './_resolvers/student-list.resolver';
 
 
 
@@ -71,6 +72,7 @@ import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
         MemberEditResolver,
         StudentEditResolver,
         StudentDetailResolver,
+        StudentListResolver,
         PreventUnsavedChangesGuard,
         PreventUnsavedChangesStudentEditGuard
     ],

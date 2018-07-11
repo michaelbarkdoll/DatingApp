@@ -16,6 +16,20 @@ export interface User {
     introduction?: string;
     lookingFor?: string;
     photos?: Photo[];
-    advisor: string;
+    advisor?: string;
     userBachelorDetails: UserBachelorDetails;
+    // Added later
+    userLevel?: string;
+    dawgTag?: number;
+    firstName: string;
+    lastName: string;
+    BA?: boolean;
+    BS?: boolean;
+    MS?: boolean;
+    PHD?: boolean;
+    notes?: string;
+    state: string;
+    zipCode: string;
+    phoneNumber1?: string;
+    phoneNumber2?: string;
 }

@@ -61,6 +61,15 @@ export class UserService {
         return this.authHttp.put(this.baseUrl + 'users/admin' + id, user).catch(this.handleError);
     }
 
+    getDetailedUsersAsAdmin(): Observable<User[]> {
+        // return this.http
+        //    .get(this.baseUrl + 'users', this.jwt())
+        return this.authHttp
+            .get(this.baseUrl + 'users/detailedusers')
+            .map(response => <User[]>response.json())
+            .catch(this.handleError);
+    }
+
 
     // We passed in the header
     private handleError(error: any) {
