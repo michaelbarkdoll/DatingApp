@@ -1,13 +1,15 @@
 .row {
-    display: flex;
-  }
-  
-  .row-title {
-    background: lightgrey;
-  }
-  
-  .row > div {
-    flex: 1;
-    border: 1px solid grey;
-  }
-  
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex end;
+}
+
+.row-title {
+  background: lightgrey;
+}
+
+.row > div {
+  flex: 1;
+  border: 1px solid grey;
+}
+
