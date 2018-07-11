@@ -30,6 +30,8 @@ import { StudentListComponent } from './students/student-list/student-list.compo
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
 import { StudentEditResolver } from './_resolvers/student-edit-resolver';
 import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved-changes-student-edit.guard';
+import { StudentDetailComponent } from './students/student-detail/student-detail.component';
+import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
 
 
 
@@ -42,11 +44,12 @@ import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved
       MemberListComponent,
       MemberCardComponent,
       MemberDetailComponent,
-      StudentListComponent,
       ListsComponent,
       MessagesComponent,
       MemberEditComponent,
-      StudentEditComponent
+      StudentListComponent,
+      StudentEditComponent,
+      StudentDetailComponent
    ],
    imports: [
       BrowserModule,
@@ -67,6 +70,7 @@ import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved
         MemberListResolver,
         MemberEditResolver,
         StudentEditResolver,
+        StudentDetailResolver,
         PreventUnsavedChangesGuard,
         PreventUnsavedChangesStudentEditGuard
     ],

@@ -14,6 +14,8 @@ import { StudentListComponent } from './students/student-list/student-list.compo
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
 import { StudentEditResolver } from './_resolvers/student-edit-resolver';
 import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved-changes-student-edit.guard';
+import { StudentDetailComponent } from './students/student-detail/student-detail.component';
+import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -28,6 +30,7 @@ export const appRoutes: Routes = [
             { path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChangesGuard] },
             { path: 'students', component: StudentListComponent, resolve: {users: MemberListResolver} },
+            { path: 'students/:id', component: StudentDetailComponent, resolve: {user: StudentDetailResolver} },
             { path: 'student/edit/:id', component: StudentEditComponent,
                 resolve: {user: StudentEditResolver}, canDeactivate: [PreventUnsavedChangesStudentEditGuard] },
             { path: 'messages', component: MessagesComponent },
