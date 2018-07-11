@@ -28,6 +28,8 @@ import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { StudentListComponent } from './students/student-list/student-list.component';
 import { StudentEditComponent } from './students/student-edit/student-edit.component';
+import { StudentEditResolver } from './_resolvers/student-edit-resolver';
+import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved-changes-student-edit.guard';
 
 
 
@@ -64,7 +66,9 @@ import { StudentEditComponent } from './students/student-edit/student-edit.compo
         MemberDetailResolver,
         MemberListResolver,
         MemberEditResolver,
-        PreventUnsavedChangesGuard
+        StudentEditResolver,
+        PreventUnsavedChangesGuard,
+        PreventUnsavedChangesStudentEditGuard
     ],
     bootstrap: [AppComponent]
 })

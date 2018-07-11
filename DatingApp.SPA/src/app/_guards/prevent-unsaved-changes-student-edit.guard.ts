@@ -4,8 +4,9 @@ import { MemberEditComponent } from '../members/member-edit/member-edit.componen
 import { StudentEditComponent } from '../students/student-edit/student-edit.component';
 
 @Injectable()
-export class PreventUnsavedChangesGuard implements CanDeactivate<MemberEditComponent> {
-    canDeactivate(component: MemberEditComponent) {
+export class PreventUnsavedChangesStudentEditGuard implements CanDeactivate<StudentEditComponent> {
+
+    canDeactivate(component: StudentEditComponent) {
         if (component.editForm.dirty) {
             return confirm('Are you sure you want to contine? Any unsaved changes will be lost!');
         }
