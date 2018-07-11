@@ -49,6 +49,15 @@ export class UserService {
         return this.authHttp.put(this.baseUrl + 'users/' + id, user).catch(this.handleError);
     }
 
+    // map the response
+    // getUserAsAdmin(id: number, user: User): Observable<User> {
+    getUserAsAdmin(id: number): Observable<User> {
+        return this.authHttp
+            .get(this.baseUrl + 'users/admin' + id)
+            .map(response => <User>response.json())
+            .catch(this.handleError);
+    }
+
     // We passed in the header
     private handleError(error: any) {
         // Get the error from the header

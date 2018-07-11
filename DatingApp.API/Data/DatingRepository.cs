@@ -34,5 +34,16 @@ namespace DatingApp.API.Data {
         public async Task<bool> SaveAll () {
             return await _context.SaveChangesAsync() > 0;
         }
+
+        public async Task<bool> GetUserLevelAdmin (int id) {
+            // var user = await _context.Users.Include(pp => pp.UserLevel).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            // Console.WriteLine($"{user.Id} {user.UserLevel}");
+
+            if(string.Equals(user.UserLevel, "Admin"))
+                return true;
+
+            return false;
+        }
     }
 }

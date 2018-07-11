@@ -20,7 +20,8 @@ export class StudentEditResolver implements Resolve<User> {
         // We're going out to our member service and getting the user and returning it as an observable to our component.
         // In the case of a component we'd need to subscribe because we're returning an Observable
         // But the route resolver automatically subscribes for us so we dont need to use it here
-        return this.userService.getUser(this.authService.decodedToken.nameid).catch(error => {
+        // return this.userService.getUserAsAdmin(route.params['id'], this.authService.decodedToken.nameid).catch(error => {
+        return this.userService.getUserAsAdmin(route.params['id']).catch(error => {
             this.alertify.error('Problem retrieving data');
             this.router.navigate(['/students']);
             return Observable.of(null);
