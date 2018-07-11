@@ -31,6 +31,9 @@ namespace DatingApp.API.Data {
                 user.PasswordSalt = passwordSalt;
 
                 user.Username = user.Username.ToLower();
+
+                user.UserBachelorDetail.SeniorProjectAdvisor = "Dr. None";
+
                 _context.Users.Add(user);
             }
 

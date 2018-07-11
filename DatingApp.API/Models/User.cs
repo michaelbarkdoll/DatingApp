@@ -21,9 +21,7 @@ namespace DatingApp.API.Models {
         public string City { get; set; }
         public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
-        public User () {
-            Photos = new Collection<Photo> ();
-        }
+        
 
         // Added for student information system
         public string UserLevel { get; set; }
@@ -47,6 +45,14 @@ namespace DatingApp.API.Models {
         public string ZipCode { get; set; }
         public string PhoneNumber1 { get; set; }
         public string PhoneNumber2 { get; set; }
-        
+
+        // An additional add:
+        public UserBachelorDetails UserBachelorDetail { get; set; }
+
+        // Constructor
+        public User () {
+            Photos = new Collection<Photo> ();
+            UserBachelorDetail = new UserBachelorDetails();
+        }
     }
 }

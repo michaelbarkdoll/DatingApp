@@ -17,7 +17,7 @@ export interface User {
     lookingFor?: string;
     photos?: Photo[];
     advisor?: string;
-    userBachelorDetails: UserBachelorDetails;
+    userBachelorDetail?: UserBachelorDetails;
     // Added later
     userLevel?: string;
     dawgTag?: number;
