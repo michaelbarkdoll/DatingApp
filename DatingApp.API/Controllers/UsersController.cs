@@ -90,5 +90,40 @@ namespace DatingApp.API.Controllers
             
             return Unauthorized();
         }
+
+        [HttpPut("admin{id}")]
+        public async Task<IActionResult> UpdateUserAsAdmin(int id, [FromBody] UserForUpdateDto userForUpdateDto)
+        {
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // Gets the claim principle for the user executing the action. (The user from token essentially)
+            // Gets the id of the current user
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            // Get the user from the url
+            var userFromRepo = await _repo.GetUser(id);
+
+            // Check if an actual user is stored in userFromRepo
+            if(userFromRepo == null)
+                return NotFound($"Could not find user with an ID of {id}");
+            
+            // checked that currentUserId matches what was retrieved from the repo,
+            // so only the currently logged in user can update their own profile
+            // if (currentUserId != userFromRepo.Id)
+            //    return Unauthorized();
+            
+            if(! await _repo.GetUserLevelAdmin(currentUserId))
+                return Unauthorized();
+
+            // Take userForUpdateDto object and map it into our userFromRepo
+            _mapper.Map(userForUpdateDto, userFromRepo);
+
+            // need to save the changes
+            if(await _repo.SaveAll())
+                return NoContent(); // Status code 204 = Update
+
+            throw new Exception($"Updating user {id} failed on save");
+        }
     }
 }

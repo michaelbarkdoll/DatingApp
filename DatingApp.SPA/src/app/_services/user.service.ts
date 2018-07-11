@@ -50,13 +50,17 @@ export class UserService {
     }
 
     // map the response
-    // getUserAsAdmin(id: number, user: User): Observable<User> {
     getUserAsAdmin(id: number): Observable<User> {
         return this.authHttp
             .get(this.baseUrl + 'users/admin' + id)
             .map(response => <User>response.json())
             .catch(this.handleError);
     }
+
+    updateUserAsAdmin(id: number, user: User) {
+        return this.authHttp.put(this.baseUrl + 'users/admin' + id, user).catch(this.handleError);
+    }
+
 
     // We passed in the header
     private handleError(error: any) {
