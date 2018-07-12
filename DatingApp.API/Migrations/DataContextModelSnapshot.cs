@@ -54,6 +54,10 @@ namespace DatingApp.API.Migrations
 
                     b.Property<string>("BachelorFacultyMentor");
 
+                    b.Property<DateTime>("BachelorGraduationDate");
+
+                    b.Property<DateTime>("BachelorStartDate");
+
                     b.Property<string>("City");
 
                     b.Property<string>("Country");

@@ -28,6 +28,18 @@ namespace DatingApp.API.Migrations
                 table: "Users",
                 nullable: true);
 
+            migrationBuilder.AddColumn<DateTime>(
+                name: "BachelorGraduationDate",
+                table: "Users",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<DateTime>(
+                name: "BachelorStartDate",
+                table: "Users",
+                nullable: false,
+                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
             migrationBuilder.AddColumn<int>(
                 name: "DawgTag",
                 table: "Users",
@@ -96,6 +108,14 @@ namespace DatingApp.API.Migrations
 
             migrationBuilder.DropColumn(
                 name: "BachelorFacultyMentor",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "BachelorGraduationDate",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "BachelorStartDate",
                 table: "Users");
 
             migrationBuilder.DropColumn(

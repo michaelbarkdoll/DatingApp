@@ -49,10 +49,10 @@ namespace DatingApp.API.Models {
         // public UserBachelorDetails UserBachelorDetail { get; set; }
 
         // Bachelor specific data fields
-        DateTime BachelorStartDate = new DateTime ();
+        public DateTime BachelorStartDate { get; set; }
         public string BachelorFacultyMentor { get; set; }
         public string SeniorProjectAdvisor { get; set; }
-        DateTime BachelorGraduationDate = new DateTime();
+        public DateTime BachelorGraduationDate { get; set; }
         public User () {
             Photos = new Collection<Photo> ();
             // UserBachelorDetail = new UserBachelorDetails();

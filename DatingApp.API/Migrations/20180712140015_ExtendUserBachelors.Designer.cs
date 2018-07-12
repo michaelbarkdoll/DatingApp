@@ -11,7 +11,7 @@ using System;
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180712031625_ExtendUserBachelors")]
+    [Migration("20180712140015_ExtendUserBachelors")]
     partial class ExtendUserBachelors
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,10 @@ namespace DatingApp.API.Migrations
                     b.Property<string>("Advisor");
 
                     b.Property<string>("BachelorFacultyMentor");
+
+                    b.Property<DateTime>("BachelorGraduationDate");
+
+                    b.Property<DateTime>("BachelorStartDate");
 
                     b.Property<string>("City");
 
