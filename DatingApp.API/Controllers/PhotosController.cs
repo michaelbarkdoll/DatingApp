@@ -88,6 +88,8 @@ namespace DatingApp.API.Controllers
             // Now we need to map our PhotoDto to our actual photo entity
             // photoDto is the source
             // Photo is the destination
+
+            // Map our photo into our photo entity
             var photo = _mapper.Map<Photo>(photoDto);   // We create this mapping from PhotoForCreationDto back to photo elsewhere
             photo.User = user;
 
