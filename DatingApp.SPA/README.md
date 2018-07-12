@@ -39,4 +39,8 @@ version 1.3.1
 dotnet restore
 ````
 
-
+NG2 File uploader
+````
+cisadmin@asura:~/DatingApp/DatingApp.SPA$
+npm install ng2-file-upload --save
+````

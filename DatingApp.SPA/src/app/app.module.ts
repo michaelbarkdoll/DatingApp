@@ -34,6 +34,7 @@ import { StudentDetailComponent } from './students/student-detail/student-detail
 import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
 import { StudentListResolver } from './_resolvers/student-list.resolver';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -62,7 +63,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
       RouterModule.forRoot(appRoutes),
       AuthModule,
       TabsModule.forRoot(),
-      NgxGalleryModule
+      NgxGalleryModule,
+      FileUploadModule
    ],
     providers: [
         AuthService,
