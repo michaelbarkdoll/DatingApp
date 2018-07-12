@@ -52,6 +52,8 @@ namespace DatingApp.API.Migrations
 
                     b.Property<string>("Advisor");
 
+                    b.Property<string>("BachelorFacultyMentor");
+
                     b.Property<string>("City");
 
                     b.Property<string>("Country");
@@ -88,6 +90,8 @@ namespace DatingApp.API.Migrations
 
                     b.Property<string>("PhoneNumber2");
 
+                    b.Property<string>("SeniorProjectAdvisor");
+
                     b.Property<string>("State");
 
                     b.Property<string>("UserLevel");
@@ -99,25 +103,6 @@ namespace DatingApp.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("DatingApp.API.Models.UserBachelorDetails", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FacultyMentor");
-
-                    b.Property<string>("SeniorProjectAdvisor");
-
-                    b.Property<int>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("UsersBachelorDetails");
                 });
 
             modelBuilder.Entity("DatingApp.API.Models.Value", b =>
@@ -137,14 +122,6 @@ namespace DatingApp.API.Migrations
                     b.HasOne("DatingApp.API.Models.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("DatingApp.API.Models.UserBachelorDetails", b =>
-                {
-                    b.HasOne("DatingApp.API.Models.User", "User")
-                        .WithOne("UserBachelorDetail")
-                        .HasForeignKey("DatingApp.API.Models.UserBachelorDetails", "UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

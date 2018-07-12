@@ -26,7 +26,6 @@ namespace DatingApp.API.Dtos {
         public int DawgTag { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        enum CurrentStudentLevel { BA, BS, MS, PHD }
         bool BA = false;
         bool BS = false;
         bool MS = false;
@@ -42,5 +41,10 @@ namespace DatingApp.API.Dtos {
         public string ZipCode { get; set; }
         public string PhoneNumber1 { get; set; }
         public string PhoneNumber2 { get; set; }
+        // Bachelor Information
+        public DateTime BachelorStartDate { get; set; }
+        public string BachelorFacultyMentor { get; set; }
+        public string SeniorProjectAdvisor { get; set; }
+        public DateTime BachelorGraduationDate { get; set; }
     }
 }

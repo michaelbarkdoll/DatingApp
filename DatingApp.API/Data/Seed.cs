@@ -32,7 +32,14 @@ namespace DatingApp.API.Data {
 
                 user.Username = user.Username.ToLower();
 
-                user.UserBachelorDetail.SeniorProjectAdvisor = "Dr. None";
+                if (user.Username.ToString().Equals("freda")) {
+                    user.SeniorProjectAdvisor = "Dr. None2";
+                    user.UserLevel = "Admin";
+                }
+                else {
+                    user.SeniorProjectAdvisor = "Dr. None";
+                }
+                // user.UserBachelorDetail.FacultyMentor = "Mico" + user.UserBachelorDetail.UserId;
 
                 _context.Users.Add(user);
             }

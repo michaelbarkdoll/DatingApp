@@ -1,5 +1,4 @@
 import { Photo } from './Photo';
-import { UserBachelorDetails } from './UserBachelorDetails';
 
 export interface User {
     id: number;
@@ -17,7 +16,7 @@ export interface User {
     lookingFor?: string;
     photos?: Photo[];
     advisor?: string;
-    userBachelorDetail?: UserBachelorDetails;
+    // userBachelorDetail?: UserBachelorDetails;
     // Added later
     userLevel?: string;
     dawgTag?: number;
@@ -32,4 +31,9 @@ export interface User {
     zipCode: string;
     phoneNumber1?: string;
     phoneNumber2?: string;
+    // Bachelor Information
+    bachelorStartDate?: Date;
+    bachelorFacultyMentor?: string;
+    seniorProjectAdvisor?: string;
+    bachelorGraduationDate?: Date;
 }

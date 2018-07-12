@@ -29,7 +29,6 @@ namespace DatingApp.API.Models {
         public int DawgTag { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        enum CurrentStudentLevel { BA, BS, MS, PHD }
         bool BA = false;
         bool BS = false;
         bool MS = false;
@@ -47,12 +46,16 @@ namespace DatingApp.API.Models {
         public string PhoneNumber2 { get; set; }
 
         // An additional add:
-        public UserBachelorDetails UserBachelorDetail { get; set; }
+        // public UserBachelorDetails UserBachelorDetail { get; set; }
 
-        // Constructor
+        // Bachelor specific data fields
+        DateTime BachelorStartDate = new DateTime ();
+        public string BachelorFacultyMentor { get; set; }
+        public string SeniorProjectAdvisor { get; set; }
+        DateTime BachelorGraduationDate = new DateTime();
         public User () {
             Photos = new Collection<Photo> ();
-            UserBachelorDetail = new UserBachelorDetails();
+            // UserBachelorDetail = new UserBachelorDetails();
         }
     }
 }
