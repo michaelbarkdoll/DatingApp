@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Cloudinary
+Extend the Photo table with a new column for PublicID received back from cloudinary.
+
+Nuget package manager add
+CloudinaryDotNet
+
+version 1.3.1
+
+````
+dotnet restore
+````
+
+

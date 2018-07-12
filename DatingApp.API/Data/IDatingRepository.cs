@@ -16,5 +16,7 @@ namespace DatingApp.API.Data
 
          Task<User> GetUser(int id);
          Task<bool> GetUserLevelAdmin(int id);
+
+         Task<Photo> GetPhoto(int id);
     }
 }
