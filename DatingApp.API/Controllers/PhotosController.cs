@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -70,10 +71,18 @@ namespace DatingApp.API.Controllers
 
             if(file.Length > 0) {
                 using (var stream = file.OpenReadStream()) {
+                    // var fileStream = new FileStream($".{file.Name}", FileMode.Create, FileAccess.Write);
+                    // MemoryStream destination = new MemoryStream();
+                    // await stream.CopyToAsync(fileStream);
+                    // await stream.CopyToAsync(destination);
+                    // await destination.CopyToAsync(fileStream);
+                    // await fileStream.CopyToAsync(destination);
+
                     var uploadParams = new ImageUploadParams() {
                         // FileDescription params: we could provide a path if we're retrieve the file from local storage
                         // or we can provide a stream
                         File = new FileDescription(file.Name, stream)
+                        // File = new FileDescription(file.Name, destination)
                     };
 
                     // Upload file to cloudinary platofrm
