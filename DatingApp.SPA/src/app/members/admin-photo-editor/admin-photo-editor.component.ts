@@ -5,7 +5,6 @@ import { environment } from '../../../environments/environment';
 import { AuthService } from '../../_services/auth.service';
 import { User } from '../../_models/User';
 import { ActivatedRoute } from '@angular/router';
-import { NgForm } from '@angular/forms';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
 
@@ -17,18 +16,13 @@ import { AlertifyService } from '../../_services/alertify.service';
 export class AdminPhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
   @Input() photoUserId: number;
-  // @Input() user2: User;
   user: User;
-  // @ViewChild('editForm') editForm: NgForm;
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
 
-  constructor(private route: ActivatedRoute,
-    private alertify: AlertifyService,
-    private authService: AuthService,
-    private userService: UserService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.initializeUploader();
@@ -45,7 +39,6 @@ export class AdminPhotoEditorComponent implements OnInit {
   initializeUploader() {
     this.uploader = new FileUploader({
       // url: this.baseUrl + 'users/' + this.authService.decodedToken.nameid + '/photos',
-      // url: this.baseUrl + 'users/' + this.user2.id + '/photos',
       url: this.baseUrl + 'users/' + this.photoUserId + '/photos',
       authToken: 'Bearer ' + localStorage.getItem('token'),
       isHTML5: true,
