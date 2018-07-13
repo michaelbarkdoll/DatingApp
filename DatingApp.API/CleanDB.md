@@ -67,6 +67,9 @@ cd DatingApp.SPA
 npm install
 ````
 
+````
+dotnet restore
+````
 
 EF update:
 ````
