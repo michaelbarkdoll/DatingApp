@@ -60,8 +60,8 @@ namespace DatingApp.API.Controllers
                 return BadRequest("Could not find user");
 
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
-
-            if (currentUserId != user.Id)
+            
+            if (currentUserId != user.Id && ! await _repo.GetUserLevelAdmin(currentUserId))
                 return Unauthorized();
 
             var file = photoDto.File; 

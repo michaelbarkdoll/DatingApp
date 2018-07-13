@@ -14,6 +14,7 @@ import { AuthService } from '../../_services/auth.service';
 export class MemberEditComponent implements OnInit {
   user: User;
   @ViewChild('editForm') editForm: NgForm;
+
   constructor(private route: ActivatedRoute,
     private alertify: AlertifyService,
     private authService: AuthService,

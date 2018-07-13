@@ -35,6 +35,7 @@ import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
 import { StudentListResolver } from './_resolvers/student-list.resolver';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { AdminPhotoEditorComponent } from './members/admin-photo-editor/admin-photo-editor.component';
 
 
 
@@ -53,7 +54,8 @@ import { FileUploadModule } from 'ng2-file-upload';
       StudentListComponent,
       StudentEditComponent,
       StudentDetailComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      AdminPhotoEditorComponent
    ],
    imports: [
       BrowserModule,
