@@ -6,6 +6,7 @@ import 'rxjs/add/observable/throw';
 import { Observable } from 'rxjs/Observable';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 import { User } from '../_models/User';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AuthService {
@@ -15,9 +16,15 @@ export class AuthService {
     decodedToken: any;
     jwtHelper: JwtHelper = new JwtHelper();
     currentUser: User;
+    private photoUrl = new BehaviorSubject<string>('../../assets/user.png');
+    currentPhotoUrl = this.photoUrl.asObservable();
 
     // Inject into constructor the http service for angular
     constructor(private http: Http) { }
+
+    changeMemberPhoto(photoUrl: string) {
+        this.photoUrl.next(photoUrl);
+    }
 
     // need a method to call our login method in our api
     // pass in username and password that we get from our login form
@@ -33,6 +40,7 @@ export class AuthService {
                 this.currentUser = user.user;
                 // console.log(this.decodedToken);
                 this.userToken = user.tokenString;
+                this.changeMemberPhoto(this.currentUser.photoUrl);
             }
         }).catch(this.handleError);
     }
