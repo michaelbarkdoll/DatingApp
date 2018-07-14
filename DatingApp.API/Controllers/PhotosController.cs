@@ -151,7 +151,7 @@ namespace DatingApp.API.Controllers
             return BadRequest("Could not add the photo");
         }
 
-        [HttpPost("{id}/setMain")]
+        [HttpPost("{photoId}/setMain")]
         public async Task<IActionResult> SetMainPhoto(int userId, int photoId) 
         {
             if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
@@ -173,7 +173,7 @@ namespace DatingApp.API.Controllers
             photoFromRepo.isMain = true;
 
             if (await _repo.SaveAll())
-                return NoContent();
+                return NoContent();     // Success status code of 204
             
             return BadRequest("Could not set photo to main");
         }
