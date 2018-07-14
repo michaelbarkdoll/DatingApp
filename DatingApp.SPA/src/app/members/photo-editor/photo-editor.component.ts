@@ -6,6 +6,7 @@ import { AuthService } from '../../_services/auth.service';
 import { isNgTemplate } from '@angular/compiler';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
+import * as _ from 'underscore';
 
 @Component({
   selector: 'app-photo-editor',
@@ -17,6 +18,7 @@ export class PhotoEditorComponent implements OnInit {
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
+  currentMain: Photo;
 
   constructor(private authService: AuthService, private userService: UserService,
     private alertifyService: AlertifyService) { }
@@ -57,7 +59,9 @@ export class PhotoEditorComponent implements OnInit {
 
   setMainPhoto(photo: Photo) {
     this.userService.setMainPhoto(this.authService.decodedToken.nameid, photo.id).subscribe(() => {
-      console.log('successfully set to main');
+      this.currentMain = _.findWhere(this.photos, {isMain: true});
+      this.currentMain.isMain = false;
+      photo.isMain = true;
     }, error => {
       this.alertifyService.error(error);
     });

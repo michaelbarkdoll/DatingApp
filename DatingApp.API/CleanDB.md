@@ -112,3 +112,15 @@ version 1.3.1
 ````
 npm install ng2-file-upload --save
 ````
+
+Install underscore:
+````
+npm install underscore --save
+````
+
+We'll also install the following for strong typing with underscore:
+````
+npm install @types/underscore --save-dev
+````
+
+Now make use of this in our component
