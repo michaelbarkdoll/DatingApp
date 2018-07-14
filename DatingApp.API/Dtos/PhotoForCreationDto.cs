@@ -16,5 +16,7 @@ namespace DatingApp.API.Dtos
             DateAdded = DateTime.Now;
             
         }
+
+        public string FilePath { get; set; }
     }
 }

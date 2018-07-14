@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DatingApp.API.Migrations
 {
-    public partial class ExtendUserBachelors : Migration
+    public partial class Catchup : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -90,6 +90,11 @@ namespace DatingApp.API.Migrations
                 name: "ZipCode",
                 table: "Users",
                 nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "PublicId",
+                table: "Photos",
+                nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -157,6 +162,10 @@ namespace DatingApp.API.Migrations
             migrationBuilder.DropColumn(
                 name: "ZipCode",
                 table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "PublicId",
+                table: "Photos");
         }
     }
 }

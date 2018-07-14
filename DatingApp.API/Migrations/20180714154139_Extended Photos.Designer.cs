@@ -11,8 +11,8 @@ using System;
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180712143944_AddedPublicId")]
-    partial class AddedPublicId
+    [Migration("20180714154139_Extended Photos")]
+    partial class ExtendedPhotos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,8 @@ namespace DatingApp.API.Migrations
                     b.Property<DateTime>("DateAdded");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("FilePath");
 
                     b.Property<string>("PublicId");
 

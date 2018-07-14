@@ -109,3 +109,6 @@ Nuget Package:
 CloudinaryDotNet
 version 1.3.1
 
+````
+npm install ng2-file-upload --save
+````

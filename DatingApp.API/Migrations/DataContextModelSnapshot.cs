@@ -28,6 +28,8 @@ namespace DatingApp.API.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<string>("FilePath");
+
                     b.Property<string>("PublicId");
 
                     b.Property<string>("Url");

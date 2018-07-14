@@ -11,8 +11,8 @@ using System;
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180712140015_ExtendUserBachelors")]
-    partial class ExtendUserBachelors
+    [Migration("20180714143251_Catchup")]
+    partial class Catchup
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,8 @@ namespace DatingApp.API.Migrations
                     b.Property<DateTime>("DateAdded");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("PublicId");
 
                     b.Property<string>("Url");
 

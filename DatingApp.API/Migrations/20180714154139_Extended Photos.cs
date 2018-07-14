@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace DatingApp.API.Migrations
 {
-    public partial class AddedPublicId : Migration
+    public partial class ExtendedPhotos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "PublicId",
+                name: "FilePath",
                 table: "Photos",
                 nullable: true);
         }
@@ -17,7 +17,7 @@ namespace DatingApp.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "PublicId",
+                name: "FilePath",
                 table: "Photos");
         }
     }

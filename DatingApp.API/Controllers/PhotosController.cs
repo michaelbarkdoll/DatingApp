@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Security.Claims;
@@ -22,16 +23,19 @@ namespace DatingApp.API.Controllers
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
         private readonly IOptions<CloudinarySettings> _cloudinaryConfig;
+        private readonly IOptions<DataRepoSettings> _dataRepoConfig;
         private Cloudinary _cloudinary;
 
         // In order to bring in our cloudinary configuration that is strongly typed we bring in IOptions of type CloudinarySettings (defined in CloudinarySettings.cs)
         public PhotosController(IDatingRepository repo,
             IMapper mapper,
-            IOptions<CloudinarySettings> cloudinaryConfig)
+            IOptions<CloudinarySettings> cloudinaryConfig,
+            IOptions<DataRepoSettings> dataRepoConfig)
         {
             _repo = repo;
             _mapper = mapper;
             _cloudinaryConfig = cloudinaryConfig;
+            _dataRepoConfig = dataRepoConfig;
 
             Account account = new Account(
                 _cloudinaryConfig.Value.CloudName,
@@ -70,13 +74,31 @@ namespace DatingApp.API.Controllers
             var uploadResult = new ImageUploadResult();
 
             if(file.Length > 0) {
+                // full path to file in temp location
+                var filePath2 = Path.GetTempFileName();
+                // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + DateTime.Now;
+                // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + DateTime.Now.ToString("yyyyMMddHHmmssf");
+                var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
+                
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                    fileStream.Close();
+
+                    var uploadParams = new ImageUploadParams() {
+                        // FileDescription params: we could provide a path if we're retrieve the file from local storage
+                        // or we can provide a stream
+                        File = new FileDescription(filePath)
+                        // File = new FileDescription(file.Name, destination)
+                    };
+
+                    // Upload file to cloudinary platofrm
+                    uploadResult = _cloudinary.Upload(uploadParams);
+                }
+                photoDto.FilePath = filePath;
+
+                /*
                 using (var stream = file.OpenReadStream()) {
-                    // var fileStream = new FileStream($".{file.Name}", FileMode.Create, FileAccess.Write);
-                    // MemoryStream destination = new MemoryStream();
-                    // await stream.CopyToAsync(fileStream);
-                    // await stream.CopyToAsync(destination);
-                    // await destination.CopyToAsync(fileStream);
-                    // await fileStream.CopyToAsync(destination);
 
                     var uploadParams = new ImageUploadParams() {
                         // FileDescription params: we could provide a path if we're retrieve the file from local storage
@@ -88,11 +110,13 @@ namespace DatingApp.API.Controllers
                     // Upload file to cloudinary platofrm
                     uploadResult = _cloudinary.Upload(uploadParams);
                 }
+                */
             }
 
             // If it comes back successfully
             photoDto.Url = uploadResult.Uri.ToString();
             photoDto.PublicId = uploadResult.PublicId;
+            
 
             // Now we need to map our PhotoDto to our actual photo entity
             // photoDto is the source
