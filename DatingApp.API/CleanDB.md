@@ -103,3 +103,9 @@ Uncomment and run `dotnet watch run`
 ````
             // seeder.SeedUsers();
 ````
+
+ASP.NET API:
+Nuget Package:
+CloudinaryDotNet
+version 1.3.1
+
