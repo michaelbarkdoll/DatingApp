@@ -133,12 +133,14 @@ namespace DatingApp.API.Controllers
             // Use repo dot add method
             user.Photos.Add(photo);
 
-            // We're mapping our photo into photoToReturn
-            // photoToReturn is what we'll pass back and return
-            var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
+            
 
             // Save user back to database
             if (await _repo.SaveAll()){
+                // We're mapping our photo into photoToReturn
+                // photoToReturn is what we'll pass back and return
+                var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
+                
                 //return Ok();    // We fix this later
 
                 // Three overload options
@@ -147,6 +149,8 @@ namespace DatingApp.API.Controllers
                 // Now we don't have a way to get an individual photo at the moment either so we'll need to create that for starters
                 return CreatedAtRoute("GetPhoto", new { id = photo.Id }, photoToReturn);
             }
+
+            
 
             return BadRequest("Could not add the photo");
         }
