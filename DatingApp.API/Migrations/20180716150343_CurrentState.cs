@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace DatingApp.API.Migrations
 {
-    public partial class Catchup : Migration
+    public partial class CurrentState : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -92,6 +92,11 @@ namespace DatingApp.API.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<string>(
+                name: "FilePath",
+                table: "Photos",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
                 name: "PublicId",
                 table: "Photos",
                 nullable: true);
@@ -162,6 +167,10 @@ namespace DatingApp.API.Migrations
             migrationBuilder.DropColumn(
                 name: "ZipCode",
                 table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "FilePath",
+                table: "Photos");
 
             migrationBuilder.DropColumn(
                 name: "PublicId",

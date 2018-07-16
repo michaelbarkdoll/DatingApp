@@ -11,8 +11,8 @@ using System;
 namespace DatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180714154139_Extended Photos")]
-    partial class ExtendedPhotos
+    [Migration("20180716150343_CurrentState")]
+    partial class CurrentState
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
