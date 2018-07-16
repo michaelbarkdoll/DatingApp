@@ -21,7 +21,8 @@ export class PhotoEditorComponent implements OnInit {
   currentMain: Photo;
   @Output() getMemberPhotoChange = new EventEmitter<string>();
 
-  constructor(private authService: AuthService, private userService: UserService,
+  constructor(private authService: AuthService,
+    private userService: UserService,
     private alertifyService: AlertifyService) { }
 
   ngOnInit() {

@@ -14,6 +14,7 @@ import { NgForm } from '@angular/forms';
 export class StudentEditComponent implements OnInit {
   user: User;
   @ViewChild('editForm') editForm: NgForm;
+  photoUrl: string;   // Added for authServices BehaviorSubject
 
   constructor(private route: ActivatedRoute,
     private alertify: AlertifyService,
@@ -24,6 +25,8 @@ export class StudentEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+    // Subscribe to authServices currentPhotoUrl Observable!
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   updateUser() {

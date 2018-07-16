@@ -77,6 +77,15 @@ export class UserService {
     deletePhoto(userId: number, photoId: number) {
         return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId).catch(this.handleError);
     }
+    /*
+    setMainPhotoAsAdmin(userId: number, photoId: number) {
+        return this.authHttp.post(this.baseUrl + 'users/' + userId + '/photos/' + photoId + '/setMainAsAdmin', {}).catch(this.handleError);
+    }
+
+    deletePhotoAsAdmin(userId: number, photoId: number) {
+        return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId + '/deleteAsAdmin').catch(this.handleError);
+    }
+    */
 
 
     // We passed in the header

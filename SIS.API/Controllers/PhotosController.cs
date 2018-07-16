@@ -158,7 +158,11 @@ namespace SIS.API.Controllers
         [HttpPost("{photoId}/setMain")]
         public async Task<IActionResult> SetMainPhoto(int userId, int photoId) 
         {
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if ((userId != currentUserId)
+                && ! await _repo.GetUserLevelAdmin(currentUserId))
                 return Unauthorized();
             
             var photoFromRepo = await _repo.GetPhoto(photoId);
@@ -185,8 +189,13 @@ namespace SIS.API.Controllers
         [HttpDelete("{photoId}")]
         public async Task<IActionResult> DeletePhoto(int userId, int photoId) 
         {
+            // UserId from token:
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
             // Check that the user is valid
-            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            // if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            if ((userId != currentUserId)
+                && ! await _repo.GetUserLevelAdmin(currentUserId))
                 return Unauthorized();
 
             var photoFromRepo = await _repo.GetPhoto(photoId);
