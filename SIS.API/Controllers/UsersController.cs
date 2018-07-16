@@ -74,7 +74,7 @@ namespace SIS.API.Controllers
             throw new Exception($"Updating user {id} failed on save");
         }
 
-        [HttpGet("admin{id}")]
+        [HttpGet("admin/{id}")]
         public async Task<IActionResult> GetUserAsAdmin(int id) 
         {
             // Obtain user id from the token of the HttpGet request
@@ -91,7 +91,7 @@ namespace SIS.API.Controllers
             return Unauthorized();
         }
 
-        [HttpPut("admin{id}")]
+        [HttpPut("admin/{id}")]
         public async Task<IActionResult> UpdateUserAsAdmin(int id, [FromBody] UserForUpdateDto userForUpdateDto)
         {
             if(!ModelState.IsValid)

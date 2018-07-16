@@ -27,6 +27,7 @@ export class StudentEditComponent implements OnInit {
   }
 
   updateUser() {
+      // this.route.snapshot.params['id'] = potential admin's userId
       this.userService.updateUserAsAdmin(this.route.snapshot.params['id'], this.user).subscribe(next => {
       this.alertify.success('Profile updated successfully');
       this.editForm.reset(this.user);
