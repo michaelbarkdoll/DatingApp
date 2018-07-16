@@ -1,13 +1,9 @@
-- need edit page
-  - populated with detailed view of member
-  - admin users need to be able to edit the page
-
-- API side [member/edit] need student/edit
-  - need to provide information for admin level users
+# ToDo:
 
 - Add students
-
-
+- Delete students
+- Sort users
+- Add more fields to user records
 
 # Done:
 
@@ -30,3 +26,11 @@ MemberEditComponent
 MemberEditResolver
 
 PreventUnsavedChangesGuard
+
+- API side [member/edit] need student/edit
+  - need to provide information for admin level users
+
+
+- need edit page
+  - populated with detailed view of member
+  - admin users need to be able to edit the page
