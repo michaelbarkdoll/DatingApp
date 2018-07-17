@@ -28,7 +28,8 @@ export class UserService {
             .catch(this.handleError);
     }
 
-    getUsersPaginated(page?: number, itemsPerPage?: number): Observable<User[]> {
+    // getUsersPaginated(page?: number, itemsPerPage?: number): Observable<User[]> {
+    getUsersPaginated(page?: number, itemsPerPage?: number) {
         // return this.http
         //    .get(this.baseUrl + 'users', this.jwt())
         const paginatedResult: PaginatedResult<User[]> = new PaginatedResult<User[]>();
