@@ -42,7 +42,7 @@ namespace SIS.API.Controllers
             // Add Pagination Header
             Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
 
-            return Ok(usersToReturn);   // We're still return usersToReturn, but we shoudl have a pagination header now.
+            return Ok(usersToReturn);   // We're still return usersToReturn, but we should have a pagination header now.
         }
 
         [HttpGet("{id}")]

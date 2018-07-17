@@ -17,6 +17,8 @@ import { PreventUnsavedChangesStudentEditGuard } from './_guards/prevent-unsaved
 import { StudentDetailComponent } from './students/student-detail/student-detail.component';
 import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
 import { StudentListResolver } from './_resolvers/student-list.resolver';
+import { MemberListPaginatedComponent } from './members/member-list-paginated/member-list-paginated.component';
+import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -26,6 +28,7 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
+            { path: 'memberspaginated', component: MemberListPaginatedComponent, resolve: {users: MemberListPaginatedResolver} },
             { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver} },
             { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
             { path: 'member/edit', component: MemberEditComponent,

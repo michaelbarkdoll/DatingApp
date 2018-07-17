@@ -36,6 +36,8 @@ import { StudentListResolver } from './_resolvers/student-list.resolver';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { AdminPhotoEditorComponent } from './members/admin-photo-editor/admin-photo-editor.component';
+import { MemberListPaginatedComponent } from './members/member-list-paginated/member-list-paginated.component';
+import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
 
 
 
@@ -55,7 +57,8 @@ import { AdminPhotoEditorComponent } from './members/admin-photo-editor/admin-ph
       StudentEditComponent,
       StudentDetailComponent,
       PhotoEditorComponent,
-      AdminPhotoEditorComponent
+      AdminPhotoEditorComponent,
+      MemberListPaginatedComponent
    ],
    imports: [
       BrowserModule,
@@ -79,6 +82,7 @@ import { AdminPhotoEditorComponent } from './members/admin-photo-editor/admin-ph
         StudentEditResolver,
         StudentDetailResolver,
         StudentListResolver,
+        MemberListPaginatedResolver,
         PreventUnsavedChangesGuard,
         PreventUnsavedChangesStudentEditGuard
     ],
