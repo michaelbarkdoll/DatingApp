@@ -49,9 +49,6 @@ namespace SIS.API.Controllers
             {
                 userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
             }
-            else {
-                
-            }
 
             var users = await _repo.GetUsersPagedList(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);

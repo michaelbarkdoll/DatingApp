@@ -17,5 +17,6 @@ namespace SIS.API.Helpers
         public string Gender { get; set; }
         public int minAge { get; set; } = 15;
         public int maxAge { get; set; } = 99;
+        public string OrderBy { get; set; }
     }
 }

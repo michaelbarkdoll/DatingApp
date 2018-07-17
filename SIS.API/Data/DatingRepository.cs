@@ -36,7 +36,8 @@ namespace SIS.API.Data {
         public async Task<PagedList<User>> GetUsersPagedList(UserParams userParams) {
             // var users = await _context.Users.Include(p => p.Photos).ToListAsync();
             // var users = _context.Users.Include(p => p.Photos);    // .ToListAsync is in our pagination class
-            var users = _context.Users.Include(p => p.Photos).AsQueryable();    // .ToListAsync is in our pagination class
+            // var users = _context.Users.Include(p => p.Photos).AsQueryable();    // .ToListAsync is in our pagination class
+            var users = _context.Users.Include(p => p.Photos).OrderByDescending(u => u.LastActive).AsQueryable();    // .ToListAsync is in our pagination class
 
             // Filter out our own user from the list
             users = users.Where(u => u.Id != userParams.UserId);
@@ -47,6 +48,19 @@ namespace SIS.API.Data {
             {
                 users = users.Where(u => u.DateOfBirth.CalculateAge() >= userParams.minAge
                     && u.DateOfBirth.CalculateAge() <= userParams.maxAge);
+            }
+
+            if (!string.IsNullOrEmpty(userParams.OrderBy))
+            {
+                switch (userParams.OrderBy)
+                {
+                    case "created":
+                        users = users.OrderByDescending(u => u.Created);
+                        break;
+                    default:
+                        users = users.OrderByDescending(u => u.LastActive);
+                        break;
+                }
             }
             
             // return users;
