@@ -7,6 +7,7 @@ using SIS.API.Data;
 using SIS.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SIS.API.Helpers;
 
 namespace SIS.API.Controllers
 {
@@ -30,6 +31,18 @@ namespace SIS.API.Controllers
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
             return Ok(usersToReturn);
+        }
+
+        [HttpGet("pagedlist")]
+        public async Task<IActionResult> GetUsersPagedList(UserParams userParams) 
+        {
+            var users = await _repo.GetUsersPagedList(userParams);
+            var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
+
+            // Add Pagination Header
+            Response.AddPagination(users.CurrentPage, users.PageSize, users.TotalCount, users.TotalPages);
+
+            return Ok(usersToReturn);   // We're still return usersToReturn, but we shoudl have a pagination header now.
         }
 
         [HttpGet("{id}")]

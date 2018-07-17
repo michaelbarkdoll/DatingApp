@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SIS.API.Models;
 using Microsoft.EntityFrameworkCore;
+using SIS.API.Helpers;
 
 namespace SIS.API.Data {
     public class DatingRepository : IDatingRepository {
@@ -30,6 +31,15 @@ namespace SIS.API.Data {
             var users = await _context.Users.Include(p => p.Photos).ToListAsync();
             
             return users;
+        }
+
+        public async Task<PagedList<User>> GetUsersPagedList(UserParams userParams) {
+            // var users = await _context.Users.Include(p => p.Photos).ToListAsync();
+            var users = _context.Users.Include(p => p.Photos);    // .ToListAsync is in our pagination class
+            
+            // return users;
+            // Now we're return users along with a PagedList
+            return await PagedList<User>.CreateAsync(users, userParams.PageNumber, userParams.PageSize);
         }
 
         public async Task<bool> SaveAll () {
