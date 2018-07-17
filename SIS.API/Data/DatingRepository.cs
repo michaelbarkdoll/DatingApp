@@ -42,6 +42,12 @@ namespace SIS.API.Data {
             users = users.Where(u => u.Id != userParams.UserId);
 
             users = users.Where(u => u.Gender == userParams.Gender);
+
+            if (userParams.minAge != 15 || userParams.maxAge != 99)
+            {
+                users = users.Where(u => u.DateOfBirth.CalculateAge() >= userParams.minAge
+                    && u.DateOfBirth.CalculateAge() <= userParams.maxAge);
+            }
             
             // return users;
             // Now we're return users along with a PagedList

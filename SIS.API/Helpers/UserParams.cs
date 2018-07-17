@@ -15,5 +15,7 @@ namespace SIS.API.Helpers
         }
         public int UserId { get; set; }
         public string Gender { get; set; }
+        public int minAge { get; set; } = 15;
+        public int maxAge { get; set; } = 99;
     }
 }
