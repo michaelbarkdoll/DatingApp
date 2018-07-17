@@ -2,7 +2,7 @@
 
 - Add students
 - Delete students
-- Sort users
+- Sort users, work-in-progress
 - Add more fields to user records
 
 # Done:
