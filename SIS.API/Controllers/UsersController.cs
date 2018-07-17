@@ -36,6 +36,20 @@ namespace SIS.API.Controllers
         [HttpGet("pagedlist")]
         public async Task<IActionResult> GetUsersPagedList(UserParams userParams) 
         {
+            // Gets the claim principle for the user executing the action. (The user from token essentially)
+            // Gets the id of the current user
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            // Get the user from repo
+            var userFromRepo = await _repo.GetUser(currentUserId);
+            userParams.UserId = currentUserId;
+            // userParams.Gender = userFromRepo.Gender;
+
+            if (string.IsNullOrEmpty(userParams.Gender)) 
+            {
+                userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
+            }
+
             var users = await _repo.GetUsersPagedList(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 

@@ -35,7 +35,13 @@ namespace SIS.API.Data {
 
         public async Task<PagedList<User>> GetUsersPagedList(UserParams userParams) {
             // var users = await _context.Users.Include(p => p.Photos).ToListAsync();
-            var users = _context.Users.Include(p => p.Photos);    // .ToListAsync is in our pagination class
+            // var users = _context.Users.Include(p => p.Photos);    // .ToListAsync is in our pagination class
+            var users = _context.Users.Include(p => p.Photos).AsQueryable();    // .ToListAsync is in our pagination class
+
+            // Filter out our own user from the list
+            users = users.Where(u => u.Id != userParams.UserId);
+
+            users = users.Where(u => u.Gender == userParams.Gender);
             
             // return users;
             // Now we're return users along with a PagedList
