@@ -5,6 +5,7 @@ import { AlertifyService } from '../../_services/alertify.service';
 import { ActivatedRoute } from '@angular/router';
 import { Pagination, PaginatedResult } from '../../_models/pagination';
 import { UserParams } from '../../_models/UserParams';
+import { Advisor } from '../../_models/Advisor';
 
 @Component({
   selector: 'app-member-list-paginated',
@@ -22,6 +23,9 @@ export class MemberListPaginatedComponent implements OnInit {
   showBoundaryLinks = true;
   pagination: Pagination;
 
+  advisorList: any;
+  advisors: Advisor[];
+
   constructor(private userService: UserService,
     private alertify: AlertifyService, private route: ActivatedRoute) { }
 
@@ -32,6 +36,8 @@ export class MemberListPaginatedComponent implements OnInit {
       this.pagination = data['users'].pagination;
     });
 
+    this.getAdvisors();
+
     this.userParams = {};
     // this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
     this.userParams.gender = 'all';
@@ -39,6 +45,15 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
   }
+
+  getAdvisors() {
+    this.userService.getAdvisors().subscribe((advisors: Advisor[]) => {
+      this.advisors = advisors;
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+
 
   loadUsers() {
     // this.userService.getUsersPaginated(this.pagination.currentPage, this.pagination.itemsPerPage)
@@ -65,6 +80,7 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.minAge = 15;
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
+    this.userParams.advisor = null;
     this.loadUsers();
   }
 }

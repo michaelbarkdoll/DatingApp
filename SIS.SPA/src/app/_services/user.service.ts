@@ -44,7 +44,8 @@ export class UserService {
                 'minAge=' + userParams.minAge +
                 '&maxAge=' + userParams.maxAge +
                 '&gender=' + userParams.gender +
-                '&orderBy=' + userParams.orderBy;
+                '&orderBy=' + userParams.orderBy +
+                '&advisor=' + userParams.advisor;
         }
 
         return this.authHttp
@@ -113,15 +114,13 @@ export class UserService {
     deletePhoto(userId: number, photoId: number) {
         return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId).catch(this.handleError);
     }
-    /*
-    setMainPhotoAsAdmin(userId: number, photoId: number) {
-        return this.authHttp.post(this.baseUrl + 'users/' + userId + '/photos/' + photoId + '/setMainAsAdmin', {}).catch(this.handleError);
-    }
 
-    deletePhotoAsAdmin(userId: number, photoId: number) {
-        return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId + '/deleteAsAdmin').catch(this.handleError);
+    getAdvisors() {
+        return this.authHttp
+        .get(this.baseUrl + 'users/advisors')
+        .map(response => <string>response.json())
+        .catch(this.handleError);
     }
-    */
 
 
     // We passed in the header

@@ -21,5 +21,7 @@ namespace SIS.API.Data
 
          Task<Photo> GetPhoto(int id);
          Task<Photo> GetMainPhotoForUser(int userId);
+         // Task<List<string>> GetAdvisors();
+         Task<IEnumerable<Advisor>> GetAdvisors();
     }
 }

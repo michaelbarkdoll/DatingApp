@@ -22,7 +22,7 @@ export class MemberListComponent implements OnInit {
     });
   }
 
-  /*
+/*
   loadUsers() {
     this.userService.getUsers().subscribe((users: User[]) => {
       this.users = users;
@@ -30,6 +30,6 @@ export class MemberListComponent implements OnInit {
       this.alertify.error(error);
     });
   }
-  */
+*/
 
 }

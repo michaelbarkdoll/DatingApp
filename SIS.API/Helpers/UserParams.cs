@@ -18,5 +18,6 @@ namespace SIS.API.Helpers
         public int minAge { get; set; } = 15;
         public int maxAge { get; set; } = 99;
         public string OrderBy { get; set; }
+        public string Advisor { get; set; }
     }
 }

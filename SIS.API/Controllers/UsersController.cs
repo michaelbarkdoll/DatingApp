@@ -52,6 +52,11 @@ namespace SIS.API.Controllers
                 // userParams.Gender = userFromRepo.Gender == "male" ? "female" : "male";
             }
 
+            if (string.IsNullOrEmpty(userParams.Advisor)) 
+            {
+                userParams.Advisor = null;
+            }
+
             var users = await _repo.GetUsersPagedList(userParams);
             var usersToReturn = _mapper.Map<IEnumerable<UserForListDto>>(users);
 
@@ -169,6 +174,13 @@ namespace SIS.API.Controllers
             var usersToReturn = _mapper.Map<IEnumerable<UserForDetailedDto>>(users);
 
             return Ok(usersToReturn);
+        }
+        
+        [HttpGet("advisors")]
+        public async Task<IActionResult> GetAdvisors()
+        {
+            var advisors = await _repo.GetAdvisors();
+            return Ok(advisors);
         }
     }
 }

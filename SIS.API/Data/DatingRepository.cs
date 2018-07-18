@@ -51,6 +51,9 @@ namespace SIS.API.Data {
                     && u.DateOfBirth.CalculateAge() <= userParams.maxAge);
             }
 
+            if (!string.IsNullOrEmpty(userParams.Advisor))
+                users = users.Where(u => u.Advisor == userParams.Advisor);
+
             if (!string.IsNullOrEmpty(userParams.OrderBy))
             {
                 switch (userParams.OrderBy)
@@ -94,6 +97,26 @@ namespace SIS.API.Data {
         {
             // Returns the main photo from the user
             return _context.Photos.Where(u => u.UserId == userId).FirstOrDefaultAsync(p => p.isMain);
+        }
+
+        // public async Task<List<string>>GetAdvisors()
+        public async Task<IEnumerable<Advisor>>GetAdvisors()
+        {
+            var advisors = await _context.Users.Select(a => a.Advisor).Distinct().ToListAsync();
+
+            List<Advisor> temp = new List<Advisor>();
+
+            foreach(var element in advisors) {
+                if(element != null) {
+                    var advisor = new Advisor();
+                    advisor.FullName = element;
+                    temp.Add(advisor);
+                }
+            }
+            return temp;
+            // return advisors;
+            // List<string> mylist = new List<string>(new string[] { "element1", "element2", "element3" });
+            // return mylist;
         }
     }
 }

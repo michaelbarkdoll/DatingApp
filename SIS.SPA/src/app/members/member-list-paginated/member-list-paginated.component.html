@@ -10,19 +10,27 @@
       <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
         <div class="form-group">
           <label for="minAge">Age From</label>
-          <input type="number" class="form-control" style="width: 70px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">
+          <input type="number" class="form-control" style="width: 60px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">
         </div>
     
         <div class="form-group">
           <label for="maxAge">Age To</label>
-          <input type="number" class="form-control" style="width: 70px" id="maxAge" name="maxAge" [(ngModel)]="userParams.maxAge">
+          <input type="number" class="form-control" style="width: 60px" id="maxAge" name="maxAge" [(ngModel)]="userParams.maxAge">
         </div>
     
         <div class="form-group">
           <label for="gender">Show: </label>
-          <select class="form-control" style="width: 130px" id="gender" name="gender" [(ngModel)]="userParams.gender">
+          <select class="form-control" style="width: 70px" id="gender" name="gender" [(ngModel)]="userParams.gender">
             <option *ngFor="let gender of genderList" [value]="gender.value">
               {{gender.display}}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="advisor">Advisor: </label>
+          <select class="form-control" style="width: 70px" id="advisor" name="advisor" [(ngModel)]="userParams.advisor">
+            <option *ngFor="let advisor of advisors" [value]="advisor.fullName">
+              {{advisor.fullName}}
             </option>
           </select>
         </div>

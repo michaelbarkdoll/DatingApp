@@ -7,4 +7,5 @@ export interface UserParams {
     minPageSize?: number;
     pageNumber?: number;
     orderBy?: string;
+    advisor?: string;
 }
