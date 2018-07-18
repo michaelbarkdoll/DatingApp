@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-// import { Http, RequestOptions, Headers } from '@angular/http';
 import { User } from '../_models/User';
-// import { Observable } from '../../../node_modules/rxjs';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
