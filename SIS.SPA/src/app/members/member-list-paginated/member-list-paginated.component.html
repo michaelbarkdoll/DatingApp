@@ -1,6 +1,6 @@
 <div class="row">
   <div class="text-center">
-    <h2>Your matches - {{pagination.totalItems}} found</h2>
+    <h2>Your results - {{pagination.totalItems}} found</h2>
   </div>
 </div>
 
@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
           <label for="advisor">Advisor: </label>
-          <select class="form-control" style="width: 70px" id="advisor" name="advisor" [(ngModel)]="userParams.advisor">
+          <select class="form-control" style="width: 100px" id="advisor" name="advisor" [(ngModel)]="userParams.advisor">
             <option *ngFor="let advisor of advisors" [value]="advisor.fullName">
               {{advisor.fullName}}
             </option>
