@@ -11,6 +11,7 @@ using SIS.API.Helpers;
 
 namespace SIS.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route ("api/[controller]")]
     public class UsersController : Controller
