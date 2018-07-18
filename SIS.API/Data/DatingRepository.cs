@@ -52,7 +52,17 @@ namespace SIS.API.Data {
             }
 
             if (!string.IsNullOrEmpty(userParams.Advisor))
-                users = users.Where(u => u.Advisor == userParams.Advisor);
+            {
+                switch (userParams.Advisor)
+                {
+                    case "all":
+                        break;
+                    default:
+                        users = users.Where(u => u.Advisor == userParams.Advisor);
+                        break;
+                }
+            }
+                
 
             if (!string.IsNullOrEmpty(userParams.OrderBy))
             {

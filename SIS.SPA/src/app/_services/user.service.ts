@@ -44,8 +44,8 @@ export class UserService {
                 'minAge=' + userParams.minAge +
                 '&maxAge=' + userParams.maxAge +
                 '&gender=' + userParams.gender +
-                '&orderBy=' + userParams.orderBy +
-                '&advisor=' + userParams.advisor;
+                '&advisor=' + userParams.advisor +
+                '&orderBy=' + userParams.orderBy;
         }
 
         return this.authHttp

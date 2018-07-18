@@ -44,6 +44,7 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.minAge = 15;
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
+    this.userParams.advisor = 'all';
   }
 
   getAdvisors() {
@@ -80,7 +81,7 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.minAge = 15;
     this.userParams.maxAge = 99;
     this.userParams.orderBy = 'lastActive';
-    this.userParams.advisor = null;
+    this.userParams.advisor = 'all';
     this.loadUsers();
   }
 }
