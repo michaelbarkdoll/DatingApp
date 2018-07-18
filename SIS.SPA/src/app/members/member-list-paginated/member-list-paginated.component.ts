@@ -36,6 +36,7 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
     this.userParams.minAge = 15;
     this.userParams.maxAge = 99;
+    this.userParams.orderBy = 'lastActive';
   }
 
   loadUsers() {
@@ -61,6 +62,7 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
     this.userParams.minAge = 15;
     this.userParams.maxAge = 99;
+    this.userParams.orderBy = 'lastActive';
     this.loadUsers();
   }
 }

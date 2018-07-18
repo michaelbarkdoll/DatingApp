@@ -3,7 +3,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule, TabsModule, PaginationModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -70,7 +70,8 @@ import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.
       TabsModule.forRoot(),
       NgxGalleryModule,
       FileUploadModule,
-      PaginationModule.forRoot()
+      PaginationModule.forRoot(),
+      ButtonsModule.forRoot()
    ],
     providers: [
         AuthService,
