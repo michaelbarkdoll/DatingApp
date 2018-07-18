@@ -38,7 +38,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { AdminPhotoEditorComponent } from './members/admin-photo-editor/admin-photo-editor.component';
 import { MemberListPaginatedComponent } from './members/member-list-paginated/member-list-paginated.component';
 import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
-
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 
 @NgModule({
@@ -58,7 +58,8 @@ import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.
       StudentDetailComponent,
       PhotoEditorComponent,
       AdminPhotoEditorComponent,
-      MemberListPaginatedComponent
+      MemberListPaginatedComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,

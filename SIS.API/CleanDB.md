@@ -127,4 +127,6 @@ Now make use of this in our component
 
 Changed name of App to SIS. 07/16/2018
 
-Test.
+````
+npm install time-ago-pipe --save
+````
