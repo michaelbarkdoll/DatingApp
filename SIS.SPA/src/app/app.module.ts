@@ -3,7 +3,7 @@ import { AuthGuard } from './_guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, PaginationModule, ButtonsModule, BsDatepickerModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HttpModule } from '@angular/http';
@@ -75,7 +75,8 @@ import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.com
       NgxGalleryModule,
       FileUploadModule,
       PaginationModule.forRoot(),
-      ButtonsModule.forRoot()
+      ButtonsModule.forRoot(),
+      BsDatepickerModule.forRoot()
    ],
     providers: [
         AuthService,
