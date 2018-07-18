@@ -39,6 +39,7 @@ import { AdminPhotoEditorComponent } from './members/admin-photo-editor/admin-ph
 import { MemberListPaginatedComponent } from './members/member-list-paginated/member-list-paginated.component';
 import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
 import { TimeAgoPipe } from 'time-ago-pipe';
+import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { TimeAgoPipe } from 'time-ago-pipe';
       PhotoEditorComponent,
       AdminPhotoEditorComponent,
       MemberListPaginatedComponent,
-      TimeAgoPipe
+      TimeAgoPipe,
+      AdminAddUserComponent
    ],
    imports: [
       BrowserModule,
