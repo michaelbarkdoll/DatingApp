@@ -32,7 +32,7 @@ namespace SIS.API.Helpers
             // <Source type on left, Destination type on the right>
             CreateMap<PhotoForCreationDto, Photo>();
             CreateMap<Photo, PhotoForReturnDto>();
-            
+            CreateMap<UserForRegisterDto, User>();
         }
     }
 }
