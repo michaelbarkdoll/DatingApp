@@ -28,8 +28,8 @@ export const appRoutes: Routes = [
         runGuardsAndResolvers: 'always',
         canActivate: [AuthGuard],
         children: [
-            { path: 'memberspaginated', component: MemberListPaginatedComponent, resolve: {users: MemberListPaginatedResolver} },
-            { path: 'members', component: MemberListComponent, resolve: {users: MemberListResolver} },
+            { path: 'allmembers', component: MemberListComponent, resolve: {users: MemberListResolver} },
+            { path: 'members', component: MemberListPaginatedComponent, resolve: {users: MemberListPaginatedResolver} },
             { path: 'members/:id', component: MemberDetailComponent, resolve: {user: MemberDetailResolver} },
             { path: 'member/edit', component: MemberEditComponent,
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChangesGuard] },
