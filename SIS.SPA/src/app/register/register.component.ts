@@ -56,6 +56,12 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.registerForm.valid) {
       this.user = Object.assign({}, this.registerForm.value);
+
+      // Set the default knownAs name to their first name
+      if (this.user.knownAs == null) {
+        this.user.knownAs = this.user.firstName;
+      }
+
       // console.log(this.user);
       this.authService.registerReturnUser(this.user).subscribe(() => {
         this.alertifyService.success('Registration successfull');
