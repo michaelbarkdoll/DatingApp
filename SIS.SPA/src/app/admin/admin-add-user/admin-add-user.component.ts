@@ -59,9 +59,10 @@ export class AdminAddUserComponent implements OnInit {
       }, error => {
         this.alertifyService.error(error);
       }, () => {
-        this.authService.login(this.user).subscribe(() => {
+        this.router.navigate(['/students']);
+        /* this.authService.login(this.user).subscribe(() => {
           this.router.navigate(['/members']);
-        });
+        }); */
       });
     }
 /*     this.authService.register(this.model).subscribe(() => {
