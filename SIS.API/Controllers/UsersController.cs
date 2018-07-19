@@ -66,7 +66,7 @@ namespace SIS.API.Controllers
             return Ok(usersToReturn);   // We're still return usersToReturn, but we should have a pagination header now.
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id) 
         {
             var user = await _repo.GetUser(id);
