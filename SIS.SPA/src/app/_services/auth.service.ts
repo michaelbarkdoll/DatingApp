@@ -40,7 +40,11 @@ export class AuthService {
                 this.currentUser = user.user;
                 // console.log(this.decodedToken);
                 this.userToken = user.tokenString;
-                this.changeMemberPhoto(this.currentUser.photoUrl);
+                if (this.currentUser != null) {
+                    this.changeMemberPhoto(this.currentUser.photoUrl);
+                } else {
+                    this.changeMemberPhoto('../../assets/user.png');
+                }
             }
         }).catch(this.handleError);
     }
