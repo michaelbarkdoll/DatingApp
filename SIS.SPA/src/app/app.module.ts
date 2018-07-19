@@ -40,7 +40,6 @@ import { MemberListPaginatedComponent } from './members/member-list-paginated/me
 import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
-// import { FileSaverModule } from 'ngx-filesaver';
 
 
 @NgModule({
@@ -78,7 +77,6 @@ import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.com
       PaginationModule.forRoot(),
       ButtonsModule.forRoot(),
       BsDatepickerModule.forRoot()
-      // FileSaverModule
    ],
     providers: [
         AuthService,

@@ -8,7 +8,6 @@ import { Headers, Response, RequestOptions, ResponseContentType, Http } from '@a
 import 'rxjs/add/operator/map';
 import { AuthHttp } from 'angular2-jwt';
 import { saveAs } from 'file-saver';
-// import { FileSaverService } from 'ngx-filesaver';
 
 @Component({
   selector: 'app-admin-add-user',
@@ -30,9 +29,7 @@ export class AdminAddUserComponent implements OnInit {
       private alertifyService: AlertifyService,
       private formBuilder: FormBuilder,
       private router: Router,
-     // private http: Http,
       private authHttp: AuthHttp) { }
-      // private _FileSaverService: FileSaverService) { }
 
   ngOnInit() {
     this.createRegisterForm();
@@ -106,35 +103,5 @@ export class AdminAddUserComponent implements OnInit {
       saveAs((<any>res)._body, 'a.png');
       // this._FileSaverService.save((<any>res)._body);
     });
-
-    /* this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).subscribe(res => {
-      this._FileSaverService.save((<any>res)._body);
-    }); */
   }
 }
-
-    /* this.authHttp.get('../../../assets/user.png', options).subscribe(res => {
-      this._FileSaverService.save((<any>res)._body);
-    }); */
-
-    /* this.http.get('../../../assets/user.png', options).subscribe(res => {
-      this._FileSaverService.save((<any>res)._body);
-    }); */
-
-
-    /* this.authHttp.get('http://localhost:5000/api/users/download/a.png').subscribe(fileData => {
-      const b: any = new Blob([fileData], { type: 'application/zip' });
-      const url = window.URL.createObjectURL(b);
-        window.open(url);
-      }
-    ); */
-    /* this.getFile('http://localhost:5000/api/users/download/a.png')
-    .subscribe(fileData => {
-      const b: any = new Blob([fileData], { type: 'application/zip' });
-      const url = window.URL.createObjectURL(b);
-        window.open(url);
-      }
-    ); */
-
-
-
