@@ -40,7 +40,7 @@ export class AuthService {
                 this.currentUser = user.user;
                 // console.log(this.decodedToken);
                 this.userToken = user.tokenString;
-                if (this.currentUser != null) {
+                if (this.currentUser.photoUrl != null) {
                     this.changeMemberPhoto(this.currentUser.photoUrl);
                 } else {
                     this.changeMemberPhoto('../../assets/user.png');
@@ -60,7 +60,7 @@ export class AuthService {
         // model just contains username and password at this point.
         // All we're returning from this register method at the moment from the api is status code of 201
         //  so we really don't need to pass anything back or map anything back to our component in this case.
-        return this.http.post(this.baseUrl + 'register', user, this.requestOptions()).catch(this.handleError);
+        return this.http.post(this.baseUrl + 'register/returnUser', user, this.requestOptions()).catch(this.handleError);
     }
 
     loggedIn() {
