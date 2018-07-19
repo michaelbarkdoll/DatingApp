@@ -7,6 +7,7 @@ import { Router } from '../../../../node_modules/@angular/router';
 import { Headers, Response, RequestOptions, ResponseContentType, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AuthHttp } from 'angular2-jwt';
+import { saveAs } from 'file-saver';
 // import { FileSaverService } from 'ngx-filesaver';
 
 @Component({
@@ -92,7 +93,7 @@ export class AdminAddUserComponent implements OnInit {
     // console.log('cancelled');
   }
 
-/*   DownloadFile(): void {
+  DownloadFile(): void {
 
     this.type = 'png';
     this.fromRemote = true;
@@ -102,9 +103,14 @@ export class AdminAddUserComponent implements OnInit {
     });
 
     this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).subscribe(res => {
-      this._FileSaverService.save((<any>res)._body);
+      saveAs((<any>res)._body, 'a.png');
+      // this._FileSaverService.save((<any>res)._body);
     });
-  } */
+
+    /* this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).subscribe(res => {
+      this._FileSaverService.save((<any>res)._body);
+    }); */
+  }
 }
 
     /* this.authHttp.get('../../../assets/user.png', options).subscribe(res => {

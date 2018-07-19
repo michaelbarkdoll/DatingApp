@@ -132,6 +132,24 @@ npm install time-ago-pipe --save
 ````
 
 
+
+
+
+Don't use the following:
 ````
 npm uninstall file-saver ngx-filesaver --save
+````
+
+Instead use:
+````
+npm install file-saver
+npm install @types/file-saver --save-dev
+````
+
+````
+import { saveAs } from 'file-saver';
+
+this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).subscribe(res => {
+      saveAs((<any>res)._body);
+    });
 ````
