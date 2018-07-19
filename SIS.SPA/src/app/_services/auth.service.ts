@@ -52,6 +52,13 @@ export class AuthService {
         return this.http.post(this.baseUrl + 'register', model, this.requestOptions()).catch(this.handleError);
     }
 
+    registerReturnUser(user: User) {
+        // model just contains username and password at this point.
+        // All we're returning from this register method at the moment from the api is status code of 201
+        //  so we really don't need to pass anything back or map anything back to our component in this case.
+        return this.http.post(this.baseUrl + 'register', user, this.requestOptions()).catch(this.handleError);
+    }
+
     loggedIn() {
         return tokenNotExpired('token');
     }
