@@ -15,11 +15,11 @@ import * as _ from 'underscore';
 })
 export class PhotoEditorComponent implements OnInit {
   @Input() photos: Photo[];
+  @Output() getMemberPhotoChange = new EventEmitter<string>();
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
   baseUrl = environment.apiUrl;
   currentMain: Photo;
-  @Output() getMemberPhotoChange = new EventEmitter<string>();
 
   constructor(private authService: AuthService,
     private userService: UserService,
