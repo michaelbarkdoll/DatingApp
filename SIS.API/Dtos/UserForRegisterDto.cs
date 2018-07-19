@@ -27,5 +27,8 @@ namespace SIS.API.Dtos
             Created = DateTime.Now;
             LastActive = DateTime.Now;
         }
+        // Add the following for more detailed SPA registeration
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

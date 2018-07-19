@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
       this.user = Object.assign({}, this.registerForm.value);
 
       // Set the default knownAs name to their first name
-      if (this.user.knownAs == null) {
+      if (this.user.knownAs === '') {
         this.user.knownAs = this.user.firstName;
       }
 
