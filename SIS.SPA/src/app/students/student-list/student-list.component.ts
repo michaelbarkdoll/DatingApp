@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../_models/User';
 import { Http } from '@angular/http';
 
@@ -14,7 +14,8 @@ export class StudentListComponent implements OnInit {
   users: User[];
   userAddMode = false;
 
-  constructor(private userService: UserService, private alertify: AlertifyService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private alertify: AlertifyService,
+    private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -23,11 +24,11 @@ export class StudentListComponent implements OnInit {
   }
 
   userAddToggle() {
-    this.userAddMode = true;
+    this.router.navigate(['/adduser']);
+    // this.userAddMode = true;
   }
 
   cancelRegisterMode(registerMode: boolean) {
     this.userAddMode = registerMode;
   }
-
 }

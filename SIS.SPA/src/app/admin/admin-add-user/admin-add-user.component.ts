@@ -60,6 +60,8 @@ export class AdminAddUserComponent implements OnInit {
         this.alertifyService.error(error);
       }, () => {
         this.router.navigate(['/students']);
+        // this.cancel();
+        // this.router.navigate(['/students']);
         /* this.authService.login(this.user).subscribe(() => {
           this.router.navigate(['/members']);
         }); */
@@ -73,7 +75,8 @@ export class AdminAddUserComponent implements OnInit {
   }
 
   cancel() {
-    this.cancelRegister.emit(false);
+    this.router.navigate(['/students']);
+    // this.cancelRegister.emit(false);
     // console.log('cancelled');
   }
 }

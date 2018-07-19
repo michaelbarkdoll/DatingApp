@@ -19,6 +19,7 @@ import { StudentDetailResolver } from './_resolvers/student-detail.resolver';
 import { StudentListResolver } from './_resolvers/student-list.resolver';
 import { MemberListPaginatedComponent } from './members/member-list-paginated/member-list-paginated.component';
 import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
+import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -37,6 +38,7 @@ export const appRoutes: Routes = [
             { path: 'students/:id', component: StudentDetailComponent, resolve: {user: StudentDetailResolver} },
             { path: 'student/edit/:id', component: StudentEditComponent,
                 resolve: {user: StudentEditResolver}, canDeactivate: [PreventUnsavedChangesStudentEditGuard] },
+            { path: 'adduser', component: AdminAddUserComponent, resolve: {user: StudentListResolver} },
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
         ]
