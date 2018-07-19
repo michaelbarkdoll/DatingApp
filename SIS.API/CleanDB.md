@@ -153,3 +153,5 @@ this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).sub
       saveAs((<any>res)._body);
     });
 ````
+
+https://github.com/eligrey/FileSaver.js
