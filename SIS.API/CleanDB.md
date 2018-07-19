@@ -130,3 +130,8 @@ Changed name of App to SIS. 07/16/2018
 ````
 npm install time-ago-pipe --save
 ````
+
+
+````
+npm uninstall file-saver ngx-filesaver --save
+````
