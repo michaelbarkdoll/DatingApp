@@ -31,38 +31,41 @@ namespace SIS.API.Dtos
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string DoctorateCommitteeMember1 { get; set; }
         // 07-19-2018
         /* bool BA = false;
         bool BS = false;
         bool MS = false;
-        bool PHD = false; */
-        /* public string State { get; set; }
-        public string ZipCode { get; set; }
+        bool PHD = false;
+        public string State { get; set; }
+        public string ZipCode { get; set; } */
 
-        public DateTime BachelorStartDate { get; set; }
+       /*  public DateTime BachelorStartDate { get; set; }
         public string BachelorFacultyMentor { get; set; }
         public string SeniorProjectAdvisor { get; set; }
-        public DateTime BachelorGraduationDate { get; set; }
+        public DateTime BachelorGraduationDate { get; set; } */
 
         // 07-19-2018
         // New propertites
-        public string SeniorProjectTitle { get; set; }
+        /* public string SeniorProjectTitle { get; set; }
         public string SeniorProjectURL { get; set; }
         // Master's specific details
         public DateTime MasterStartDate { get; set; }
-        bool MasterThesis = false;
-        bool MasterProject = false;
-        public string MasterCommitteeMember1 { get; set; }
-        public string MasterCommitteeMember2 { get; set; }
-        public string MasterCommitteeMember3 { get; set; }
-        public DateTime MasterDefenseDate { get; set; }
-        public string MasterThesisTitle { get; set; }
-        public DateTime MasterGraduationDate { get; set; }
+        /* bool MasterThesis = false;
+        bool MasterProject = false; */
+        /* public string MasterCommitteeMember1 { get; set; } */
+        /* public string MasterCommitteeMember2 { get; set; } */
+        /* public string MasterCommitteeMember3 { get; set; } */
+        /* public DateTime MasterDefenseDate { get; set; } */
+        /* public string MasterThesisTitle { get; set; } */
+        /* public DateTime MasterGraduationDate { get; set; }  */
         // Phd specific details
         public DateTime DoctorateStartDate { get; set; }
         public DateTime DoctorateCandidateAcceptDate { get; set; }
         public string DoctorateAdvisor { get; set; }
+
+
+
+
         public string DoctorateCommitteeMember1 { get; set; }
         public string DoctorateCommitteeMember2 { get; set; }
         public string DoctorateCommitteeMember3 { get; set; }
@@ -71,7 +74,7 @@ namespace SIS.API.Dtos
         public string DoctorateCommitteeMember6 { get; set; }
         public DateTime DissertationDefenseDate { get; set; }
         public string DissertationTitle { get; set; }
-        public DateTime DoctorateGraduationDate { get; set; } */
+        public DateTime DoctorateGraduationDate { get; set; }
 
 
 
