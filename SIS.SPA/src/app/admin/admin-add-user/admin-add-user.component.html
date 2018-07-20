@@ -172,8 +172,8 @@
 
           <!-- Bachelor's Section -->
           <div class="tab-panel" *ngIf="isBachelors()">
-              <h3 class="text-center text-primary">Bachelor's Details:</h3>
-              <hr>
+            <h3 class="text-center text-primary">Bachelor's Details:</h3>
+            <hr>
 
 
             <!-- bachelorStartDate -->
@@ -242,8 +242,8 @@
           <!-- Master's Section -->
           <div class="tab-panel" *ngIf="isMasters()">
 
-              <h3 class="text-center text-primary">Master's Details:</h3>
-              <hr>
+            <h3 class="text-center text-primary">Master's Details:</h3>
+            <hr>
 
             <!-- masterFocus Project/Thesis -->
             <div class="form-group">
@@ -315,6 +315,146 @@
 
           </div>
           <!-- End Master's Section -->
+
+
+          <!-- Master's Section -->
+          <div class="tab-panel" *ngIf="isDoctorate()">
+            <h3 class="text-center text-primary">Doctorate's Details:</h3>
+            <hr>
+
+
+            <!-- doctorateStartDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateStartDate').touched && registerForm.get('doctorateStartDate').hasError('required')}">
+              <label>doctorateStartDate:
+                <input class="form-control" type="date" placeholder="doctorateStartDate" formControlName="doctorateStartDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateStartDate').touched && registerForm.get('doctorateStartDate').hasError('required')">doctorateStartDate is required</span>
+            </div>
+
+            <!-- doctorateCandidateAcceptDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCandidateAcceptDate').touched && registerForm.get('doctorateCandidateAcceptDate').hasError('required')}">
+              <label>doctorateCandidateAcceptDate:
+                <input class="form-control" type="date" placeholder="doctorateCandidateAcceptDate" formControlName="doctorateCandidateAcceptDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCandidateAcceptDate').touched && registerForm.get('doctorateCandidateAcceptDate').hasError('required')">doctorateCandidateAcceptDate is required</span>
+            </div>
+
+
+            <!-- doctorateAdvisor -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')}">
+              <label>doctorateAdvisor:
+                <input class="form-control" placeholder="doctorateAdvisor" formControlName="doctorateAdvisor">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')">
+                doctorateAdvisor is required
+              </span>
+            </div>
+
+            <!-- doctorateCommitteeMember1 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember1').touched && registerForm.get('doctorateCommitteeMember1').hasError('required')}">
+              <label>doctorateCommitteeMember1:
+                <input class="form-control" placeholder="doctorateCommitteeMember1" formControlName="doctorateCommitteeMember1">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember1').touched && registerForm.get('doctorateCommitteeMember1').hasError('required')">
+                doctorateCommitteeMember1 is required
+              </span>
+            </div>
+
+            <!-- doctorateCommitteeMember1 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember1').touched && registerForm.get('doctorateCommitteeMember1').hasError('required')}">
+              <label>doctorateCommitteeMember1:
+                <input class="form-control" placeholder="doctorateCommitteeMember1" formControlName="doctorateCommitteeMember1">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember1').touched && registerForm.get('doctorateCommitteeMember1').hasError('required')">
+                doctorateCommitteeMember1 is required
+              </span>
+            </div>
+
+            <!-- doctorateCommitteeMember2 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember2').touched && registerForm.get('doctorateCommitteeMember2').hasError('required')}">
+              <label>doctorateCommitteeMember2:
+                <input class="form-control" placeholder="doctorateCommitteeMember2" formControlName="doctorateCommitteeMember2">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember2').touched && registerForm.get('doctorateCommitteeMember2').hasError('required')">
+                doctorateCommitteeMember2 is required
+              </span>
+            </div>
+
+
+            <!-- doctorateCommitteeMember3 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember3').touched && registerForm.get('doctorateCommitteeMember3').hasError('required')}">
+              <label>doctorateCommitteeMember3:
+                <input class="form-control" placeholder="doctorateCommitteeMember3" formControlName="doctorateCommitteeMember3">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember3').touched && registerForm.get('doctorateCommitteeMember3').hasError('required')">
+                doctorateCommitteeMember3 is required
+              </span>
+            </div>
+
+            <!-- doctorateCommitteeMember4 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember4').touched && registerForm.get('doctorateCommitteeMember4').hasError('required')}">
+              <label>doctorateCommitteeMember4:
+                <input class="form-control" placeholder="doctorateCommitteeMember4" formControlName="doctorateCommitteeMember4">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember4').touched && registerForm.get('doctorateCommitteeMember4').hasError('required')">
+                doctorateCommitteeMember4 is required
+              </span>
+            </div>
+
+            <!-- doctorateCommitteeMember5 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember5').touched && registerForm.get('doctorateCommitteeMember5').hasError('required')}">
+              <label>doctorateCommitteeMember5:
+                <input class="form-control" placeholder="doctorateCommitteeMember5" formControlName="doctorateCommitteeMember5">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember5').touched && registerForm.get('doctorateCommitteeMember5').hasError('required')">
+                doctorateCommitteeMember5 is required
+              </span>
+            </div>
+
+            <!-- doctorateCommitteeMember6 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember6').touched && registerForm.get('doctorateCommitteeMember6').hasError('required')}">
+              <label>doctorateCommitteeMember6:
+                <input class="form-control" placeholder="doctorateCommitteeMember6" formControlName="doctorateCommitteeMember6">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember6').touched && registerForm.get('doctorateCommitteeMember6').hasError('required')">
+                doctorateCommitteeMember6 is required
+              </span>
+            </div>
+
+
+            <!-- dissertationDefenseDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('dissertationDefenseDate').touched && registerForm.get('dissertationDefenseDate').hasError('required')}">
+              <label>dissertationDefenseDate:
+                <input class="form-control" type="date" placeholder="dissertationDefenseDate" formControlName="dissertationDefenseDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('dissertationDefenseDate').touched && registerForm.get('dissertationDefenseDate').hasError('required')">dissertationDefenseDate is required</span>
+            </div>
+
+            <!-- dissertationTitle -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('dissertationTitle').touched && registerForm.get('dissertationTitle').hasError('required')}">
+              <label>dissertationTitle:
+                <input class="form-control" placeholder="dissertationTitle" formControlName="dissertationTitle">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('dissertationTitle').touched && registerForm.get('dissertationTitle').hasError('required')">
+                dissertationTitle is required
+              </span>
+            </div>
+
+            <!-- doctorateGraduationDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateGraduationDate').touched && registerForm.get('doctorateGraduationDate').hasError('required')}">
+              <label>doctorateGraduationDate:
+                <input class="form-control" type="date" placeholder="doctorateGraduationDate" formControlName="doctorateGraduationDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('doctorateGraduationDate').touched && registerForm.get('doctorateGraduationDate').hasError('required')">doctorateGraduationDate is required</span>
+            </div>
+
+
+          </div>
+          <!-- End of Master's Section -->
 
         </div>
         <!-- End tab-panel -->

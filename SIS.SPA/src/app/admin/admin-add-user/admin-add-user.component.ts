@@ -51,7 +51,7 @@ export class AdminAddUserComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       advisor: [''],
       studentLevel: ['BA'],
-      bachelorStartDate: [null, Validators.required],
+      bachelorStartDate: [null],
 
       bachelorFacultyMentor: [''],
       seniorProjectAdvisor: [''],
@@ -64,8 +64,19 @@ export class AdminAddUserComponent implements OnInit {
       masterCommitteeMember3: [''],
       masterDefenseDate: [null],
       masterThesisTitle: [''],
-      masterGraduationDate: [null]
-
+      masterGraduationDate: [null],
+      doctorateStartDate: [null],
+      doctorateCandidateAcceptDate: [null],
+      doctorateAdvisor: [''],
+      doctorateCommitteeMember1: [''],
+      doctorateCommitteeMember2: [''],
+      doctorateCommitteeMember3: [''],
+      doctorateCommitteeMember4: [''],
+      doctorateCommitteeMember5: [''],
+      doctorateCommitteeMember6: [''],
+      dissertationDefenseDate: [null],
+      dissertationTitle: [''],
+      doctorateGraduationDate: [null]
     }, { validator: this.passwordMatchValidator });
   }
 
