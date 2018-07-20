@@ -21,6 +21,7 @@ export class AdminAddUserComponent implements OnInit {
   user: User;
 
   registerForm: FormGroup;
+  studentLevel: string;
 
   constructor(private authService: AuthService,
       private alertifyService: AlertifyService,
@@ -30,6 +31,7 @@ export class AdminAddUserComponent implements OnInit {
 
   ngOnInit() {
     this.createRegisterForm();
+    this.studentLevel = 'BA';
   }
 
   createRegisterForm() {
@@ -41,9 +43,29 @@ export class AdminAddUserComponent implements OnInit {
       dateOfBirth: [null, Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required],
+
+      dawgTag: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      advisor: [''],
+      studentLevel: ['BA'],
+      bachelorStartDate: [null, Validators.required],
+
+      bachelorFacultyMentor: [''],
+      seniorProjectAdvisor: [''],
+      bachelorGraduationDate: [null],
+      seniorProjectTitle: [''],
+      seniorProjectURL: [''],
+      masterFocus: ['Project'],
+      masterCommitteeMember1: [''],
+      masterCommitteeMember2: [''],
+      masterCommitteeMember3: [''],
+      masterDefenseDate: [null],
+      masterThesisTitle: [''],
+      masterGraduationDate: [null]
+
     }, { validator: this.passwordMatchValidator });
   }
 
@@ -87,5 +109,39 @@ export class AdminAddUserComponent implements OnInit {
       saveAs((<any>res)._body, 'a.png');
       // this._FileSaverService.save((<any>res)._body);
     });
+  }
+
+
+  isBachelors() {
+    switch (this.studentLevel) {
+      case 'BA':
+        return true;
+        break;
+      case 'BS':
+        return true;
+        break;
+      default:
+        return false;
+    }
+  }
+  isMasters() {
+    switch (this.studentLevel) {
+      case 'MS':
+        return true;
+        break;
+      default:
+        return false;
+    }
+  }
+  isDoctorate() {
+    switch (this.studentLevel) {
+      case 'PHD':
+        return true;
+      default:
+        return false;
+    }
+  }
+  setStudentLevel(level: string) {
+    this.studentLevel = level;
   }
 }

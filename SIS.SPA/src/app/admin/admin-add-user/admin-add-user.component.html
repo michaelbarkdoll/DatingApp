@@ -84,6 +84,21 @@
               Country is required
             </span>
           </div>
+
+          <!-- dawgtag -->
+
+          <div class="form-group" [ngClass]="{'has-error': registerForm.get('dawgTag').touched && registerForm.get('dawgTag').hasError('required')}">
+            <label>DawgTag:</label>
+            <input class="form-control" placeholder="DawgTag" formControlName="dawgTag">
+            <span class="help-block" *ngIf="registerForm.get('dawgTag').touched && registerForm.get('dawgTag').hasError('required')">
+              DawgTag is required
+            </span>
+            <span class="help-block" *ngIf="registerForm.get('dawgTag').hasError('minlength') || registerForm.get('dawgTag').hasError('maxlength') && registerForm.get('dawgTag').touched">
+              Dawgtag must be 9 characters long
+            </span>
+          </div>
+
+          <!-- username -->
           <div class="form-group" [ngClass]="{'has-error': registerForm.get('username').errors && registerForm.get('username').touched}">
             <!-- <input type="text" class="form-control" placeholder="Username" required name="username" [(ngModel)]="model.username"> -->
             <label>Username:</label>
@@ -93,6 +108,7 @@
             </span>
           </div>
 
+          <!-- password -->
           <div class="form-group" [ngClass]="{'has-error': registerForm.get('password').errors && registerForm.get('password').touched}">
             <label>Password:</label>
             <input type="password" class="form-control" placeholder="Password" formControlName="password">
@@ -107,6 +123,7 @@
             </span>
           </div>
 
+          <!-- confirm password -->
           <div class="form-group" [ngClass]="{'has-error': 
           registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').touched 
           || registerForm.get('confirmPassword').touched && registerForm.hasError('mismatch')}">
@@ -127,15 +144,182 @@
 
 
 
-        </div> <!-- End of panel -->
-      </div> <!-- End of col-sm-4 -->
+        </div>
+        <!-- End of panel -->
+      </div>
+      <!-- End of col-sm-4 -->
 
       <!-- Right hand colmn -->
       <div class="col-sm-8">
         <div class="tab-panel">
-          test
+
+          <!-- Enrolled as Student Level -->
+          <div class="form-group">
+            <label class="control-label" style="margin-right:10px">Student Level: </label>
+            <label class="radio-inline">
+              <input type="radio" value="BA" formControlName="studentLevel" (click)="setStudentLevel('BA')">BA
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="BS" formControlName="studentLevel" (click)="setStudentLevel('BS')">BS
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="MS" formControlName="studentLevel" (click)="setStudentLevel('MS')">MS
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="PhD" formControlName="studentLevel" (click)="setStudentLevel('PHD')">PhD
+            </label>
+          </div>
+
+          <!-- Bachelor's Section -->
+          <div class="tab-panel" *ngIf="isBachelors()">
+              <h3 class="text-center text-primary">Bachelor's Details:</h3>
+              <hr>
+
+
+            <!-- bachelorStartDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('bachelorStartDate').touched && registerForm.get('bachelorStartDate').hasError('required')}">
+              <label>bachelorStartDate:
+                <input class="form-control" type="date" placeholder="bachelorStartDate" formControlName="bachelorStartDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('bachelorStartDate').touched && registerForm.get('bachelorStartDate').hasError('required')">bachelorStartDate is required</span>
+            </div>
+            <!-- Add from here.. -->
+            <!-- bachelorFacultyMentor -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')}">
+              <label>bachelorFacultyMentor:
+                <input class="form-control" placeholder="bachelorFacultyMentor" formControlName="bachelorFacultyMentor">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')">
+                bachelorFacultyMentor is required
+              </span>
+            </div>
+
+            <!-- seniorProjectAdvisor -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('seniorProjectAdvisor').touched && registerForm.get('seniorProjectAdvisor').hasError('required')}">
+              <label>seniorProjectAdvisor:
+                <input class="form-control" placeholder="seniorProjectAdvisor" formControlName="seniorProjectAdvisor">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('seniorProjectAdvisor').touched && registerForm.get('seniorProjectAdvisor').hasError('required')">
+                seniorProjectAdvisor is required
+              </span>
+            </div>
+
+            <!-- bachelorGraduationDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('bachelorGraduationDate').touched && registerForm.get('bachelorGraduationDate').hasError('required')}">
+              <label>bachelorGraduationDate:
+                <input class="form-control" type="date" placeholder="bachelorGraduationDate" formControlName="bachelorGraduationDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('bachelorGraduationDate').touched && registerForm.get('bachelorGraduationDate').hasError('required')">bachelorGraduationDate is required</span>
+            </div>
+
+            <!-- seniorProjectTitle -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('seniorProjectTitle').touched && registerForm.get('seniorProjectTitle').hasError('required')}">
+              <label>seniorProjectTitle:
+                <input class="form-control" placeholder="seniorProjectTitle" formControlName="seniorProjectTitle">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('seniorProjectTitle').touched && registerForm.get('seniorProjectTitle').hasError('required')">
+                seniorProjectTitle is required
+              </span>
+            </div>
+
+            <!-- seniorProjectURL -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('seniorProjectURL').touched && registerForm.get('seniorProjectURL').hasError('required')}">
+              <label>seniorProjectURL:
+                <input class="form-control" placeholder="seniorProjectURL" formControlName="seniorProjectURL">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('seniorProjectURL').touched && registerForm.get('seniorProjectURL').hasError('required')">
+                seniorProjectURL is required
+              </span>
+            </div>
+
+          </div>
+          <!-- End Bachelor's Section -->
+
+
+
+          <!-- Master's Section -->
+          <div class="tab-panel" *ngIf="isMasters()">
+
+              <h3 class="text-center text-primary">Master's Details:</h3>
+              <hr>
+
+            <!-- masterFocus Project/Thesis -->
+            <div class="form-group">
+              <label class="control-label" style="margin-right:10px">Master's Focus: </label>
+              <label class="radio-inline">
+                <input type="radio" value="Project" formControlName="masterFocus">Project
+              </label>
+              <label class="radio-inline">
+                <input type="radio" value="Thesis" formControlName="masterFocus">Thesis
+              </label>
+            </div>
+
+
+            <!-- masterCommitteeMember1 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterCommitteeMember1').touched && registerForm.get('masterCommitteeMember1').hasError('required')}">
+              <label>masterCommitteeMember1:
+                <input class="form-control" placeholder="masterCommitteeMember1" formControlName="masterCommitteeMember1">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterCommitteeMember1').touched && registerForm.get('masterCommitteeMember1').hasError('required')">
+                masterCommitteeMember1 is required
+              </span>
+            </div>
+            <!-- masterCommitteeMember2 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterCommitteeMember2').touched && registerForm.get('masterCommitteeMember2').hasError('required')}">
+              <label>masterCommitteeMember2:
+                <input class="form-control" placeholder="masterCommitteeMember2" formControlName="masterCommitteeMember2">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterCommitteeMember2').touched && registerForm.get('masterCommitteeMember2').hasError('required')">
+                masterCommitteeMember2 is required
+              </span>
+            </div>
+            <!-- masterCommitteeMember3 -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterCommitteeMember3').touched && registerForm.get('masterCommitteeMember3').hasError('required')}">
+              <label>masterCommitteeMember3:
+                <input class="form-control" placeholder="masterCommitteeMember3" formControlName="masterCommitteeMember3">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterCommitteeMember3').touched && registerForm.get('masterCommitteeMember3').hasError('required')">
+                masterCommitteeMember3 is required
+              </span>
+            </div>
+
+            <!-- masterDefenseDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterDefenseDate').touched && registerForm.get('masterDefenseDate').hasError('required')}">
+              <label>masterDefenseDate:
+                <input class="form-control" type="date" placeholder="masterDefenseDate" formControlName="masterDefenseDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterDefenseDate').touched && registerForm.get('masterDefenseDate').hasError('required')">masterDefenseDate is required</span>
+            </div>
+
+            <!-- masterThesisTitle -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterThesisTitle').touched && registerForm.get('masterThesisTitle').hasError('required')}">
+              <label>masterThesisTitle:
+                <input class="form-control" placeholder="masterThesisTitle" formControlName="masterThesisTitle">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterThesisTitle').touched && registerForm.get('masterThesisTitle').hasError('required')">
+                masterThesisTitle is required
+              </span>
+            </div>
+
+            <!-- masterGraduationDate -->
+
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterGraduationDate').touched && registerForm.get('masterGraduationDate').hasError('required')}">
+              <label>masterGraduationDate:
+                <input class="form-control" type="date" placeholder="masterGraduationDate" formControlName="masterGraduationDate">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterGraduationDate').touched && registerForm.get('masterGraduationDate').hasError('required')">masterGraduationDate is required</span>
+            </div>
+
+          </div>
+          <!-- End Master's Section -->
+
         </div>
+        <!-- End tab-panel -->
       </div>
+      <!-- End right hand column -->
     </div>
 
 
