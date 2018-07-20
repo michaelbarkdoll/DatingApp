@@ -155,3 +155,8 @@ this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).sub
 ````
 
 https://github.com/eligrey/FileSaver.js
+
+````
+dotnet ef migrations add "ExtendUser"
+dotnet ef database update
+````

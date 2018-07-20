@@ -22,9 +22,6 @@ export class AdminAddUserComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  type: string;
-  fromRemote: boolean;
-
   constructor(private authService: AuthService,
       private alertifyService: AlertifyService,
       private formBuilder: FormBuilder,
@@ -70,18 +67,8 @@ export class AdminAddUserComponent implements OnInit {
         this.alertifyService.error(error);
       }, () => {
         this.router.navigate(['/students']);
-        // this.cancel();
-        // this.router.navigate(['/students']);
-        /* this.authService.login(this.user).subscribe(() => {
-          this.router.navigate(['/members']);
-        }); */
       });
     }
-/*     this.authService.register(this.model).subscribe(() => {
-      this.alertifyService.success('Registration successful');
-    }, error => {
-      this.alertifyService.error(error);
-    }); */
   }
 
   cancel() {
@@ -91,9 +78,6 @@ export class AdminAddUserComponent implements OnInit {
   }
 
   DownloadFile(): void {
-
-    this.type = 'png';
-    this.fromRemote = true;
 
     const options = new RequestOptions({
       responseType: ResponseContentType.Blob
