@@ -22,6 +22,7 @@ export class AdminAddUserComponent implements OnInit {
 
   registerForm: FormGroup;
   studentLevel: string;
+  BA: boolean; BS: boolean; MS: boolean; PHD: boolean;
 
   constructor(private authService: AuthService,
       private alertifyService: AlertifyService,
@@ -32,6 +33,7 @@ export class AdminAddUserComponent implements OnInit {
   ngOnInit() {
     this.createRegisterForm();
     this.studentLevel = 'BA';
+    this.BA = true; this.BS = false; this.MS = false; this.PHD = false;
   }
 
   createRegisterForm() {
@@ -76,7 +78,11 @@ export class AdminAddUserComponent implements OnInit {
       doctorateCommitteeMember6: [''],
       dissertationDefenseDate: [null],
       dissertationTitle: [''],
-      doctorateGraduationDate: [null]
+      doctorateGraduationDate: [null],
+      BA: [false],
+      BS: [false],
+      MS: [false],
+      PHD: [false]
     }, { validator: this.passwordMatchValidator });
   }
 
@@ -122,15 +128,12 @@ export class AdminAddUserComponent implements OnInit {
     });
   }
 
-
   isBachelors() {
     switch (this.studentLevel) {
       case 'BA':
         return true;
-        break;
       case 'BS':
         return true;
-        break;
       default:
         return false;
     }
@@ -139,7 +142,6 @@ export class AdminAddUserComponent implements OnInit {
     switch (this.studentLevel) {
       case 'MS':
         return true;
-        break;
       default:
         return false;
     }
@@ -154,5 +156,19 @@ export class AdminAddUserComponent implements OnInit {
   }
   setStudentLevel(level: string) {
     this.studentLevel = level;
+    switch (level) {
+      case 'BA':
+        this.BA = true;  this.BS = false; this.MS = false; this.PHD = false;
+        break;
+      case 'BS':
+        this.BS = true; this.BA = false; this.MS = false; this.PHD = false;
+        break;
+      case 'MS':
+        this.BS = false; this.BA = false; this.MS = true; this.PHD = false;
+        break;
+      case 'PHD':
+        this.BS = false; this.BA = false; this.MS = false; this.PHD = true;
+        break;
+    }
   }
 }

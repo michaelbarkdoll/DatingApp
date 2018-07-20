@@ -37,31 +37,31 @@ export interface User {
   seniorProjectAdvisor?: string;
   bachelorGraduationDate?: Date;
   // 07/19/2018 extended
-  seniorProjectTitle: string;
-  seniorProjectURL: string;
+  seniorProjectTitle?: string;
+  seniorProjectURL?: string;
   // Master's specific details
-  masterStartDate: Date;
-  masterThesis: boolean;
-  masterProject: boolean;
-  masterCommitteeMember1: string;
-  masterCommitteeMember2: string;
-  masterCommitteeMember3: string;
-  masterDefenseDate: Date;
-  masterThesisTitle: string;
-  masterGraduationDate: Date;
+  masterStartDate?: Date;
+  masterThesis?: boolean;
+  masterProject?: boolean;
+  masterCommitteeMember1?: string;
+  masterCommitteeMember2?: string;
+  masterCommitteeMember3?: string;
+  masterDefenseDate?: Date;
+  masterThesisTitle?: string;
+  masterGraduationDate?: Date;
   // Phd specific details
-  doctorateStartDate: Date;
-  doctorateCandidateAcceptDate: Date;
-  doctorateAdvisor: string;
-  doctorateCommitteeMember1: string;
-  doctorateCommitteeMember2: string;
-  doctorateCommitteeMember3: string;
-  doctorateCommitteeMember4: string;
-  doctorateCommitteeMember5: string;
-  doctorateCommitteeMember6: string;
-  dissertationDefenseDate: Date;
-  dissertationTitle: string;
-  doctorateGraduationDate: Date;
+  doctorateStartDate?: Date;
+  doctorateCandidateAcceptDate?: Date;
+  doctorateAdvisor?: string;
+  doctorateCommitteeMember1?: string;
+  doctorateCommitteeMember2?: string;
+  doctorateCommitteeMember3?: string;
+  doctorateCommitteeMember4?: string;
+  doctorateCommitteeMember5?: string;
+  doctorateCommitteeMember6?: string;
+  dissertationDefenseDate?: Date;
+  dissertationTitle?: string;
+  doctorateGraduationDate?: Date;
   // Exit Survey
   /* bool AdvismentExceeded = false;
         bool AdvismentMeets = false;
@@ -87,5 +87,5 @@ export interface User {
   // Job Networking
   /* bool ReferQuestions = false;
         bool ContactForJobs = false; */
-    dateOfBirth: Date;
+    dateOfBirth?: Date;
 }
