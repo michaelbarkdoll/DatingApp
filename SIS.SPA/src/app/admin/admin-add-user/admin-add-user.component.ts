@@ -92,6 +92,15 @@ export class AdminAddUserComponent implements OnInit {
 
   register() {
     if (this.registerForm.valid) {
+
+      this.setStudentLevel(this.studentLevel);
+      this.registerForm.patchValue({
+        BA: this.isBA(),
+        BS: this.isBS(),
+        MS: this.isMasters(),
+        PHD: this.isDoctorate()
+      });
+
       this.user = Object.assign({}, this.registerForm.value);
 
       // Set the default knownAs name to their first name
@@ -99,13 +108,13 @@ export class AdminAddUserComponent implements OnInit {
         this.user.knownAs = this.user.firstName;
       }
 
-      // Run this in case they never changed the default value.
+      /* // Run this in case they never changed the default value.
       this.setStudentLevel(this.studentLevel);
       // Set the user model values according to what was selected on the form.
       this.user.BA = this.isBA();
       this.user.BS = this.isBS();
       this.user.MS = this.isMasters();
-      this.user.PHD = this.isDoctorate();
+      this.user.PHD = this.isDoctorate(); */
 
       // console.log(this.user);
       this.authService.registerReturnUser(this.user).subscribe(() => {
