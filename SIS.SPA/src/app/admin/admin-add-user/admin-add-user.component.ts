@@ -99,13 +99,21 @@ export class AdminAddUserComponent implements OnInit {
         this.user.knownAs = this.user.firstName;
       }
 
+      // Run this in case they never changed the default value.
+      this.setStudentLevel(this.studentLevel);
+      // Set the user model values according to what was selected on the form.
+      this.user.BA = this.isBA();
+      this.user.BS = this.isBS();
+      this.user.MS = this.isMasters();
+      this.user.PHD = this.isDoctorate();
+
       // console.log(this.user);
       this.authService.registerReturnUser(this.user).subscribe(() => {
         this.alertifyService.success('Registration successfull');
       }, error => {
         this.alertifyService.error(error);
       }, () => {
-        this.router.navigate(['/students']);
+        // this.router.navigate(['/students']);
       });
     }
   }
@@ -132,6 +140,22 @@ export class AdminAddUserComponent implements OnInit {
     switch (this.studentLevel) {
       case 'BA':
         return true;
+      case 'BS':
+        return true;
+      default:
+        return false;
+    }
+  }
+  isBA() {
+    switch (this.studentLevel) {
+      case 'BA':
+        return true;
+      default:
+        return false;
+    }
+  }
+  isBS() {
+    switch (this.studentLevel) {
       case 'BS':
         return true;
       default:
