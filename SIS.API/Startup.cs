@@ -43,6 +43,7 @@ namespace SIS.API
             services.Configure<DataRepoSettings>(Configuration.GetSection("DataRepoSettings"));
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
+            services.AddScoped<IAdvisorRepository, AdvisorRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters

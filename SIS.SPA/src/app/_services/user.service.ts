@@ -9,6 +9,7 @@ import { Http, RequestOptions, Headers, Response } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
 import { PaginatedResult } from '../_models/pagination';
 import { UserParams } from '../_models/UserParams';
+import { Advisors } from '../_models/Advisors';
 
 
 @Injectable()
@@ -105,6 +106,12 @@ export class UserService {
             .get(this.baseUrl + 'users/detailedusers')
             .map(response => <User[]>response.json())
             .catch(this.handleError);
+    }
+
+    getAdvisorList(): Observable<Advisors[]> {
+        return this.authHttp.get(this.baseUrl + 'users/advisorlist')
+        .map(response => <Advisors[]>response.json())
+        .catch(this.handleError);
     }
 
     setMainPhoto(userId: number, photoId: number) {

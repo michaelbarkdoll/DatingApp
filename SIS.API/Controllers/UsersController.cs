@@ -176,6 +176,24 @@ namespace SIS.API.Controllers
 
             return Ok(usersToReturn);
         }
+
+        [HttpGet("advisorlist")]
+        public async Task<IActionResult> GetAdvisorList() 
+        {
+            // Gets the claim principle for the user executing the action. (The user from token essentially)
+            // Gets the id of the current user
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            if(! await _repo.GetUserLevelAdmin(currentUserId))
+                return Unauthorized();
+
+            // var users = await _repo.GetUsers();
+            var advisors = await _repo.GetAdvisorsList();
+            // var usersToReturn = _mapper.Map<IEnumerable<UserForDetailedDto>>(advisors);
+
+            // return Ok(usersToReturn);
+            return Ok(advisors);
+        }
         
         [HttpGet("advisors")]
         public async Task<IActionResult> GetAdvisors()

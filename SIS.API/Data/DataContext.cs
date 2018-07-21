@@ -10,5 +10,7 @@ namespace SIS.API.Data
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Advisors> Advisors { get; set; }
+        public DbSet<AdvisorDetails> UserAdvisorDetails { get; set; }
     }
 }

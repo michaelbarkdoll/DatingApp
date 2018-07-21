@@ -33,6 +33,12 @@ namespace SIS.API.Data {
             return users;
         }
 
+        public async Task<IEnumerable<Advisors>> GetAdvisorsList() {
+            var advisors = await _context.Advisors.ToListAsync();
+
+            return advisors;
+        }
+
         public async Task<PagedList<User>> GetUsersPagedList(UserParams userParams) {
             // var users = await _context.Users.Include(p => p.Photos).ToListAsync();
             // var users = _context.Users.Include(p => p.Photos);    // .ToListAsync is in our pagination class
@@ -113,6 +119,7 @@ namespace SIS.API.Data {
         public async Task<IEnumerable<Advisor>>GetAdvisors()
         {
             var advisors = await _context.Users.Select(a => a.Advisor).Distinct().ToListAsync();
+            // var advisors = await _context.Advisors.Select(a => a.FirstName).Distinct().ToListAsync();
 
             List<Advisor> temp = new List<Advisor>();
 

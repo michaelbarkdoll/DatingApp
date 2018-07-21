@@ -3,25 +3,24 @@ using System.Threading.Tasks;
 using SIS.API.Helpers;
 using SIS.API.Models;
 
-namespace SIS.API.Data
-{
-    public interface IDatingRepository
-    {
-         
-         void Add<T>(T entity) where T: class;
+namespace SIS.API.Data {
+    public interface IDatingRepository {
 
-         void Delete<T>(T entity) where T: class;
-         Task<bool> SaveAll();
+        void Add<T> (T entity) where T : class;
 
-         Task<IEnumerable<User>> GetUsers();
-         Task<PagedList<User>> GetUsersPagedList(UserParams userParams);
+        void Delete<T> (T entity) where T : class;
+        Task<bool> SaveAll ();
 
-         Task<User> GetUser(int id);
-         Task<bool> GetUserLevelAdmin(int id);
+        Task<IEnumerable<User>> GetUsers ();
+        Task<PagedList<User>> GetUsersPagedList (UserParams userParams);
 
-         Task<Photo> GetPhoto(int id);
-         Task<Photo> GetMainPhotoForUser(int userId);
-         // Task<List<string>> GetAdvisors();
-         Task<IEnumerable<Advisor>> GetAdvisors();
+        Task<User> GetUser (int id);
+        Task<bool> GetUserLevelAdmin (int id);
+
+        Task<Photo> GetPhoto (int id);
+        Task<Photo> GetMainPhotoForUser (int userId);
+        // Task<List<string>> GetAdvisors();
+        Task<IEnumerable<Advisor>> GetAdvisors ();
+        Task<IEnumerable<Advisors>> GetAdvisorsList ();
     }
 }

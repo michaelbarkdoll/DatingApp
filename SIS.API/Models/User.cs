@@ -105,6 +105,11 @@ namespace SIS.API.Models {
         /* bool? ReferQuestions = false;
         bool? ContactForJobs = false; */
 
+        // 7.21.2018
+        // Advisor Class Object
+        public AdvisorDetails AdvisorDetails { get; set; }
+        // public Advisor DoctorateAdvisorDetails { get; set; }
+
         public User () {
             Photos = new Collection<Photo> ();
             // UserBachelorDetail = new UserBachelorDetails();

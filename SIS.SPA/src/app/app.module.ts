@@ -40,6 +40,8 @@ import { MemberListPaginatedComponent } from './members/member-list-paginated/me
 import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
 import { TimeAgoPipe } from 'time-ago-pipe';
 import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
+import { AdvisorsListComponent } from './advisors/advisors-list/advisors-list.component';
+import { AdvisorsListResolver } from './_resolvers/advisors-list.resolver';
 
 
 @NgModule({
@@ -61,7 +63,8 @@ import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.com
       AdminPhotoEditorComponent,
       MemberListPaginatedComponent,
       TimeAgoPipe,
-      AdminAddUserComponent
+      AdminAddUserComponent,
+      AdvisorsListComponent
    ],
    imports: [
       BrowserModule,
@@ -90,6 +93,7 @@ import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.com
         StudentDetailResolver,
         StudentListResolver,
         MemberListPaginatedResolver,
+        AdvisorsListResolver,
         PreventUnsavedChangesGuard,
         PreventUnsavedChangesStudentEditGuard
     ],

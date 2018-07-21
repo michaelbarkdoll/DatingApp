@@ -20,6 +20,8 @@ import { StudentListResolver } from './_resolvers/student-list.resolver';
 import { MemberListPaginatedComponent } from './members/member-list-paginated/member-list-paginated.component';
 import { MemberListPaginatedResolver } from './_resolvers/member-list-paginated.resolver';
 import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.component';
+import { AdvisorsListComponent } from './advisors/advisors-list/advisors-list.component';
+import { AdvisorsListResolver } from './_resolvers/advisors-list.resolver';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -41,6 +43,7 @@ export const appRoutes: Routes = [
             { path: 'adduser', component: AdminAddUserComponent, resolve: {user: StudentListResolver} },
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
+            { path: 'advisors', component: AdvisorsListComponent, resolve: {advisors: AdvisorsListResolver} }
         ]
     },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
