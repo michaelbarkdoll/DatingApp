@@ -153,9 +153,10 @@
       <div class="col-sm-8">
         <div class="tab-panel">
 
-          <!-- Enrolled as Student Level -->
-          <div class="form-group">
-            <label class="control-label" style="margin-right:10px">Student Level: </label>
+          <!-- studentLevel -->
+
+          <div class="form-group text-center">
+            <label class="control-label" style="margin-right:10px">Student's current academic level: </label>
             <label class="radio-inline">
               <input type="radio" value="BA" formControlName="studentLevel" (click)="setStudentLevel('BA')">BA
             </label>
@@ -166,12 +167,12 @@
               <input type="radio" value="MS" formControlName="studentLevel" (click)="setStudentLevel('MS')">MS
             </label>
             <label class="radio-inline">
-              <input type="radio" value="PhD" formControlName="studentLevel" (click)="setStudentLevel('PHD')">PhD
+              <input type="radio" value="PHD" formControlName="studentLevel" (click)="setStudentLevel('PHD')">PhD
             </label>
           </div>
 
           <!-- Bachelor's Section -->
-          <div class="tab-panel" *ngIf="isBachelors()">
+          <div class="tab-panel tab-panel-noborder" *ngIf="isBachelors()">
             <h3 class="text-center text-primary">Bachelor's Details:</h3>
             <hr>
 
@@ -240,7 +241,7 @@
 
 
           <!-- Master's Section -->
-          <div class="tab-panel" *ngIf="isMasters()">
+          <div class="tab-panel tab-panel-noborder" *ngIf="isMasters()">
 
             <h3 class="text-center text-primary">Master's Details:</h3>
             <hr>
@@ -317,8 +318,8 @@
           <!-- End Master's Section -->
 
 
-          <!-- Master's Section -->
-          <div class="tab-panel" *ngIf="isDoctorate()">
+          <!-- Doctorate's Section -->
+          <div class="tab-panel tab-panel-noborder" *ngIf="isDoctorate()">
             <h3 class="text-center text-primary">Doctorate's Details:</h3>
             <hr>
 
@@ -349,16 +350,6 @@
               </label>
               <span class="help-block" *ngIf="registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')">
                 doctorateAdvisor is required
-              </span>
-            </div>
-
-            <!-- doctorateCommitteeMember1 -->
-            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateCommitteeMember1').touched && registerForm.get('doctorateCommitteeMember1').hasError('required')}">
-              <label>doctorateCommitteeMember1:
-                <input class="form-control" placeholder="doctorateCommitteeMember1" formControlName="doctorateCommitteeMember1">
-              </label>
-              <span class="help-block" *ngIf="registerForm.get('doctorateCommitteeMember1').touched && registerForm.get('doctorateCommitteeMember1').hasError('required')">
-                doctorateCommitteeMember1 is required
               </span>
             </div>
 

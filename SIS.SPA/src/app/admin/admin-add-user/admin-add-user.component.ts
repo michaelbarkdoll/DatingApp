@@ -79,10 +79,10 @@ export class AdminAddUserComponent implements OnInit {
       dissertationDefenseDate: [null],
       dissertationTitle: [''],
       doctorateGraduationDate: [null],
-      BA: [false],
-      BS: [false],
-      MS: [false],
-      PHD: [false]
+      BA: [null],
+      BS: [null],
+      MS: [null],
+      PHD: [null]
     }, { validator: this.passwordMatchValidator });
   }
 

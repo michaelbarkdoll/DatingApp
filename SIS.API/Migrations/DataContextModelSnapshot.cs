@@ -58,9 +58,9 @@ namespace SIS.API.Migrations
 
                     b.Property<string>("BachelorFacultyMentor");
 
-                    b.Property<DateTime>("BachelorGraduationDate");
+                    b.Property<DateTime?>("BachelorGraduationDate");
 
-                    b.Property<DateTime>("BachelorStartDate");
+                    b.Property<DateTime?>("BachelorStartDate");
 
                     b.Property<string>("City");
 
@@ -72,13 +72,13 @@ namespace SIS.API.Migrations
 
                     b.Property<int>("DawgTag");
 
-                    b.Property<DateTime>("DissertationDefenseDate");
+                    b.Property<DateTime?>("DissertationDefenseDate");
 
                     b.Property<string>("DissertationTitle");
 
                     b.Property<string>("DoctorateAdvisor");
 
-                    b.Property<DateTime>("DoctorateCandidateAcceptDate");
+                    b.Property<DateTime?>("DoctorateCandidateAcceptDate");
 
                     b.Property<string>("DoctorateCommitteeMember1");
 
@@ -92,9 +92,9 @@ namespace SIS.API.Migrations
 
                     b.Property<string>("DoctorateCommitteeMember6");
 
-                    b.Property<DateTime>("DoctorateGraduationDate");
+                    b.Property<DateTime?>("DoctorateGraduationDate");
 
-                    b.Property<DateTime>("DoctorateStartDate");
+                    b.Property<DateTime?>("DoctorateStartDate");
 
                     b.Property<string>("FirstName");
 
@@ -118,11 +118,11 @@ namespace SIS.API.Migrations
 
                     b.Property<string>("MasterCommitteeMember3");
 
-                    b.Property<DateTime>("MasterDefenseDate");
+                    b.Property<DateTime?>("MasterDefenseDate");
 
-                    b.Property<DateTime>("MasterGraduationDate");
+                    b.Property<DateTime?>("MasterGraduationDate");
 
-                    b.Property<DateTime>("MasterStartDate");
+                    b.Property<DateTime?>("MasterStartDate");
 
                     b.Property<string>("MasterThesisTitle");
 
