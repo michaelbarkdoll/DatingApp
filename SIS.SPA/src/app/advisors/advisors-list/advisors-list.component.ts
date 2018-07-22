@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Advisors } from '../../_models/Advisors';
 import { UserService } from '../../_services/user.service';
 import { AlertifyService } from '../../_services/alertify.service';
-import { ActivatedRoute } from '../../../../node_modules/@angular/router';
+import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-advisors-list',
@@ -13,7 +13,7 @@ export class AdvisorsListComponent implements OnInit {
   advisors: Advisors[];
 
   constructor(private userService: UserService,
-    private alertify: AlertifyService, private route: ActivatedRoute) { }
+    private alertify: AlertifyService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
@@ -30,6 +30,10 @@ export class AdvisorsListComponent implements OnInit {
     }, error => {
       this.alertify.error(error);
     });
+  }
+
+  addAdvisor() {
+    this.router.navigate(['/addadvisor']);
   }
 
 }
