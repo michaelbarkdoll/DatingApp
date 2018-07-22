@@ -113,6 +113,11 @@ namespace SIS.API.Models {
         public AdvisorDetails AdvisorDetails { get; set; }
         // public Advisor DoctorateAdvisorDetails { get; set; }
 
+
+        // 7.22.2018
+        public string MasterAdvisor { get; set; }
+        public string MasterProjectTitle { get; set; }
+
         public User () {
             Photos = new Collection<Photo> ();
             // UserBachelorDetail = new UserBachelorDetails();

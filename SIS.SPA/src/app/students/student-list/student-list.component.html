@@ -18,7 +18,6 @@
           -->
           <div class="form-group text-center">
             <button class="btn btn-success" type="button" (click)="userAddToggle()">Add Student</button>
-            <button class="btn btn-success" type="submit" (click)="userAddToggle()">Add Student</button>
             <button class="btn btn-danger" type="submit">Delete Student</button>
             <button type="button" name="orderBy" class="btn btn-primary btn-primary">Newest Members</button>
             <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
@@ -87,18 +86,53 @@
           <!--<div class="col-md-1">{{user.seniorProjectAdvisor}}</div>-->
           <!--<div class="col-md-1">s{{user.id}}t</div>-->
 
+          <!-- Student Name -->
           <div class="col-md-2">
             <button class="btn btn-primary btn-sm" [routerLink]="['/students/', user.id]" routerLinkActive="router-link-active">
               <i class="fa fa-user"></i>
-            </button> {{user.knownAs}}</div>
-          <div class="col-md-1">{{user.username}}
+            </button> 
+            {{user.firstName}} {{user.lastName}}
+          </div>
+
+          <!-- Nickname -->
+          <div class="col-md-1">
+            {{user.username}}
             <button style="float: right;" class="btn btn-primary btn-sm" [routerLink]="['/student/edit/', user.id]" routerLinkActive="router-link-active">
               <i class="fa fa-edit"></i>
             </button>
           </div>
-          <div class="col-md-2">{{user.advisor}}</div>
-          <div class="col-md-1">{{user.bachelorGraduationDate | date: 'MM/dd/yy'}}</div>
-          <div class="col-md-6">Brute Force Angular rewrwerwerwerwerwer rewrw re</div>
+
+          <!-- Advisor -->
+          <div *ngIf="user.masterAdvisor != null;else studentNeedsAdvisor" class="col-md-6">
+            {{user.masterAdvisor}}
+          </div>
+          <ng-template #studentNeedsAdvisor>
+            <div class="col-md-2">
+              Undecided
+            </div>
+          </ng-template>
+
+          <!-- Graduation Date -->
+          <div *ngIf="(user.masterGraduationDate | date: 'MM/dd/yy') != ('01/01/01');else studentGraduationDate" class="col-md-6">
+            {{user.masterGraduationDate | date: 'MM/dd/yy'}}
+          </div>
+          <ng-template #studentGraduationDate>
+            <div class="col-md-6">
+              Current Student
+            </div>
+          </ng-template>
+          
+          <!-- Topic -->
+          <div *ngIf="user.masterThesisTitle != null" class="col-md-6">
+            {{user.masterThesisTitle}}
+          </div>
+          <div *ngIf="user.masterProjectTitle != null" class="col-md-6">
+            {{user.masterProjectTitle}}
+          </div>
+          <div *ngIf="user.masterProjectTitle == null && user.masterThesisTitle == null" class="col-md-6">
+            
+          </div>
+
         </div>
       </div>
     </div>

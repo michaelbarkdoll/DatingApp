@@ -257,6 +257,16 @@
               </label>
             </div>
 
+            <!-- masterAdvisor -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterAdvisor').touched && registerForm.get('masterAdvisor').hasError('required')}">
+              <label>Master Advisor:
+                <input class="form-control" placeholder="Advisor" formControlName="masterAdvisor">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterAdvisor').touched && registerForm.get('masterAdvisor').hasError('required')">
+                Master Advisor is required
+              </span>
+            </div>
+
 
             <!-- masterCommitteeMember1 -->
             <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterCommitteeMember1').touched && registerForm.get('masterCommitteeMember1').hasError('required')}">
@@ -293,6 +303,16 @@
                 <input class="form-control" type="date" placeholder="Master defense date" formControlName="masterDefenseDate">
               </label>
               <span class="help-block" *ngIf="registerForm.get('masterDefenseDate').touched && registerForm.get('masterDefenseDate').hasError('required')">Master defense date is required</span>
+            </div>
+
+            <!-- masterProjectTitle -->
+            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterProjectTitle').touched && registerForm.get('masterProjectTitle').hasError('required')}">
+              <label>Master project title:
+                <input class="form-control" placeholder="Thesis title" formControlName="masterProjectTitle">
+              </label>
+              <span class="help-block" *ngIf="registerForm.get('masterProjectTitle').touched && registerForm.get('masterProjectTitle').hasError('required')">
+                masterProjectTitle is required
+              </span>
             </div>
 
             <!-- masterThesisTitle -->

@@ -88,4 +88,7 @@ export interface User {
   /* bool ReferQuestions = false;
         bool ContactForJobs = false; */
     dateOfBirth?: Date;
+    // 7.22.2018
+    masterAdvisor?: string;
+    masterProjectTitle?: string;
 }

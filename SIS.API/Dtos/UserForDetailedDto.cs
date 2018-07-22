@@ -100,5 +100,8 @@ namespace SIS.API.Dtos {
         /* bool ReferQuestions = false;
         bool ContactForJobs = false; */
         public string MasterFocus { get; set; }
+        // 7-22-2018
+        public string MasterAdvisor { get; set; }
+        public string MasterProjectTitle { get; set; }
     }
 }

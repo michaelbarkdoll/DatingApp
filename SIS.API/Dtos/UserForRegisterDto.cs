@@ -127,5 +127,8 @@ namespace SIS.API.Dtos
 
         public string StudentLevel { get; set; }
         public string MasterFocus { get; set; }
+        // 7-22-2018
+        public string MasterAdvisor { get; set; }
+        public string MasterProjectTitle { get; set; }
     }
 }
