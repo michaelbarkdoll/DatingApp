@@ -43,6 +43,7 @@ import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.com
 import { AdvisorsListComponent } from './advisors/advisors-list/advisors-list.component';
 import { AdvisorsListResolver } from './_resolvers/advisors-list.resolver';
 import { AdvisorAddComponent } from './advisors/advisor-add/advisor-add.component';
+import { AdminStudentEditComponent } from './admin/admin-student-edit/admin-student-edit.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { AdvisorAddComponent } from './advisors/advisor-add/advisor-add.componen
       TimeAgoPipe,
       AdminAddUserComponent,
       AdvisorsListComponent,
-      AdvisorAddComponent
+      AdvisorAddComponent,
+      AdminStudentEditComponent
    ],
    imports: [
       BrowserModule,

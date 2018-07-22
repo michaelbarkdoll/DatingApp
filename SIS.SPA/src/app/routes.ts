@@ -23,6 +23,7 @@ import { AdminAddUserComponent } from './admin/admin-add-user/admin-add-user.com
 import { AdvisorsListComponent } from './advisors/advisors-list/advisors-list.component';
 import { AdvisorsListResolver } from './_resolvers/advisors-list.resolver';
 import { AdvisorAddComponent } from './advisors/advisor-add/advisor-add.component';
+import { AdminStudentEditComponent } from './admin/admin-student-edit/admin-student-edit.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -46,7 +47,10 @@ export const appRoutes: Routes = [
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
             { path: 'advisors', component: AdvisorsListComponent, resolve: {advisors: AdvisorsListResolver} },
-            { path: 'addadvisor', component: AdvisorAddComponent, resolve: {advisors: AdvisorsListResolver} }
+            { path: 'addadvisor', component: AdvisorAddComponent, resolve: {advisors: AdvisorsListResolver} },
+            { path: 'adminstudent/edit/:id', component: AdminStudentEditComponent,
+                resolve: {user: StudentEditResolver, advisors: AdvisorsListResolver},
+                canDeactivate: [PreventUnsavedChangesStudentEditGuard] }
         ]
     },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
