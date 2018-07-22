@@ -213,6 +213,9 @@
                 <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
                 </option>
               </select>
+              <span class="help-block" *ngIf="registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')">
+                  Bachelor faculty mentor is required
+              </span>
             </div>
 
             <!-- seniorProjectAdvisor Dropdown -->
@@ -222,6 +225,9 @@
                 <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
                 </option>
               </select>
+              <span class="help-block" *ngIf="registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')">
+                  Senior project advisor is required
+              </span>
             </div>
 
             <!-- bachelorGraduationDate -->
@@ -410,7 +416,7 @@
                 </option>
               </select>
               <span class="help-block" *ngIf="registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')">
-                Master Advisor is required
+                Doctorate Advisor is required
               </span>
             </div>
 
