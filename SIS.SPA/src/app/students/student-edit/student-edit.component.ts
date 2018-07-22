@@ -28,6 +28,14 @@ export class StudentEditComponent implements OnInit {
     // Subscribe to authServices currentPhotoUrl Observable!
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
 
+    if (this.user.photoUrl !== this.photoUrl) {
+      if (this.user.photoUrl !== null) {
+        this.photoUrl = this.user.photoUrl;
+      } else {
+        this.photoUrl = '../../../assets/user.png';
+      }
+    }
+
     // console.log(this.user);
   }
 
