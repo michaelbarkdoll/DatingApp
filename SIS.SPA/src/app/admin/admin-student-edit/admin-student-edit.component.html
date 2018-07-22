@@ -6,7 +6,8 @@
       <div class="col-sm-4">
         <div class="panel panel-default">
           <div class="form-group">
-            <label class="control-label" style="margin-right:10px">Gender: </label>
+            <br>
+            <label class="control-label" style="margin-right:10px; margin-left:10px">Gender: </label>
             <label class="radio-inline">
               <input type="radio" value="male" formControlName="gender">Male
             </label>
@@ -18,7 +19,7 @@
           <!-- knownAs -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('knownAs').touched && studentEditForm.get('knownAs').hasError('required')}">
-            <label>Nick name:
+            <label style="margin-left:10px">Nick name:
               <input class="form-control" style="width: 200px" placeholder="Known as" formControlName="knownAs">
             </label>
             <span class="help-block" *ngIf="studentEditForm.get('knownAs').touched && studentEditForm.get('knownAs').hasError('required')">
@@ -29,7 +30,7 @@
           <!-- firstName -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('firstName').touched && studentEditForm.get('firstName').hasError('required')}">
-            <label>First name:
+            <label style="margin-left:10px">First name:
               <input class="form-control" style="width: 200px" placeholder="First Name" formControlName="firstName">
             </label>
             <span class="help-block" *ngIf="studentEditForm.get('firstName').touched && studentEditForm.get('firstName').hasError('required')">
@@ -40,7 +41,7 @@
           <!-- lastName -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('lastName').touched && studentEditForm.get('lastName').hasError('required')}">
-            <label>Last name:
+            <label style="margin-left:10px">Last name:
               <input class="form-control" style="width: 200px" placeholder="Last Name" formControlName="lastName">
             </label>
             <span class="help-block" *ngIf="studentEditForm.get('lastName').touched && studentEditForm.get('lastName').hasError('required')">
@@ -51,7 +52,7 @@
           <!-- date of birth -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dateOfBirth').touched && studentEditForm.get('dateOfBirth').hasError('required')}">
-            <label>Date of Birth:
+            <label style="margin-left:10px">Date of Birth:
               <input class="form-control" type="date" placeholder="Date of Birth" formControlName="dateOfBirth">
             </label>
             <span class="help-block" *ngIf="studentEditForm.get('dateOfBirth').touched && studentEditForm.get('dateOfBirth').hasError('required')">Date of birth is required</span>
@@ -60,8 +61,9 @@
           <!-- city -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('city').touched && studentEditForm.get('city').hasError('required')}">
-            <label>City:</label>
-            <input class="form-control" style="width: 200px" placeholder="City" formControlName="city">
+            <label style="margin-left:10px">City:
+              <input class="form-control" style="width: 200px" placeholder="City" formControlName="city">
+            </label>
             <span class="help-block" *ngIf="studentEditForm.get('city').touched && studentEditForm.get('city').hasError('required')">
               City is required
             </span>
@@ -70,8 +72,9 @@
           <!-- country -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('country').touched && studentEditForm.get('country').hasError('required')}">
-            <label>Country:</label>
-            <input class="form-control" style="width: 200px" placeholder="Country" formControlName="country">
+            <label style="margin-left:10px">Country:
+              <input class="form-control" style="width: 200px" placeholder="Country" formControlName="country">
+            </label>
             <span class="help-block" *ngIf="studentEditForm.get('country').touched && studentEditForm.get('country').hasError('required')">
               Country is required
             </span>
@@ -80,8 +83,9 @@
           <!-- dawgtag -->
 
           <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dawgTag').touched && studentEditForm.get('dawgTag').hasError('required')}">
-            <label>DawgTag:</label>
-            <input class="form-control" style="width: 200px" placeholder="DawgTag" formControlName="dawgTag">
+            <label style="margin-left:10px">Dawg tag:
+              <input class="form-control" style="width: 200px" placeholder="DawgTag" formControlName="dawgTag">
+            </label>
             <span class="help-block" *ngIf="studentEditForm.get('dawgTag').touched && studentEditForm.get('dawgTag').hasError('required')">
               DawgTag is required
             </span>
