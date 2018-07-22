@@ -27,6 +27,8 @@ export class StudentEditComponent implements OnInit {
     });
     // Subscribe to authServices currentPhotoUrl Observable!
     this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
+
+    // console.log(this.user);
   }
 
   updateUser() {
