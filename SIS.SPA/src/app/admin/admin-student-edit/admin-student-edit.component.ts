@@ -43,15 +43,15 @@ export class AdminStudentEditComponent implements OnInit {
 
   createStudentEditForm() {
     this.studentEditForm = this.formBuilder.group({
-      gender: [this.user.gender],
-      knownAs: [this.user.knownAs],
+      gender: [this.user.gender, Validators.required],
+      knownAs: [this.user.knownAs, Validators.required],
       firstName: [this.user.firstName, Validators.required],
       lastName: [this.user.lastName, Validators.required],
       dateOfBirth: [this.user.dateOfBirth, Validators.required],
       city: [this.user.city, Validators.required],
       country: [this.user.country, Validators.required],
 
-      dawgTag: [this.user.dawgTag, [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      dawgTag: [this.user.dawgTag],
 
       /*
       username: [this.user.username, Validators.required],
@@ -158,9 +158,13 @@ export class AdminStudentEditComponent implements OnInit {
     this.userService.updateUserAsAdmin(this.route.snapshot.params['id'], this.user).subscribe(next => {
     this.alertify.success('Profile updated successfully');
     this.studentEditForm.reset(this.user);
-  }, error => {
-    this.alertify.error(error);
-  });
-}
+    }, error => {
+      this.alertify.error(error);
+    });
+  }
+
+  cancel() {
+    this.router.navigate(['/students']);
+  }
 
 }
