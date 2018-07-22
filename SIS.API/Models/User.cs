@@ -29,10 +29,10 @@ namespace SIS.API.Models {
         public int DawgTag { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        bool? BA = false;
-        bool? BS = false;
-        bool? MS = false;
-        bool? PHD = false;
+        public bool? BA = false;
+        public bool? BS = false;
+        public bool? MS = false;
+        public bool? PHD = false;
 
         public string Notes { get; set; }
         public string Address1 { get; set; }
@@ -58,8 +58,8 @@ namespace SIS.API.Models {
         public string SeniorProjectURL { get; set; }
         // Master's specific details
         public DateTime? MasterStartDate { get; set; }
-        bool? MasterThesis = false;
-        bool? MasterProject = false;
+        public bool? MasterThesis = false;
+        public bool? MasterProject = false;
         public string MasterCommitteeMember1 { get; set; }
         public string MasterCommitteeMember2 { get; set; }
         public string MasterCommitteeMember3 { get; set; }
@@ -104,6 +104,9 @@ namespace SIS.API.Models {
         // Job Networking
         /* bool? ReferQuestions = false;
         bool? ContactForJobs = false; */
+
+        public string MasterFocus { get; set; }
+        public string StudentLevel { get; set; }
 
         // 7.21.2018
         // Advisor Class Object

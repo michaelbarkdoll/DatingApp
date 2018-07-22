@@ -61,6 +61,41 @@ namespace SIS.API.Controllers {
             }; */
             var userToCreate = _mapper.Map<User>(userForRegisterDto);
 
+
+            
+
+            /* switch(userToCreate.StudentLevel) {
+                case "BA":
+                    userToCreate.BA = true;
+                    break;
+                case "BS":
+                    userToCreate.BS = true;
+                    break;
+                case "MS":
+                    userToCreate.MS = true;
+                    break;
+                case "PHD":
+                    userToCreate.PHD = true;
+                    break;
+                default:
+                    break;
+            } */
+
+            switch(userToCreate.MasterFocus) {
+                case "Project":
+                    userToCreate.MasterThesis = false;
+                    userToCreate.MasterProject = true;
+                    break;
+                case "Thesis":
+                    userToCreate.MasterThesis = true;
+                    userToCreate.MasterProject = false;
+                    break;
+                default:
+                    break;
+            }
+
+
+
             var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
 
             var userToReturn = _mapper.Map<UserForDetailedDto>(createdUser);

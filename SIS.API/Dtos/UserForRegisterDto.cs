@@ -5,6 +5,28 @@ namespace SIS.API.Dtos
 {
     public class UserForRegisterDto
     {
+        public UserForRegisterDto()
+        {
+            Created = DateTime.Now;
+            LastActive = DateTime.Now;
+
+            switch(StudentLevel) {
+                case "BA":
+                    this.BA = true;
+                    break;
+                case "BS":
+                    this.BS = true;
+                    break;
+                case "MS":
+                    this.MS = true;
+                    break;
+                case "PHD":
+                    this.PHD = true;
+                    break;
+                default:
+                    break;
+            }
+        }
         [Required]
         public string Username { get; set; }
         [Required]
@@ -22,42 +44,39 @@ namespace SIS.API.Dtos
         public string Country { get; set; } 
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
-        public UserForRegisterDto()
-        {
-            Created = DateTime.Now;
-            LastActive = DateTime.Now;
-        }
+        
         // Add the following for more detailed SPA registeration
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
         // 07-19-2018
-        /* bool? BA = false;
-        bool? BS = false;
-        bool? MS = false;
-        bool? PHD = false;
+        public bool? BA = false;
+        public bool? BS = false;
+        public bool? MS = false;
+        public bool? PHD = false;
+        /*
         public string State { get; set; }
         public string ZipCode { get; set; } */
 
-       /*  public DateTime? BachelorStartDate { get; set; }
+        public DateTime? BachelorStartDate { get; set; }
         public string BachelorFacultyMentor { get; set; }
         public string SeniorProjectAdvisor { get; set; }
-        public DateTime? BachelorGraduationDate { get; set; } */
+        public DateTime? BachelorGraduationDate { get; set; }
 
         // 07-19-2018
         // New propertites
-        /* public string SeniorProjectTitle { get; set; }
+        public string SeniorProjectTitle { get; set; }
         public string SeniorProjectURL { get; set; }
         // Master's specific details
         public DateTime? MasterStartDate { get; set; }
-        /* bool? MasterThesis = false;
-        bool? MasterProject = false; */
-        /* public string MasterCommitteeMember1 { get; set; } */
-        /* public string MasterCommitteeMember2 { get; set; } */
-        /* public string MasterCommitteeMember3 { get; set; } */
-        /* public DateTime? MasterDefenseDate { get; set; } */
-        /* public string MasterThesisTitle { get; set; } */
-        /* public DateTime? MasterGraduationDate { get; set; }  */
+        public bool? MasterThesis;
+        public bool? MasterProject;
+        public string MasterCommitteeMember1 { get; set; } 
+        public string MasterCommitteeMember2 { get; set; }
+        public string MasterCommitteeMember3 { get; set; }
+        public DateTime? MasterDefenseDate { get; set; }
+        public string MasterThesisTitle { get; set; }
+        public DateTime? MasterGraduationDate { get; set; }
         // Phd specific details
         public DateTime? DoctorateStartDate { get; set; }
         public DateTime? DoctorateCandidateAcceptDate { get; set; }
@@ -105,5 +124,8 @@ namespace SIS.API.Dtos
         // Job Networking
         /* bool? ReferQuestions = false;
         bool? ContactForJobs = false; */
+
+        public string StudentLevel { get; set; }
+        public string MasterFocus { get; set; }
     }
 }

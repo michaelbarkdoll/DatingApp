@@ -26,10 +26,10 @@ namespace SIS.API.Dtos {
         public int DawgTag { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        bool BA = false;
-        bool BS = false;
-        bool MS = false;
-        bool PHD = false;
+        public bool? BA = false;
+        public bool? BS = false;
+        public bool? MS = false;
+        public bool? PHD = false;
 
         public string Notes { get; set; }
         public string Address1 { get; set; }
@@ -53,8 +53,8 @@ namespace SIS.API.Dtos {
         public string SeniorProjectURL { get; set; }
         // Master's specific details
         public DateTime MasterStartDate { get; set; }
-        bool MasterThesis = false;
-        bool MasterProject = false;
+        public bool? MasterThesis;
+        public bool? MasterProject;
         public string MasterCommitteeMember1 { get; set; }
         public string MasterCommitteeMember2 { get; set; }
         public string MasterCommitteeMember3 { get; set; }
@@ -99,5 +99,6 @@ namespace SIS.API.Dtos {
         // Job Networking
         /* bool ReferQuestions = false;
         bool ContactForJobs = false; */
+        public string MasterFocus { get; set; }
     }
 }

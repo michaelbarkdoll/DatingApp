@@ -11,9 +11,10 @@ using System;
 namespace SIS.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20180722045921_Test")]
+    partial class Test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -186,8 +187,6 @@ namespace SIS.API.Migrations
                     b.Property<string>("SeniorProjectURL");
 
                     b.Property<string>("State");
-
-                    b.Property<string>("StudentLevel");
 
                     b.Property<string>("UserLevel");
 
