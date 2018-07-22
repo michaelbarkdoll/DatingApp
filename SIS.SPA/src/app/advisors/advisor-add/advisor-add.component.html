@@ -1,3 +1,76 @@
-<p>
-  advisor-add works!
-</p>
+<div class="container">
+  <form [formGroup]="addAdvisorForm" (ngSubmit)="addAdvisor()">
+    <h2 class="text-center text-primary">Add Advisor</h2>
+
+
+    <div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <div class="panel panel-default">
+
+          <!-- firstName -->
+          <div class="form-group">
+            <div class="form-group" [ngClass]="{'has-error': addAdvisorForm.get('firstName').touched && addAdvisorForm.get('firstName').hasError('required')}">
+              <label>First name:
+                <input class="form-control" placeholder="First name" formControlName="firstName">
+              </label>
+              <span class="help-block" *ngIf="addAdvisorForm.get('firstName').touched && addAdvisorForm.get('firstName').hasError('required')">
+                First name as is required
+              </span>
+            </div>
+          </div>
+
+          <!-- lastName -->
+
+          <div class="form-group" [ngClass]="{'has-error': addAdvisorForm.get('lastName').touched && addAdvisorForm.get('lastName').hasError('required')}">
+            <label>Last name:
+              <input class="form-control" placeholder="Last name" formControlName="lastName">
+            </label>
+            <span class="help-block" *ngIf="addAdvisorForm.get('lastName').touched && addAdvisorForm.get('lastName').hasError('required')">
+              Last name as is required
+            </span>
+          </div>
+
+          <!-- fullName -->
+
+          <div class="form-group" [ngClass]="{'has-error': addAdvisorForm.get('fullName').touched && addAdvisorForm.get('fullName').hasError('required')}">
+            <label>Full name:
+              <input class="form-control" placeholder="Dr. First and Lastname" formControlName="fullName">
+            </label>
+            <span class="help-block" *ngIf="addAdvisorForm.get('fullName').touched && addAdvisorForm.get('fullName').hasError('required')">
+              Full name as is required
+            </span>
+          </div>
+
+          <!-- title -->
+
+          <div class="form-group" [ngClass]="{'has-error': addAdvisorForm.get('title').touched && addAdvisorForm.get('title').hasError('required')}">
+            <label>Advisor's position title:
+              <input class="form-control" placeholder="Job title" formControlName="title">
+            </label>
+            <span class="help-block" *ngIf="addAdvisorForm.get('title').touched && addAdvisorForm.get('title').hasError('required')">
+              Title is required
+            </span>
+          </div>
+
+          <div class="form-group text-center">
+            <button class="btn btn-success" [disabled]="!addAdvisorForm.valid" type="submit">Add Advisor</button>
+            <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+          </div>
+
+
+          <!--
+  firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        fullName: ['', Validators.required],
+        title: ['', Validators.required]
+  
+  
+  -->
+
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

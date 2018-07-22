@@ -3,22 +3,11 @@
     flex-flow: row wrap;
     align-content: flex end;
   }
-  
-  .row > div {
-    flex: 1;
-    border: 1px solid grey;
-  }
-  
-  .row-title {
-    background: lightgrey;
-  }
-  
-  .col-pad {
-    padding: 2px;
-    display: flex;
-    align-items: center; /* Align the flex-items vertically */
-  }
-  
-  .flex-center {
-      justify-content: center;
-  }
+
+.panel {
+    padding: 10px;
+}
+
+.tab-panel-noborder {
+    border: 0px;
+}
