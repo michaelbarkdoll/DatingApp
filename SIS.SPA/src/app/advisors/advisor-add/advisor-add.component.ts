@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router
 import { Advisors } from '../../_models/Advisors';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
 import { AuthHttp } from '../../../../node_modules/angular2-jwt';
+import { AuthService } from '../../_services/auth.service';
 
 @Component({
   selector: 'app-advisor-add',
@@ -14,8 +15,11 @@ import { AuthHttp } from '../../../../node_modules/angular2-jwt';
 export class AdvisorAddComponent implements OnInit {
   advisors: Advisors[];
   addAdvisorForm: FormGroup;
+  advisor: Advisors;
 
-  constructor(private userService: UserService,
+  constructor(private authService: AuthService,
+    private alertifyService: AlertifyService,
+    private userService: UserService,
     private alertify: AlertifyService,
     private route: ActivatedRoute,
     private router: Router,
@@ -58,6 +62,19 @@ export class AdvisorAddComponent implements OnInit {
  addAdvisor() {
   if (this.addAdvisorForm.valid) {
     console.log('Test');
+
+    this.advisor = Object.assign({}, this.addAdvisorForm.value);
+
+    // this.authService.registerReturnUser(this.advisor).subscribe(() => {
+    this.userService.addAdvisor(this.advisor).subscribe(() => {
+      this.alertifyService.success('Registration successful');
+      this.router.navigate(['/advisors']);
+    }, error => {
+      this.alertifyService.error(error);
+    }, () => {
+      // this.router.navigate(['/students']);
+    });
+
   }
  }
 

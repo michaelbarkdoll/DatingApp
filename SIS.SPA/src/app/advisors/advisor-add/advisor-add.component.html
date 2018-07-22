@@ -44,7 +44,7 @@
           <!-- title -->
 
           <div class="form-group" [ngClass]="{'has-error': addAdvisorForm.get('title').touched && addAdvisorForm.get('title').hasError('required')}">
-            <label>Advisor's position title:
+            <label>Advisor's position / title:
               <input class="form-control" placeholder="Job title" formControlName="title">
             </label>
             <span class="help-block" *ngIf="addAdvisorForm.get('title').touched && addAdvisorForm.get('title').hasError('required')">

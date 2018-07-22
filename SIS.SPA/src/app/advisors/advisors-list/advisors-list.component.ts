@@ -26,7 +26,8 @@ export class AdvisorsListComponent implements OnInit {
 
   deleteAdvisor(id: number) {
     this.userService.deleteAdvisor(id).subscribe(next => {
-      this.alertify.success('Profile updated successfully');
+      this.alertify.success('Advisor was deleted');
+      this.router.navigate(['/home']);
     }, error => {
       this.alertify.error(error);
     });

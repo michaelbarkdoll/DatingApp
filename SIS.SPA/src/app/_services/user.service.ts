@@ -133,6 +133,10 @@ export class UserService {
         return this.authHttp.get(this.baseUrl + 'advisor/removeadvisor/' + id).catch(this.handleError);
     }
 
+    addAdvisor(advisor: Advisors) {
+        return this.authHttp.post(this.baseUrl + 'advisor/addadvisor', advisor).catch(this.handleError);
+    }
+
     // We passed in the header
     private handleError(error: any) {
         // Get the error from the header
