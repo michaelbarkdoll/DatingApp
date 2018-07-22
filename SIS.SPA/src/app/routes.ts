@@ -41,7 +41,7 @@ export const appRoutes: Routes = [
             { path: 'students/:id', component: StudentDetailComponent, resolve: {user: StudentDetailResolver} },
             { path: 'student/edit/:id', component: StudentEditComponent,
                 resolve: {user: StudentEditResolver}, canDeactivate: [PreventUnsavedChangesStudentEditGuard] },
-            { path: 'adduser', component: AdminAddUserComponent, resolve: {user: StudentListResolver} },
+            { path: 'adduser', component: AdminAddUserComponent, resolve: {advisors: AdvisorsListResolver, user: StudentListResolver} },
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
             { path: 'advisors', component: AdvisorsListComponent, resolve: {advisors: AdvisorsListResolver} },

@@ -3,11 +3,12 @@ import { AuthService } from '../../_services/auth.service';
 import { AlertifyService } from '../../_services/alertify.service';
 import { User } from '../../_models/User';
 import { FormGroup, FormBuilder, Validators } from '../../../../node_modules/@angular/forms';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { Headers, Response, RequestOptions, ResponseContentType, Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { AuthHttp } from 'angular2-jwt';
 import { saveAs } from 'file-saver';
+import { Advisors } from '../../_models/Advisors';
 
 @Component({
   selector: 'app-admin-add-user',
@@ -19,6 +20,7 @@ export class AdminAddUserComponent implements OnInit {
   @Output() cancelRegister = new EventEmitter();
   model: any = {};
   user: User;
+  advisors: Advisors[];
 
   registerForm: FormGroup;
   studentLevel: string;
@@ -28,12 +30,19 @@ export class AdminAddUserComponent implements OnInit {
       private alertifyService: AlertifyService,
       private formBuilder: FormBuilder,
       private router: Router,
+      private route: ActivatedRoute,
       private authHttp: AuthHttp) { }
 
   ngOnInit() {
     this.createRegisterForm();
     this.studentLevel = 'BA';
     this.BA = true; this.BS = false; this.MS = false; this.PHD = false;
+
+    this.route.data.subscribe(data => {
+      this.advisors = data['advisors'];
+    });
+
+    console.log(this.advisors);
   }
 
   createRegisterForm() {

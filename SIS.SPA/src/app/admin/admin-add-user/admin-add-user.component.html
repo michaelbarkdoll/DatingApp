@@ -185,25 +185,43 @@
               </label>
               <span class="help-block" *ngIf="registerForm.get('bachelorStartDate').touched && registerForm.get('bachelorStartDate').hasError('required')">Bachelor start date is required</span>
             </div>
-            <!-- Add from here.. -->
+
             <!-- bachelorFacultyMentor -->
-            <div class="form-group" [ngClass]="{'has-error': registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')}">
+            <!-- <div class="form-group" [ngClass]="{'has-error': registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')}">
               <label>Bachelor faculty mentor:
                 <input class="form-control" placeholder="Faculty mentor" formControlName="bachelorFacultyMentor">
               </label>
               <span class="help-block" *ngIf="registerForm.get('bachelorFacultyMentor').touched && registerForm.get('bachelorFacultyMentor').hasError('required')">
                 Bachelor faculty mentor is required
               </span>
-            </div>
+            </div> -->
 
             <!-- seniorProjectAdvisor -->
-            <div class="form-group" [ngClass]="{'has-error': registerForm.get('seniorProjectAdvisor').touched && registerForm.get('seniorProjectAdvisor').hasError('required')}">
+            <!-- <div class="form-group" [ngClass]="{'has-error': registerForm.get('seniorProjectAdvisor').touched && registerForm.get('seniorProjectAdvisor').hasError('required')}">
               <label>Senior project advisor:
                 <input class="form-control" placeholder="Project advisor" formControlName="seniorProjectAdvisor">
               </label>
               <span class="help-block" *ngIf="registerForm.get('seniorProjectAdvisor').touched && registerForm.get('seniorProjectAdvisor').hasError('required')">
                 Senior project advisor is required
               </span>
+            </div> -->
+
+            <!-- bachelorFacultyMentor Dropdown -->
+            <div class="form-group">
+              <label for="advisor">Bachelor faculty mentor: </label>
+              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="bachelorFacultyMentor">
+                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+                </option>
+              </select>
+            </div>
+
+            <!-- seniorProjectAdvisor Dropdown -->
+            <div class="form-group">
+              <label for="advisor">Senior project advisor: </label>
+              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="seniorProjectAdvisor">
+                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+                </option>
+              </select>
             </div>
 
             <!-- bachelorGraduationDate -->
@@ -258,10 +276,22 @@
             </div>
 
             <!-- masterAdvisor -->
-            <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterAdvisor').touched && registerForm.get('masterAdvisor').hasError('required')}">
+            <!-- <div class="form-group" [ngClass]="{'has-error': registerForm.get('masterAdvisor').touched && registerForm.get('masterAdvisor').hasError('required')}">
               <label>Master Advisor:
                 <input class="form-control" placeholder="Advisor" formControlName="masterAdvisor">
               </label>
+              <span class="help-block" *ngIf="registerForm.get('masterAdvisor').touched && registerForm.get('masterAdvisor').hasError('required')">
+                Master Advisor is required
+              </span>
+            </div> -->
+
+            <!-- masterAdvisor Dropdown -->
+            <div class="form-group">
+              <label for="advisor">Master Advisor: </label>
+              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="masterAdvisor">
+                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+                </option>
+              </select>
               <span class="help-block" *ngIf="registerForm.get('masterAdvisor').touched && registerForm.get('masterAdvisor').hasError('required')">
                 Master Advisor is required
               </span>
@@ -363,12 +393,24 @@
 
 
             <!-- doctorateAdvisor -->
-            <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')}">
+            <!-- <div class="form-group" [ngClass]="{'has-error': registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')}">
               <label>Doctorate advisor:
                 <input class="form-control" placeholder="Advisor name" formControlName="doctorateAdvisor">
               </label>
               <span class="help-block" *ngIf="registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')">
                 doctorateAdvisor is required
+              </span>
+            </div> -->
+
+            <!-- doctorateAdvisor Dropdown -->
+            <div class="form-group">
+              <label for="advisor">Doctorate Advisor: </label>
+              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="doctorateAdvisor">
+                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+                </option>
+              </select>
+              <span class="help-block" *ngIf="registerForm.get('doctorateAdvisor').touched && registerForm.get('doctorateAdvisor').hasError('required')">
+                Master Advisor is required
               </span>
             </div>
 
