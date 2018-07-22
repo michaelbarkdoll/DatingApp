@@ -91,4 +91,6 @@ export interface User {
     // 7.22.2018
     masterAdvisor?: string;
     masterProjectTitle?: string;
+    studentLevel?: string;
+    masterFocus?: string;
 }

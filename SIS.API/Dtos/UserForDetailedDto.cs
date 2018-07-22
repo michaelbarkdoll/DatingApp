@@ -103,5 +103,6 @@ namespace SIS.API.Dtos {
         // 7-22-2018
         public string MasterAdvisor { get; set; }
         public string MasterProjectTitle { get; set; }
+        public string StudentLevel { get; set; }
     }
 }
