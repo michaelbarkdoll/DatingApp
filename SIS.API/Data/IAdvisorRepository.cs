@@ -7,6 +7,7 @@ namespace SIS.API.Data
     {
          Task<Advisors> AddAdvisor(Advisors advisor);   
          Task<bool> AdvisorExists(string fullname);
-         Task<bool> RemoveAdvisor(Advisors advisor);
+         Task<bool> RemoveAdvisor(int id);
+         Task<bool> AdvisorIDExists(int id);
     }
 }

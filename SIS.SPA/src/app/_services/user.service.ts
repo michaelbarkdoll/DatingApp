@@ -129,6 +129,9 @@ export class UserService {
         .catch(this.handleError);
     }
 
+    deleteAdvisor(id: number) {
+        return this.authHttp.get(this.baseUrl + 'advisor/removeadvisor/' + id).catch(this.handleError);
+    }
 
     // We passed in the header
     private handleError(error: any) {

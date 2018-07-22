@@ -11,16 +11,22 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
+
+
+using SIS.API.Helpers;
+using System.IO;
 
 namespace SIS.API.Controllers {
+    [Authorize]
     [Route ("api/[controller]")]
     public class AdvisorController : Controller {
-        private readonly IAuthRepository _repo;
+        private readonly IDatingRepository _repo;
        //  private readonly IMapper _mapper;
         private readonly IConfiguration _config;
         private readonly IAdvisorRepository _advisorRepo;
 
-        public AdvisorController (IAuthRepository repo, 
+        public AdvisorController (IDatingRepository repo, 
             IConfiguration config,
             IMapper mapper,
             IAdvisorRepository advisorRepo) {
@@ -32,6 +38,10 @@ namespace SIS.API.Controllers {
 
         [HttpPost ("addadvisor")]
         public async Task<IActionResult> AddAdvisor ([FromBody] AdvisorForCreateDto advisorForCreateDto) {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if(! await _repo.GetUserLevelAdmin(currentUserId))
+                return Unauthorized();
+            
             if (await _advisorRepo.AdvisorExists (advisorForCreateDto.FullName))
                 ModelState.AddModelError ("Advisor Name", "Advisor Name already exists");
             
@@ -50,22 +60,29 @@ namespace SIS.API.Controllers {
             return StatusCode (201);
         }
 
-        [HttpPost ("removeadvisor")]
-        public async Task<IActionResult> RemoveAdvisor ([FromBody] AdvisorForCreateDto advisorForCreateDto) {
-            if (!await _advisorRepo.AdvisorExists (advisorForCreateDto.FullName))
+        [HttpGet ("removeadvisor/{id}")]
+        public async Task<IActionResult> RemoveAdvisor (int id) {
+            var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            if(! await _repo.GetUserLevelAdmin(currentUserId))
+                return Unauthorized();
+            
+            //if (!await _advisorRepo.AdvisorExists (advisorForCreateDto.FullName))
+            //    ModelState.AddModelError ("Advisor Name", "Advisor Name doesn't exists");
+            if (!await _advisorRepo.AdvisorIDExists (id))
                 ModelState.AddModelError ("Advisor Name", "Advisor Name doesn't exists");
             
             if (!ModelState.IsValid)
                 return BadRequest (ModelState);
             
-            var advisorToDelete = new Advisors {
+            /* var advisorToDelete = new Advisors {
                 FullName = advisorForCreateDto.FullName,
                 FirstName = advisorForCreateDto.FirstName,
                 LastName = advisorForCreateDto.LastName,
                 Title = advisorForCreateDto.Title
-            };
+            }; */
 
-            var deleteAdvisor = await _advisorRepo.RemoveAdvisor(advisorToDelete);
+            // var deleteAdvisor = await _advisorRepo.RemoveAdvisor(advisorToDelete);
+            var deleteAdvisor = await _advisorRepo.RemoveAdvisor(id);
 
             return StatusCode (201);
         }

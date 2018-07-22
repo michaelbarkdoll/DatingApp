@@ -28,9 +28,25 @@ namespace SIS.API.Data
             return false;
         }
 
-        public async Task<bool> RemoveAdvisor(Advisors advisor)
+        public async Task<bool> AdvisorIDExists(int id)
+        {
+            if (await _context.Advisors.AnyAsync(x => x.Id == id))
+                return true;
+
+            return false;
+        }
+
+        /* public async Task<bool> RemoveAdvisor(Advisors advisor)
         {
             var toBeDelete = await _context.Advisors.FirstOrDefaultAsync(x => x.FullName == advisor.FullName);
+            // var toBeDelete = await _context.Advisors.FindAsync(advisor.Id);
+            _context.Advisors.Remove(toBeDelete);
+            await _context.SaveChangesAsync();
+            return true;
+        } */
+        public async Task<bool> RemoveAdvisor(int id)
+        {
+            var toBeDelete = await _context.Advisors.FirstOrDefaultAsync(x => x.Id == id);
             // var toBeDelete = await _context.Advisors.FindAsync(advisor.Id);
             _context.Advisors.Remove(toBeDelete);
             await _context.SaveChangesAsync();

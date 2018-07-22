@@ -1,152 +1,148 @@
 <div class="text-center font-weight-bold">
-    <h4>
-      <strong> Student Information System</strong>
-    </h4>
-  </div>
-  
-  <div *ngIf="!userAddMode" class="container">
+  <h4>
+    <strong> Student Information System</strong>
+  </h4>
+</div>
 
-    <div class="container">
-      <div class="pull-right">
-        <div class="row">
-          <form class="form-inline" novalidate>
-            <!--
+<div *ngIf="!userAddMode" class="container">
+
+  <div class="container">
+    <div class="pull-right">
+      <div class="row">
+        <form class="form-inline" novalidate>
+          <!--
           <div class="form-group">
             <label for="minAge">Age From</label>
             <input type="number" class="form-control" style="width: 60px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">
           </div>
           -->
-            <div class="form-group text-center">
-                <button class="btn btn-success" type="button" (click)="userAddToggle()">Add Student</button>
-              <button class="btn btn-success" type="submit" (click)="userAddToggle()">Add Student</button>
-              <button class="btn btn-danger" type="submit">Delete Student</button>
-              <button type="button" name="orderBy" class="btn btn-primary btn-primary">Newest Members</button>
-              <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
-  
-              <!--
+          <div class="form-group text-center">
+            <button class="btn btn-success" type="button" (click)="userAddToggle()">Add Student</button>
+            <button class="btn btn-success" type="submit" (click)="userAddToggle()">Add Student</button>
+            <button class="btn btn-danger" type="submit">Delete Student</button>
+            <button type="button" name="orderBy" class="btn btn-primary btn-primary">Newest Members</button>
+            <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
+
+            <!--
               <button type="button" name="orderBy" [(ngModel)]="userParams.orderBy" (click)="loadUsers()"
                 class="btn btn-primary btn-primary" btnRadio="created">Newest Members</button>
             -->
-            </div>
-          </form>
-        </div>
-        <!-- End of Button Row -->
-        <!--<div class="row">-->
-        <!--<form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate> -->
-        <!-- <div class="form-group"> -->
-        <!--<label for="minAge">Age From</label>-->
-        <!--<input type="number" class="form-control" style="width: 60px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">-->
-        <!--     </div> -->
-        <!-- </form> -->
-        <!--</div>-->
-        <!--
+          </div>
+        </form>
+      </div>
+      <!-- End of Button Row -->
+      <!--<div class="row">-->
+      <!--<form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate> -->
+      <!-- <div class="form-group"> -->
+      <!--<label for="minAge">Age From</label>-->
+      <!--<input type="number" class="form-control" style="width: 60px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">-->
+      <!--     </div> -->
+      <!-- </form> -->
+      <!--</div>-->
+      <!--
       <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
             <button type="button" class="btn btn-info" style="margin-left:10px" (click)="resetFilters()">Reset Filter</button>
             -->
-      </div>
-      <!-- End of pull-right div -->
     </div>
-  
-    <br>
-  
-    <div class="container-fluid">
-      <div class="container">
-        <div class="row">
-          <div class="row-title col-md-2">
-            <h4>
-              <strong>Student Name</strong>
-            </h4>
-          </div>
-          <div class="row-title col-md-1">
-            <h4>
-              <strong>Nickname</strong>
-            </h4>
-          </div>
-          <div class="row-title col-md-2">
-            <h4>
-              <strong>Advisor Name</strong>
-            </h4>
-          </div>
-          <div class="row-title col-md-1">
-            <h4>
-              <strong>Graduation Date</strong>
-            </h4>
-          </div>
-          <div class="row-title col-md-6">
-            <h4>
-              <strong>Topic</strong>
-            </h4>
-          </div>
+    <!-- End of pull-right div -->
+  </div>
+
+  <br>
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="row-title col-md-2">
+          <h4>
+            <strong>Student Name</strong>
+          </h4>
         </div>
-  
-        <!--  <div class="container-fluid"> -->
-        <div *ngFor="let user of users">
-          <div class="row">
-            <!-- btn-xs extra small button -->
-            <!--  <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button> -->
-            <!--<div class="col-md-1">{{user.seniorProjectAdvisor}}</div>-->
-            <!--<div class="col-md-1">s{{user.id}}t</div>-->
-  
-            <div class="col-md-2">
-              <button class="btn btn-primary btn-sm" [routerLink]="['/students/', user.id]" routerLinkActive="router-link-active">
-                <i class="fa fa-user"></i>
-              </button> {{user.knownAs}}</div>
-            <div class="col-md-1">{{user.username}}
-              <button style="float: right;" class="btn btn-primary btn-sm" [routerLink]="['/student/edit/', user.id]" routerLinkActive="router-link-active">
-                <i class="fa fa-edit"></i>
-              </button>
-            </div>
-            <div class="col-md-2">{{user.advisor}}</div>
-            <div class="col-md-1">{{user.bachelorGraduationDate | date: 'MM/dd/yy'}}</div>
-            <div class="col-md-6">Brute Force Angular rewrwerwerwerwerwer rewrw re</div>
-          </div>
+        <div class="row-title col-md-1">
+          <h4>
+            <strong>Nickname</strong>
+          </h4>
+        </div>
+        <div class="row-title col-md-2">
+          <h4>
+            <strong>Advisor Name</strong>
+          </h4>
+        </div>
+        <div class="row-title col-md-1">
+          <h4>
+            <strong>Graduation Date</strong>
+          </h4>
+        </div>
+        <div class="row-title col-md-6">
+          <h4>
+            <strong>Topic</strong>
+          </h4>
         </div>
       </div>
 
-      <br>
-      <div class="pull-right">
+      <!--  <div class="container-fluid"> -->
+      <div *ngFor="let user of users">
         <div class="row">
-          <form class="form-inline" novalidate>
-            <div class="form-group text-center">
-              <button class="btn btn-success" type="button" (click)="userAddToggle()">Add Student</button>
-              <button class="btn btn-danger" [disabled]="true" type="submit">Delete Student</button>
-              <button class="btn btn-primary" [disabled]="true" type="submit">Gallary View</button>
-              <!-- <button class="btn btn-success" type="submit" (click)="userAddToggle()">Add Student</button>
+          <!-- btn-xs extra small button -->
+          <!--  <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button> -->
+          <!--<div class="col-md-1">{{user.seniorProjectAdvisor}}</div>-->
+          <!--<div class="col-md-1">s{{user.id}}t</div>-->
+
+          <div class="col-md-2">
+            <button class="btn btn-primary btn-sm" [routerLink]="['/students/', user.id]" routerLinkActive="router-link-active">
+              <i class="fa fa-user"></i>
+            </button> {{user.knownAs}}</div>
+          <div class="col-md-1">{{user.username}}
+            <button style="float: right;" class="btn btn-primary btn-sm" [routerLink]="['/student/edit/', user.id]" routerLinkActive="router-link-active">
+              <i class="fa fa-edit"></i>
+            </button>
+          </div>
+          <div class="col-md-2">{{user.advisor}}</div>
+          <div class="col-md-1">{{user.bachelorGraduationDate | date: 'MM/dd/yy'}}</div>
+          <div class="col-md-6">Brute Force Angular rewrwerwerwerwerwer rewrw re</div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <div class="pull-right">
+      <div class="row">
+        <form class="form-inline" novalidate>
+          <div class="form-group text-center">
+            <button class="btn btn-success" type="button" (click)="userAddToggle()">Add Student</button>
+            <button class="btn btn-danger" [disabled]="true" type="submit">Delete Student</button>
+            <button class="btn btn-primary" [disabled]="true" type="submit">Gallary View</button>
+            <!-- <button class="btn btn-success" type="submit" (click)="userAddToggle()">Add Student</button>
               <button class="btn btn-danger" type="submit">Delete Student</button>
               <button type="button" name="orderBy" class="btn btn-primary btn-primary">Newest Members</button> -->
-            </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-      <!-- End of pull-right div -->
-
-    </div>  
-  </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div *ngIf="userAddMode" class="container">
-    <div class="col-md-4 col-md-offset-4">
-      <app-admin-add-user (cancelRegister)="cancelRegisterMode($event)"></app-admin-add-user>
     </div>
+    <!-- End of pull-right div -->
+
   </div>
+</div>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="userAddMode" class="container">
+  <div class="col-md-4 col-md-offset-4">
+    <app-admin-add-user (cancelRegister)="cancelRegisterMode($event)"></app-admin-add-user>
+  </div>
+</div>

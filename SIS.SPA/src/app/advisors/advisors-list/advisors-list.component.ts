@@ -19,9 +19,17 @@ export class AdvisorsListComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.advisors = data['advisors'];
     });
-    console.log('cancelled');
-    console.log(this.advisors);
-    this.alertify.success('test');
+
+    // console.log(this.advisors[0].firstName);
+    // console.log(this.advisors);
+  }
+
+  deleteAdvisor(id: number) {
+    this.userService.deleteAdvisor(id).subscribe(next => {
+      this.alertify.success('Profile updated successfully');
+    }, error => {
+      this.alertify.error(error);
+    });
   }
 
 }
