@@ -1,106 +1,106 @@
 <div class="container">
   <form [formGroup]="studentEditForm" (ngSubmit)="updateUser()">
-      <h2 class="text-center text-primary">Edit User</h2>
+    <h2 class="text-center text-primary">Edit User</h2>
 
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="panel panel-default">
-              <div class="form-group">
-                  <label class="control-label" style="margin-right:10px">Gender: </label>
-                  <label class="radio-inline">
-                    <input type="radio" value="male" formControlName="gender">Male
-                  </label>
-                  <label class="radio-inline">
-                    <input type="radio" value="female" formControlName="gender">Female
-                  </label>
-                </div>
-      
-                <!-- knownAs -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('knownAs').touched && studentEditForm.get('knownAs').hasError('required')}">
-                  <label>Nick name:
-                    <input class="form-control" style="width: 200px" placeholder="Known as" formControlName="knownAs">
-                  </label>
-                  <span class="help-block" *ngIf="studentEditForm.get('knownAs').touched && studentEditForm.get('knownAs').hasError('required')">
-                    Known as is required
-                  </span>
-                </div>
-      
-                <!-- firstName -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('firstName').touched && studentEditForm.get('firstName').hasError('required')}">
-                  <label>First name:
-                    <input class="form-control" style="width: 200px" placeholder="First Name" formControlName="firstName">
-                  </label>
-                  <span class="help-block" *ngIf="studentEditForm.get('firstName').touched && studentEditForm.get('firstName').hasError('required')">
-                    First Name is required
-                  </span>
-                </div>
-      
-                <!-- lastName -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('lastName').touched && studentEditForm.get('lastName').hasError('required')}">
-                  <label>Last name:
-                    <input class="form-control" style="width: 200px" placeholder="Last Name" formControlName="lastName">
-                  </label>
-                  <span class="help-block" *ngIf="studentEditForm.get('lastName').touched && studentEditForm.get('lastName').hasError('required')">
-                    Last Name is required
-                  </span>
-                </div>
-      
-                <!-- date of birth -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dateOfBirth').touched && studentEditForm.get('dateOfBirth').hasError('required')}">
-                  <label>Date of Birth:
-                    <input class="form-control" type="date" placeholder="Date of Birth" formControlName="dateOfBirth">
-                  </label>
-                  <span class="help-block" *ngIf="studentEditForm.get('dateOfBirth').touched && studentEditForm.get('dateOfBirth').hasError('required')">Date of birth is required</span>
-                </div>
-      
-                <!-- city -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('city').touched && studentEditForm.get('city').hasError('required')}">
-                  <label>City:</label>
-                  <input class="form-control" style="width: 200px" placeholder="City" formControlName="city">
-                  <span class="help-block" *ngIf="studentEditForm.get('city').touched && studentEditForm.get('city').hasError('required')">
-                    City is required
-                  </span>
-                </div>
-      
-                <!-- country -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('country').touched && studentEditForm.get('country').hasError('required')}">
-                  <label>Country:</label>
-                  <input class="form-control" style="width: 200px" placeholder="Country" formControlName="country">
-                  <span class="help-block" *ngIf="studentEditForm.get('country').touched && studentEditForm.get('country').hasError('required')">
-                    Country is required
-                  </span>
-                </div>
-      
-                <!-- dawgtag -->
-      
-                <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dawgTag').touched && studentEditForm.get('dawgTag').hasError('required')}">
-                  <label>DawgTag:</label>
-                  <input class="form-control" style="width: 200px" placeholder="DawgTag" formControlName="dawgTag">
-                  <span class="help-block" *ngIf="studentEditForm.get('dawgTag').touched && studentEditForm.get('dawgTag').hasError('required')">
-                    DawgTag is required
-                  </span>
-                  <span class="help-block" *ngIf="studentEditForm.get('dawgTag').hasError('minlength') || studentEditForm.get('dawgTag').hasError('maxlength') && studentEditForm.get('dawgTag').touched">
-                    Dawgtag must be 9 characters long
-                  </span>
-                </div>
-      
-                <!-- username -->
-                <!-- <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('username').errors && studentEditForm.get('username').touched}">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="form-group">
+            <label class="control-label" style="margin-right:10px">Gender: </label>
+            <label class="radio-inline">
+              <input type="radio" value="male" formControlName="gender">Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="female" formControlName="gender">Female
+            </label>
+          </div>
+
+          <!-- knownAs -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('knownAs').touched && studentEditForm.get('knownAs').hasError('required')}">
+            <label>Nick name:
+              <input class="form-control" style="width: 200px" placeholder="Known as" formControlName="knownAs">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('knownAs').touched && studentEditForm.get('knownAs').hasError('required')">
+              Known as is required
+            </span>
+          </div>
+
+          <!-- firstName -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('firstName').touched && studentEditForm.get('firstName').hasError('required')}">
+            <label>First name:
+              <input class="form-control" style="width: 200px" placeholder="First Name" formControlName="firstName">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('firstName').touched && studentEditForm.get('firstName').hasError('required')">
+              First Name is required
+            </span>
+          </div>
+
+          <!-- lastName -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('lastName').touched && studentEditForm.get('lastName').hasError('required')}">
+            <label>Last name:
+              <input class="form-control" style="width: 200px" placeholder="Last Name" formControlName="lastName">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('lastName').touched && studentEditForm.get('lastName').hasError('required')">
+              Last Name is required
+            </span>
+          </div>
+
+          <!-- date of birth -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dateOfBirth').touched && studentEditForm.get('dateOfBirth').hasError('required')}">
+            <label>Date of Birth:
+              <input class="form-control" type="date" placeholder="Date of Birth" formControlName="dateOfBirth">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('dateOfBirth').touched && studentEditForm.get('dateOfBirth').hasError('required')">Date of birth is required</span>
+          </div>
+
+          <!-- city -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('city').touched && studentEditForm.get('city').hasError('required')}">
+            <label>City:</label>
+            <input class="form-control" style="width: 200px" placeholder="City" formControlName="city">
+            <span class="help-block" *ngIf="studentEditForm.get('city').touched && studentEditForm.get('city').hasError('required')">
+              City is required
+            </span>
+          </div>
+
+          <!-- country -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('country').touched && studentEditForm.get('country').hasError('required')}">
+            <label>Country:</label>
+            <input class="form-control" style="width: 200px" placeholder="Country" formControlName="country">
+            <span class="help-block" *ngIf="studentEditForm.get('country').touched && studentEditForm.get('country').hasError('required')">
+              Country is required
+            </span>
+          </div>
+
+          <!-- dawgtag -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dawgTag').touched && studentEditForm.get('dawgTag').hasError('required')}">
+            <label>DawgTag:</label>
+            <input class="form-control" style="width: 200px" placeholder="DawgTag" formControlName="dawgTag">
+            <span class="help-block" *ngIf="studentEditForm.get('dawgTag').touched && studentEditForm.get('dawgTag').hasError('required')">
+              DawgTag is required
+            </span>
+            <span class="help-block" *ngIf="studentEditForm.get('dawgTag').hasError('minlength') || studentEditForm.get('dawgTag').hasError('maxlength') && studentEditForm.get('dawgTag').touched">
+              Dawgtag must be 9 characters long
+            </span>
+          </div>
+
+          <!-- username -->
+          <!-- <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('username').errors && studentEditForm.get('username').touched}">
                   <label>Username:</label>
                   <input type="text" class="form-control" placeholder="Username" formControlName="username">
                   <span class="help-block" *ngIf="studentEditForm.get('username').hasError('required') && studentEditForm.get('username').touched">
                     Username is required
                   </span>
                 </div> -->
-      
-                <!-- password -->
-                <!-- <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('password').errors && studentEditForm.get('password').touched}">
+
+          <!-- password -->
+          <!-- <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('password').errors && studentEditForm.get('password').touched}">
                   <label>Password:</label>
                   <input type="password" class="form-control" placeholder="Password" formControlName="password">
                   <span class="help-block" *ngIf="studentEditForm.get('password').hasError('required') && studentEditForm.get('password').touched">
@@ -113,9 +113,9 @@
                     Password must less than 8 characters
                   </span>
                 </div> -->
-      
-                <!-- confirm password -->
-                <!-- <div class="form-group" [ngClass]="{'has-error': 
+
+          <!-- confirm password -->
+          <!-- <div class="form-group" [ngClass]="{'has-error': 
                 studentEditForm.get('confirmPassword').errors && studentEditForm.get('confirmPassword').touched 
                 || studentEditForm.get('confirmPassword').touched && studentEditForm.hasError('mismatch')}">
                   <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
@@ -126,43 +126,49 @@
                     Confirm Password must match field password
                   </span>
                 </div> -->
-      
-                <div class="form-group text-center">
-                  <button class="btn btn-success" [disabled]="!studentEditForm.valid" type="submit">Save</button>
-                  <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
-                </div>
+
+          <div class="form-group text-center">
+            <button class="btn btn-success" [disabled]="!studentEditForm.valid" type="submit">Save</button>
+            <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
           </div>
-          <!-- End of panel -->
         </div>
-        <!-- End of left column col-sm-4  -->
+        <!-- End of panel -->
+      </div>
+      <!-- End of left column col-sm-4  -->
 
 
 
-        <!-- Right hand colmn -->
-        <div class="col-sm-8">
-          <div class="tab-panel">
-            
+      <!-- Right hand colmn -->
+      <div class="col-sm-8">
+        <div class="tab-panel">
+
           <!-- studentLevel -->
 
           <div class="form-group text-center">
-              <label class="control-label" style="margin-right:10px">Student's current academic level: </label>
-              <label class="radio-inline">
-                <input type="radio" value="BA" formControlName="studentLevel">BA
-                <!-- <input type="radio" value="BA" formControlName="studentLevel" (click)="setStudentLevel('BA')">BA -->
-              </label>
-              <label class="radio-inline">
-                  <input type="radio" value="BS" formControlName="studentLevel">BS
-                <!-- <input type="radio" value="BS" formControlName="studentLevel" (click)="setStudentLevel('BS')">BS -->
-              </label>
-              <label class="radio-inline">
-                <input type="radio" value="MS" formControlName="studentLevel">MS
-                <!-- <input type="radio" value="MS" formControlName="studentLevel" (click)="setStudentLevel('MS')">MS -->
-              </label>
-              <label class="radio-inline">
-                <input type="radio" value="PHD" formControlName="studentLevel">PhD
-                <!-- <input type="radio" value="PHD" formControlName="studentLevel" (click)="setStudentLevel('PHD')">PhD -->
-              </label>
+            <label class="control-label" style="margin-right:10px">Student's current academic level: </label>
+            <br>
+            <label class="radio-inline">
+              <input type="radio" value="BA" formControlName="studentLevel">BA
+              <!-- <input type="radio" value="BA" formControlName="studentLevel" (click)="setStudentLevel('BA')">BA -->
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="BS" formControlName="studentLevel">BS
+              <!-- <input type="radio" value="BS" formControlName="studentLevel" (click)="setStudentLevel('BS')">BS -->
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="MS" formControlName="studentLevel">MS
+              <!-- <input type="radio" value="MS" formControlName="studentLevel" (click)="setStudentLevel('MS')">MS -->
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="PHD" formControlName="studentLevel">PhD
+              <!-- <input type="radio" value="PHD" formControlName="studentLevel" (click)="setStudentLevel('PHD')">PhD -->
+            </label>
           </div>
+        </div>
+        <br>
+
+
+        <div class="tab-panel">
 
           <!-- Bachelor's Section -->
           <h3 class="text-center text-primary">Bachelor's Details:</h3>
@@ -179,295 +185,304 @@
 
           <!-- bachelorFacultyMentor Dropdown -->
           <div class="form-group">
-              <label for="advisor">Bachelor faculty mentor: </label>
-              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="bachelorFacultyMentor">
-                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
-                </option>
-              </select>
-              <span class="help-block" *ngIf="studentEditForm.get('bachelorFacultyMentor').touched && studentEditForm.get('bachelorFacultyMentor').hasError('required')">
-                  Bachelor faculty mentor is required
-              </span>
-            </div>
+            <label for="advisor">Bachelor faculty mentor: </label>
+            <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="bachelorFacultyMentor">
+              <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+              </option>
+            </select>
+            <span class="help-block" *ngIf="studentEditForm.get('bachelorFacultyMentor').touched && studentEditForm.get('bachelorFacultyMentor').hasError('required')">
+              Bachelor faculty mentor is required
+            </span>
+          </div>
 
-            <!-- seniorProjectAdvisor Dropdown -->
-            <div class="form-group">
-              <label for="advisor">Senior project advisor: </label>
-              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="seniorProjectAdvisor">
-                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
-                </option>
-              </select>
-              <span class="help-block" *ngIf="studentEditForm.get('bachelorFacultyMentor').touched && studentEditForm.get('bachelorFacultyMentor').hasError('required')">
-                  Senior project advisor is required
-              </span>
-            </div>
+          <!-- seniorProjectAdvisor Dropdown -->
+          <div class="form-group">
+            <label for="advisor">Senior project advisor: </label>
+            <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="seniorProjectAdvisor">
+              <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+              </option>
+            </select>
+            <span class="help-block" *ngIf="studentEditForm.get('bachelorFacultyMentor').touched && studentEditForm.get('bachelorFacultyMentor').hasError('required')">
+              Senior project advisor is required
+            </span>
+          </div>
 
-            <!-- bachelorGraduationDate -->
+          <!-- bachelorGraduationDate -->
 
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('bachelorGraduationDate').touched && studentEditForm.get('bachelorGraduationDate').hasError('required')}">
-              <label>Bachelor graduation date:
-                <input class="form-control" type="date" placeholder="Graduation date" formControlName="bachelorGraduationDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('bachelorGraduationDate').touched && studentEditForm.get('bachelorGraduationDate').hasError('required')">Bachelor graduation date is required</span>
-            </div><!-- seniorProjectTitle -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('seniorProjectTitle').touched && studentEditForm.get('seniorProjectTitle').hasError('required')}">
-              <label>Senior project title:
-                <input class="form-control" placeholder="Project title" formControlName="seniorProjectTitle">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('seniorProjectTitle').touched && studentEditForm.get('seniorProjectTitle').hasError('required')">
-                Senior project title is required
-              </span>
-            </div>
-            
-            <!-- seniorProjectURL -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('seniorProjectURL').touched && studentEditForm.get('seniorProjectURL').hasError('required')}">
-              <label>Senior project url:
-                <input class="form-control" placeholder="url" formControlName="seniorProjectURL">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('seniorProjectURL').touched && studentEditForm.get('seniorProjectURL').hasError('required')">
-                Senior project url is required
-              </span>
-            </div>
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('bachelorGraduationDate').touched && studentEditForm.get('bachelorGraduationDate').hasError('required')}">
+            <label>Bachelor graduation date:
+              <input class="form-control" type="date" placeholder="Graduation date" formControlName="bachelorGraduationDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('bachelorGraduationDate').touched && studentEditForm.get('bachelorGraduationDate').hasError('required')">Bachelor graduation date is required</span>
+          </div>
+          <!-- seniorProjectTitle -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('seniorProjectTitle').touched && studentEditForm.get('seniorProjectTitle').hasError('required')}">
+            <label>Senior project title:
+              <input class="form-control" placeholder="Project title" formControlName="seniorProjectTitle">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('seniorProjectTitle').touched && studentEditForm.get('seniorProjectTitle').hasError('required')">
+              Senior project title is required
+            </span>
+          </div>
 
-            <!-- End Bachelor's Section -->
+          <!-- seniorProjectURL -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('seniorProjectURL').touched && studentEditForm.get('seniorProjectURL').hasError('required')}">
+            <label>Senior project url:
+              <input class="form-control" placeholder="url" formControlName="seniorProjectURL">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('seniorProjectURL').touched && studentEditForm.get('seniorProjectURL').hasError('required')">
+              Senior project url is required
+            </span>
+          </div>
 
-
-
-            <!-- Master's Section -->
-            <h3 class="text-center text-primary">Master's Details:</h3>
-            <hr>
-            
-            <!-- masterFocus Project/Thesis -->
-            <div class="form-group">
-              <label class="control-label" style="margin-right:10px">Master's Focus: </label>
-              <label class="radio-inline">
-                <input type="radio" value="Project" formControlName="masterFocus">Project
-              </label>
-              <label class="radio-inline">
-                <input type="radio" value="Thesis" formControlName="masterFocus">Thesis
-              </label>
-            </div>
-            
-            <!-- masterAdvisor Dropdown -->
-            <div class="form-group">
-              <label for="advisor">Master Advisor: </label>
-              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="masterAdvisor">
-                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
-                </option>
-              </select>
-              <span class="help-block" *ngIf="studentEditForm.get('masterAdvisor').touched && studentEditForm.get('masterAdvisor').hasError('required')">
-                Master Advisor is required
-              </span>
-            </div>
-            
-            
-            <!-- masterCommitteeMember1 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterCommitteeMember1').touched && studentEditForm.get('masterCommitteeMember1').hasError('required')}">
-              <label>Committee member 1:
-                <input class="form-control" placeholder="Member 1" formControlName="masterCommitteeMember1">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterCommitteeMember1').touched && studentEditForm.get('masterCommitteeMember1').hasError('required')">
-                Committee Member 1 is required
-              </span>
-            </div>
-            <!-- masterCommitteeMember2 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterCommitteeMember2').touched && studentEditForm.get('masterCommitteeMember2').hasError('required')}">
-              <label>Committee member 2:
-                <input class="form-control" placeholder="Member 2" formControlName="masterCommitteeMember2">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterCommitteeMember2').touched && studentEditForm.get('masterCommitteeMember2').hasError('required')">
-                Committee Member 2 is required
-              </span>
-            </div>
-            <!-- masterCommitteeMember3 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterCommitteeMember3').touched && studentEditForm.get('masterCommitteeMember3').hasError('required')}">
-              <label>Committee member 3:
-                <input class="form-control" placeholder="Member 3" formControlName="masterCommitteeMember3">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterCommitteeMember3').touched && studentEditForm.get('masterCommitteeMember3').hasError('required')">
-                Committee Member 3 is required
-              </span>
-            </div>
-            
-            <!-- masterDefenseDate -->
-            
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterDefenseDate').touched && studentEditForm.get('masterDefenseDate').hasError('required')}">
-              <label>Master defense date:
-                <input class="form-control" type="date" placeholder="Master defense date" formControlName="masterDefenseDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterDefenseDate').touched && studentEditForm.get('masterDefenseDate').hasError('required')">Master defense date is required</span>
-            </div>
-            
-            <!-- masterProjectTitle -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterProjectTitle').touched && studentEditForm.get('masterProjectTitle').hasError('required')}">
-              <label>Master project title:
-                <input class="form-control" placeholder="Thesis title" formControlName="masterProjectTitle">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterProjectTitle').touched && studentEditForm.get('masterProjectTitle').hasError('required')">
-                masterProjectTitle is required
-              </span>
-            </div>
-            
-            <!-- masterThesisTitle -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterThesisTitle').touched && studentEditForm.get('masterThesisTitle').hasError('required')}">
-              <label>Master thesis title:
-                <input class="form-control" placeholder="Thesis title" formControlName="masterThesisTitle">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterThesisTitle').touched && studentEditForm.get('masterThesisTitle').hasError('required')">
-                masterThesisTitle is required
-              </span>
-            </div>
-            
-            <!-- masterGraduationDate -->
-            
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterGraduationDate').touched && studentEditForm.get('masterGraduationDate').hasError('required')}">
-              <label>Master graduation date:
-                <input class="form-control" type="date" placeholder="Graduation date" formControlName="masterGraduationDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('masterGraduationDate').touched && studentEditForm.get('masterGraduationDate').hasError('required')">Master graduation date is required</span>
-            </div>
-
-            <!-- End Master's Section -->
+          <!-- End Bachelor's Section -->
 
 
-            <!-- Doctorate's Section -->
-            <h3 class="text-center text-primary">Doctorate's Details:</h3>
-            <hr>
-
-            <!-- doctorateStartDate -->
-            
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateStartDate').touched && studentEditForm.get('doctorateStartDate').hasError('required')}">
-              <label>Doctorate start date:
-                <input class="form-control" type="date" placeholder="Doctorate Start Date" formControlName="doctorateStartDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateStartDate').touched && studentEditForm.get('doctorateStartDate').hasError('required')">Doctorate start date is required</span>
-            </div>
-            
-            <!-- doctorateCandidateAcceptDate -->
-            
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCandidateAcceptDate').touched && studentEditForm.get('doctorateCandidateAcceptDate').hasError('required')}">
-              <label>Doctorate candidancy acceptance date:
-                <input class="form-control" type="date" placeholder="Candidancy accepted date" formControlName="doctorateCandidateAcceptDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCandidateAcceptDate').touched && studentEditForm.get('doctorateCandidateAcceptDate').hasError('required')">Doctorate candidate accept date is required</span>
-            </div>
-            
-            <!-- doctorateAdvisor Dropdown -->
-            <div class="form-group">
-              <label for="advisor">Doctorate Advisor: </label>
-              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="doctorateAdvisor">
-                <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
-                </option>
-              </select>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateAdvisor').touched && studentEditForm.get('doctorateAdvisor').hasError('required')">
-                Doctorate Advisor is required
-              </span>
-            </div>
-            
-            <!-- doctorateCommitteeMember1 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember1').touched && studentEditForm.get('doctorateCommitteeMember1').hasError('required')}">
-              <label>Doctorate committee member 1:
-                <input class="form-control" placeholder="Committee Member 1" formControlName="doctorateCommitteeMember1">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember1').touched && studentEditForm.get('doctorateCommitteeMember1').hasError('required')">
-                Doctorate committee member 1 is required
-              </span>
-            </div>
-            
-            <!-- doctorateCommitteeMember2 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember2').touched && studentEditForm.get('doctorateCommitteeMember2').hasError('required')}">
-              <label>Doctorate committee member 2:
-                <input class="form-control" placeholder="Committee Member 2" formControlName="doctorateCommitteeMember2">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember2').touched && studentEditForm.get('doctorateCommitteeMember2').hasError('required')">
-                Doctorate committee member 2 is required
-              </span>
-            </div>
-            
-            
-            <!-- doctorateCommitteeMember3 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember3').touched && studentEditForm.get('doctorateCommitteeMember3').hasError('required')}">
-              <label>Doctorate committee member 3:
-                <input class="form-control" placeholder="Committee Member 3" formControlName="doctorateCommitteeMember3">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember3').touched && studentEditForm.get('doctorateCommitteeMember3').hasError('required')">
-                Doctorate committee member 3 is required
-              </span>
-            </div>
-            
-            <!-- doctorateCommitteeMember4 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember4').touched && studentEditForm.get('doctorateCommitteeMember4').hasError('required')}">
-              <label>Doctorate committee member 4:
-                <input class="form-control" placeholder="Committee Member 4" formControlName="doctorateCommitteeMember4">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember4').touched && studentEditForm.get('doctorateCommitteeMember4').hasError('required')">
-                Doctorate committee member 4 is required
-              </span>
-            </div>
-            
-            <!-- doctorateCommitteeMember5 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember5').touched && studentEditForm.get('doctorateCommitteeMember5').hasError('required')}">
-              <label>Doctorate committee member 5:
-                <input class="form-control" placeholder="Committee Member 5" formControlName="doctorateCommitteeMember5">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember5').touched && studentEditForm.get('doctorateCommitteeMember5').hasError('required')">
-                Doctorate committee member 5 is required
-              </span>
-            </div>
-            
-            <!-- doctorateCommitteeMember6 -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember6').touched && studentEditForm.get('doctorateCommitteeMember6').hasError('required')}">
-              <label>Doctorate committee member 6:
-                <input class="form-control" placeholder="Committee Member 6" formControlName="doctorateCommitteeMember6">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember6').touched && studentEditForm.get('doctorateCommitteeMember6').hasError('required')">
-                Doctorate committee member 6 is required
-              </span>
-            </div>
-            
-            
-            <!-- dissertationDefenseDate -->
-            
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dissertationDefenseDate').touched && studentEditForm.get('dissertationDefenseDate').hasError('required')}">
-              <label>Dissertation defense date:
-                <input class="form-control" type="date" placeholder="D issertation defense date" formControlName="dissertationDefenseDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('dissertationDefenseDate').touched && studentEditForm.get('dissertationDefenseDate').hasError('required')">Dissertation defense date is required</span>
-            </div>
-            
-            <!-- dissertationTitle -->
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dissertationTitle').touched && studentEditForm.get('dissertationTitle').hasError('required')}">
-              <label>Dissertation title:
-                <input class="form-control" placeholder="Dissertation Title" formControlName="dissertationTitle">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('dissertationTitle').touched && studentEditForm.get('dissertationTitle').hasError('required')">
-                dissertationTitle is required
-              </span>
-            </div>
-            
-            <!-- doctorateGraduationDate -->
-            
-            <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateGraduationDate').touched && studentEditForm.get('doctorateGraduationDate').hasError('required')}">
-              <label>Doctorate graduation date:
-                <input class="form-control" type="date" placeholder="Graduation date" formControlName="doctorateGraduationDate">
-              </label>
-              <span class="help-block" *ngIf="studentEditForm.get('doctorateGraduationDate').touched && studentEditForm.get('doctorateGraduationDate').hasError('required')">Doctorate graduation date is required</span>
-            </div>
-
-            <!-- End of Doctorate's Section -->
-
-            
-            </div>
-          <!-- End of panel -->
         </div>
-        <!-- End of right column col-sm-8 -->
+        <br>
 
 
+        <div class="tab-panel">
+          <!-- Master's Section -->
+          <h3 class="text-center text-primary">Master's Details:</h3>
+          <hr>
+
+          <!-- masterFocus Project/Thesis -->
+          <div class="form-group">
+            <label class="control-label" style="margin-right:10px">Master's Focus: </label>
+            <label class="radio-inline">
+              <input type="radio" value="Project" formControlName="masterFocus">Project
+            </label>
+            <label class="radio-inline">
+              <input type="radio" value="Thesis" formControlName="masterFocus">Thesis
+            </label>
+          </div>
+
+          <!-- masterAdvisor Dropdown -->
+          <div class="form-group">
+            <label for="advisor">Master Advisor: </label>
+            <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="masterAdvisor">
+              <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+              </option>
+            </select>
+            <span class="help-block" *ngIf="studentEditForm.get('masterAdvisor').touched && studentEditForm.get('masterAdvisor').hasError('required')">
+              Master Advisor is required
+            </span>
+          </div>
 
 
+          <!-- masterCommitteeMember1 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterCommitteeMember1').touched && studentEditForm.get('masterCommitteeMember1').hasError('required')}">
+            <label>Committee member 1:
+              <input class="form-control" placeholder="Member 1" formControlName="masterCommitteeMember1">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterCommitteeMember1').touched && studentEditForm.get('masterCommitteeMember1').hasError('required')">
+              Committee Member 1 is required
+            </span>
+          </div>
+          <!-- masterCommitteeMember2 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterCommitteeMember2').touched && studentEditForm.get('masterCommitteeMember2').hasError('required')}">
+            <label>Committee member 2:
+              <input class="form-control" placeholder="Member 2" formControlName="masterCommitteeMember2">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterCommitteeMember2').touched && studentEditForm.get('masterCommitteeMember2').hasError('required')">
+              Committee Member 2 is required
+            </span>
+          </div>
+          <!-- masterCommitteeMember3 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterCommitteeMember3').touched && studentEditForm.get('masterCommitteeMember3').hasError('required')}">
+            <label>Committee member 3:
+              <input class="form-control" placeholder="Member 3" formControlName="masterCommitteeMember3">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterCommitteeMember3').touched && studentEditForm.get('masterCommitteeMember3').hasError('required')">
+              Committee Member 3 is required
+            </span>
+          </div>
+
+          <!-- masterDefenseDate -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterDefenseDate').touched && studentEditForm.get('masterDefenseDate').hasError('required')}">
+            <label>Master defense date:
+              <input class="form-control" type="date" placeholder="Master defense date" formControlName="masterDefenseDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterDefenseDate').touched && studentEditForm.get('masterDefenseDate').hasError('required')">Master defense date is required</span>
+          </div>
+
+          <!-- masterProjectTitle -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterProjectTitle').touched && studentEditForm.get('masterProjectTitle').hasError('required')}">
+            <label>Master project title:
+              <input class="form-control" placeholder="Thesis title" formControlName="masterProjectTitle">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterProjectTitle').touched && studentEditForm.get('masterProjectTitle').hasError('required')">
+              masterProjectTitle is required
+            </span>
+          </div>
+
+          <!-- masterThesisTitle -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterThesisTitle').touched && studentEditForm.get('masterThesisTitle').hasError('required')}">
+            <label>Master thesis title:
+              <input class="form-control" placeholder="Thesis title" formControlName="masterThesisTitle">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterThesisTitle').touched && studentEditForm.get('masterThesisTitle').hasError('required')">
+              masterThesisTitle is required
+            </span>
+          </div>
+
+          <!-- masterGraduationDate -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('masterGraduationDate').touched && studentEditForm.get('masterGraduationDate').hasError('required')}">
+            <label>Master graduation date:
+              <input class="form-control" type="date" placeholder="Graduation date" formControlName="masterGraduationDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('masterGraduationDate').touched && studentEditForm.get('masterGraduationDate').hasError('required')">Master graduation date is required</span>
+          </div>
+
+          <!-- End Master's Section -->
+
+        </div>
+        <br>
 
 
+        <div class="tab-panel">
+          <!-- Doctorate's Section -->
+          <h3 class="text-center text-primary">Doctorate's Details:</h3>
+          <hr>
+
+          <!-- doctorateStartDate -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateStartDate').touched && studentEditForm.get('doctorateStartDate').hasError('required')}">
+            <label>Doctorate start date:
+              <input class="form-control" type="date" placeholder="Doctorate Start Date" formControlName="doctorateStartDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateStartDate').touched && studentEditForm.get('doctorateStartDate').hasError('required')">Doctorate start date is required</span>
+          </div>
+
+          <!-- doctorateCandidateAcceptDate -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCandidateAcceptDate').touched && studentEditForm.get('doctorateCandidateAcceptDate').hasError('required')}">
+            <label>Doctorate candidancy acceptance date:
+              <input class="form-control" type="date" placeholder="Candidancy accepted date" formControlName="doctorateCandidateAcceptDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCandidateAcceptDate').touched && studentEditForm.get('doctorateCandidateAcceptDate').hasError('required')">Doctorate candidate accept date is required</span>
+          </div>
+
+          <!-- doctorateAdvisor Dropdown -->
+          <div class="form-group">
+            <label for="advisor">Doctorate Advisor: </label>
+            <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="doctorateAdvisor">
+              <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
+              </option>
+            </select>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateAdvisor').touched && studentEditForm.get('doctorateAdvisor').hasError('required')">
+              Doctorate Advisor is required
+            </span>
+          </div>
+
+          <!-- doctorateCommitteeMember1 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember1').touched && studentEditForm.get('doctorateCommitteeMember1').hasError('required')}">
+            <label>Doctorate committee member 1:
+              <input class="form-control" placeholder="Committee Member 1" formControlName="doctorateCommitteeMember1">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember1').touched && studentEditForm.get('doctorateCommitteeMember1').hasError('required')">
+              Doctorate committee member 1 is required
+            </span>
+          </div>
+
+          <!-- doctorateCommitteeMember2 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember2').touched && studentEditForm.get('doctorateCommitteeMember2').hasError('required')}">
+            <label>Doctorate committee member 2:
+              <input class="form-control" placeholder="Committee Member 2" formControlName="doctorateCommitteeMember2">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember2').touched && studentEditForm.get('doctorateCommitteeMember2').hasError('required')">
+              Doctorate committee member 2 is required
+            </span>
+          </div>
+
+
+          <!-- doctorateCommitteeMember3 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember3').touched && studentEditForm.get('doctorateCommitteeMember3').hasError('required')}">
+            <label>Doctorate committee member 3:
+              <input class="form-control" placeholder="Committee Member 3" formControlName="doctorateCommitteeMember3">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember3').touched && studentEditForm.get('doctorateCommitteeMember3').hasError('required')">
+              Doctorate committee member 3 is required
+            </span>
+          </div>
+
+          <!-- doctorateCommitteeMember4 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember4').touched && studentEditForm.get('doctorateCommitteeMember4').hasError('required')}">
+            <label>Doctorate committee member 4:
+              <input class="form-control" placeholder="Committee Member 4" formControlName="doctorateCommitteeMember4">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember4').touched && studentEditForm.get('doctorateCommitteeMember4').hasError('required')">
+              Doctorate committee member 4 is required
+            </span>
+          </div>
+
+          <!-- doctorateCommitteeMember5 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember5').touched && studentEditForm.get('doctorateCommitteeMember5').hasError('required')}">
+            <label>Doctorate committee member 5:
+              <input class="form-control" placeholder="Committee Member 5" formControlName="doctorateCommitteeMember5">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember5').touched && studentEditForm.get('doctorateCommitteeMember5').hasError('required')">
+              Doctorate committee member 5 is required
+            </span>
+          </div>
+
+          <!-- doctorateCommitteeMember6 -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateCommitteeMember6').touched && studentEditForm.get('doctorateCommitteeMember6').hasError('required')}">
+            <label>Doctorate committee member 6:
+              <input class="form-control" placeholder="Committee Member 6" formControlName="doctorateCommitteeMember6">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateCommitteeMember6').touched && studentEditForm.get('doctorateCommitteeMember6').hasError('required')">
+              Doctorate committee member 6 is required
+            </span>
+          </div>
+
+
+          <!-- dissertationDefenseDate -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dissertationDefenseDate').touched && studentEditForm.get('dissertationDefenseDate').hasError('required')}">
+            <label>Dissertation defense date:
+              <input class="form-control" type="date" placeholder="D issertation defense date" formControlName="dissertationDefenseDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('dissertationDefenseDate').touched && studentEditForm.get('dissertationDefenseDate').hasError('required')">Dissertation defense date is required</span>
+          </div>
+
+          <!-- dissertationTitle -->
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('dissertationTitle').touched && studentEditForm.get('dissertationTitle').hasError('required')}">
+            <label>Dissertation title:
+              <input class="form-control" placeholder="Dissertation Title" formControlName="dissertationTitle">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('dissertationTitle').touched && studentEditForm.get('dissertationTitle').hasError('required')">
+              dissertationTitle is required
+            </span>
+          </div>
+
+          <!-- doctorateGraduationDate -->
+
+          <div class="form-group" [ngClass]="{'has-error': studentEditForm.get('doctorateGraduationDate').touched && studentEditForm.get('doctorateGraduationDate').hasError('required')}">
+            <label>Doctorate graduation date:
+              <input class="form-control" type="date" placeholder="Graduation date" formControlName="doctorateGraduationDate">
+            </label>
+            <span class="help-block" *ngIf="studentEditForm.get('doctorateGraduationDate').touched && studentEditForm.get('doctorateGraduationDate').hasError('required')">Doctorate graduation date is required</span>
+          </div>
+
+          <!-- End of Doctorate's Section -->
+
+
+        </div>
+        <!-- End of panel -->
       </div>
-      <!-- End of row -->
+      <!-- End of right column col-sm-8 -->
+
+
+
+
+
+
+    </div>
+    <!-- End of row -->
 
 
 
