@@ -119,6 +119,23 @@ export class AdminStudentEditComponent implements OnInit {
         this.user.knownAs = this.user.firstName;
       }
 
+      switch (this.user.studentLevel) {
+        case 'BA':
+          this.user.BA = true;
+          break;
+        case 'BS':
+          this.user.BS = true;
+          break;
+        case 'MS':
+          this.user.MS = true;
+          break;
+        case 'PHD':
+          this.user.PHD = true;
+          break;
+        default:
+          break;
+      }
+
 
       // this.route.snapshot.params['id'] = potential admin's userId
       this.userService.updateUserAsAdmin(this.route.snapshot.params['id'], this.user).subscribe(next => {
