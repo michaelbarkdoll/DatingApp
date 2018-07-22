@@ -34,9 +34,10 @@ export class MemberListPaginatedComponent implements OnInit {
       // this.users = data['users'];
       this.users = data['users'].result;
       this.pagination = data['users'].pagination;
+      this.advisors = data['advisors'];
     });
 
-    this.getAdvisors();
+    // this.getAdvisors();
 
     this.userParams = {};
     // this.userParams.gender = this.user.gender === 'female' ? 'male' : 'female';
@@ -47,13 +48,13 @@ export class MemberListPaginatedComponent implements OnInit {
     this.userParams.advisor = 'all';
   }
 
-  getAdvisors() {
+/*   getAdvisors() {
     this.userService.getAdvisors().subscribe((advisors: Advisor[]) => {
       this.advisors = advisors;
     }, error => {
       this.alertify.error(error);
     });
-  }
+  } */
 
 
   loadUsers() {

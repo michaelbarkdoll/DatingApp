@@ -64,7 +64,12 @@ namespace SIS.API.Data {
                     case "all":
                         break;
                     default:
-                        users = users.Where(u => u.Advisor == userParams.Advisor);
+                        // users = users.Where(u => u.Advisor == userParams.Advisor);
+                        users = users.Where(u => u.Advisor == userParams.Advisor
+                            || u.BachelorFacultyMentor == userParams.Advisor
+                            || u.MasterAdvisor == userParams.Advisor
+                            || u.DoctorateAdvisor == userParams.Advisor
+                            || u.SeniorProjectAdvisor == userParams.Advisor);
                         break;
                 }
             }
