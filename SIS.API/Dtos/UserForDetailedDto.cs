@@ -104,5 +104,6 @@ namespace SIS.API.Dtos {
         public string MasterAdvisor { get; set; }
         public string MasterProjectTitle { get; set; }
         public string StudentLevel { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

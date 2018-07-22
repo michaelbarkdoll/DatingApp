@@ -4,9 +4,10 @@ import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router
 import { AlertifyService } from '../../_services/alertify.service';
 import { AuthService } from '../../_services/auth.service';
 import { UserService } from '../../_services/user.service';
-import { FormBuilder, FormGroup, Validators } from '../../../../node_modules/@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '../../../../node_modules/@angular/forms';
 import { AuthHttp } from '../../../../node_modules/angular2-jwt';
 import { User } from '../../_models/User';
+import { DatePipe } from '../../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-admin-student-edit',
@@ -37,8 +38,16 @@ export class AdminStudentEditComponent implements OnInit {
 
     this.createStudentEditForm();
 
-    console.log('test');
-    console.log(this.user.firstName);
+    this.studentEditForm.patchValue({dateOfBirth: this.fixDate(this.user.dateOfBirth)});
+    this.studentEditForm.patchValue({bachelorStartDate: this.fixDate(this.user.bachelorStartDate)});
+    this.studentEditForm.patchValue({bachelorGraduationDate: this.fixDate(this.user.bachelorGraduationDate)});
+    this.studentEditForm.patchValue({doctorateCandidateAcceptDate: this.fixDate(this.user.doctorateCandidateAcceptDate)});
+    this.studentEditForm.patchValue({doctorateGraduationDate: this.fixDate(this.user.doctorateGraduationDate)});
+    this.studentEditForm.patchValue({doctorateStartDate: this.fixDate(this.user.doctorateStartDate)});
+    this.studentEditForm.patchValue({masterDefenseDate: this.fixDate(this.user.masterDefenseDate)});
+    this.studentEditForm.patchValue({masterGraduationDate: this.fixDate(this.user.masterGraduationDate)});
+    // this.studentEditForm.patchValue({masterStartDate: this.fixDate(this.user.masterStartDate)});
+    this.studentEditForm.patchValue({dissertationDefenseDate: this.fixDate(this.user.dissertationDefenseDate)});
   }
 
   createStudentEditForm() {
@@ -50,7 +59,6 @@ export class AdminStudentEditComponent implements OnInit {
       dateOfBirth: [this.user.dateOfBirth, Validators.required],
       city: [this.user.city, Validators.required],
       country: [this.user.country, Validators.required],
-
       dawgTag: [this.user.dawgTag],
 
       /*
@@ -93,12 +101,22 @@ export class AdminStudentEditComponent implements OnInit {
       MS: [this.user.MS],
       PHD: [this.user.PHD]
     });
-    // }, { });
    // }, { validator: this.passwordMatchValidator });
   }
 
+
   passwordMatchValidator(formGroup: FormGroup) {
     return formGroup.get('password').value === formGroup.get('confirmPassword').value ? null : {'mismatch' : true};
+  }
+
+  fixDate(date: Date) {
+    const dp = new DatePipe(navigator.language);
+    const p = 'y-MM-dd'; // YYYY-MM-DD
+    // const dtr = dp.transform(new Date(Date.parse(this.user.dateOfBirth.toString())), p);
+    const dtr = dp.transform(new Date(Date.parse(date.toString())), p);
+    // this.studentEditForm.patchValue({dateOfBirth: dtr});
+    // return {dateOfBirth: dtr};
+    return dtr;
   }
 
   updateUser() {
@@ -139,25 +157,12 @@ export class AdminStudentEditComponent implements OnInit {
 
       // this.route.snapshot.params['id'] = potential admin's userId
       this.userService.updateUserAsAdmin(this.route.snapshot.params['id'], this.user).subscribe(next => {
-      this.alertify.success('Profile updated successfully');
-      this.studentEditForm.reset(this.user);
+        this.alertify.success('Profile updated successfully');
+        this.router.navigate(['/students']);
+        this.studentEditForm.reset(this.user);
       }, error => {
         this.alertify.error(error);
       });
-
-
-
-
-
-
-
-      /* // Run this in case they never changed the default value.
-      this.setStudentLevel(this.studentLevel);
-      // Set the user model values according to what was selected on the form.
-      this.user.BA = this.isBA();
-      this.user.BS = this.isBS();
-      this.user.MS = this.isMasters();
-      this.user.PHD = this.isDoctorate(); */
 
       // console.log(this.user);
       /* this.authService.registerReturnUser(this.user).subscribe(() => {
@@ -168,16 +173,6 @@ export class AdminStudentEditComponent implements OnInit {
         // this.router.navigate(['/students']);
       }); */
     }
-  }
-
-  updateUser2() {
-    // this.route.snapshot.params['id'] = potential admin's userId
-    this.userService.updateUserAsAdmin(this.route.snapshot.params['id'], this.user).subscribe(next => {
-    this.alertify.success('Profile updated successfully');
-    this.studentEditForm.reset(this.user);
-    }, error => {
-      this.alertify.error(error);
-    });
   }
 
   cancel() {

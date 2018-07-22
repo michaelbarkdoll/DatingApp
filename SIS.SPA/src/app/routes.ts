@@ -24,6 +24,7 @@ import { AdvisorsListComponent } from './advisors/advisors-list/advisors-list.co
 import { AdvisorsListResolver } from './_resolvers/advisors-list.resolver';
 import { AdvisorAddComponent } from './advisors/advisor-add/advisor-add.component';
 import { AdminStudentEditComponent } from './admin/admin-student-edit/admin-student-edit.component';
+import { PreventUnsavedChangesAdminStudentEditGuard } from './_guards/prevent-unsaved-changes-admin-student-edit-guard';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -41,16 +42,16 @@ export const appRoutes: Routes = [
                 resolve: {user: MemberEditResolver}, canDeactivate: [PreventUnsavedChangesGuard] },
             { path: 'students', component: StudentListComponent, resolve: {users: StudentListResolver} },
             { path: 'students/:id', component: StudentDetailComponent, resolve: {user: StudentDetailResolver} },
-            { path: 'student/edit/:id', component: StudentEditComponent,
+            { path: 'oldstudent/edit/:id', component: StudentEditComponent,
                 resolve: {user: StudentEditResolver}, canDeactivate: [PreventUnsavedChangesStudentEditGuard] },
+            { path: 'student/edit/:id', component: AdminStudentEditComponent,
+                resolve: {user: StudentEditResolver, advisors: AdvisorsListResolver},
+                canDeactivate: [PreventUnsavedChangesAdminStudentEditGuard] },
             { path: 'adduser', component: AdminAddUserComponent, resolve: {advisors: AdvisorsListResolver, user: StudentListResolver} },
             { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
             { path: 'advisors', component: AdvisorsListComponent, resolve: {advisors: AdvisorsListResolver} },
-            { path: 'addadvisor', component: AdvisorAddComponent, resolve: {advisors: AdvisorsListResolver} },
-            { path: 'adminstudent/edit/:id', component: AdminStudentEditComponent,
-                resolve: {user: StudentEditResolver, advisors: AdvisorsListResolver},
-                canDeactivate: [PreventUnsavedChangesStudentEditGuard] }
+            { path: 'addadvisor', component: AdvisorAddComponent, resolve: {advisors: AdvisorsListResolver} }
         ]
     },
     { path: '**', redirectTo: 'home', pathMatch: 'full' }
