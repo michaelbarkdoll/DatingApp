@@ -123,17 +123,15 @@
           </ng-template>
           
           <!-- Topic -->
-          <div *ngIf="user.masterThesisTitle != null  && user.masterThesisTitle != ''" class="col-md-6">
+          <div *ngIf="user.masterThesisTitle != null  && user.masterThesisTitle != '' && (user.masterProjectTitle == null || user.masterProjectTitle == '')" class="col-md-6">
             {{user.masterThesisTitle}}
           </div>
-          <div *ngIf="user.masterProjectTitle != null && user.masterProjectTitle != ''" class="col-md-6">
+          <div *ngIf="user.masterProjectTitle != null && user.masterProjectTitle != '' && (user.masterThesisTitle == null  || user.masterThesisTitle == '')" class="col-md-6">
             {{user.masterProjectTitle}}
           </div>
           <div *ngIf="(user.masterProjectTitle == null && user.masterThesisTitle == null)
                   || (user.masterProjectTitle == '' && user.masterThesisTitle == '')" class="col-md-6">
-            
           </div>
-
         </div>
       </div>
     </div>
