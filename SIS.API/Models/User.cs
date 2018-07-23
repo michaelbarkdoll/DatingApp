@@ -117,9 +117,11 @@ namespace SIS.API.Models {
         // 7.22.2018
         public string MasterAdvisor { get; set; }
         public string MasterProjectTitle { get; set; }
+        public ICollection<UserFile> UserFiles { get; set; }
 
         public User () {
             Photos = new Collection<Photo> ();
+            UserFiles = new Collection<UserFile> ();
             // UserBachelorDetail = new UserBachelorDetails();
         }
     }

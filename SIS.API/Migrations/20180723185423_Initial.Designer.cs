@@ -11,14 +11,55 @@ using System;
 namespace SIS.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180721140155_AddedUserModel")]
-    partial class AddedUserModel
+    [Migration("20180723185423_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026");
+
+            modelBuilder.Entity("SIS.API.Models.AdvisorDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Title");
+
+                    b.Property<int>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
+                    b.ToTable("UserAdvisorDetails");
+                });
+
+            modelBuilder.Entity("SIS.API.Models.Advisors", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("FullName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Advisors");
+                });
 
             modelBuilder.Entity("SIS.API.Models.Photo", b =>
                 {
@@ -113,6 +154,8 @@ namespace SIS.API.Migrations
 
                     b.Property<string>("LookingFor");
 
+                    b.Property<string>("MasterAdvisor");
+
                     b.Property<string>("MasterCommitteeMember1");
 
                     b.Property<string>("MasterCommitteeMember2");
@@ -121,7 +164,11 @@ namespace SIS.API.Migrations
 
                     b.Property<DateTime?>("MasterDefenseDate");
 
+                    b.Property<string>("MasterFocus");
+
                     b.Property<DateTime?>("MasterGraduationDate");
+
+                    b.Property<string>("MasterProjectTitle");
 
                     b.Property<DateTime?>("MasterStartDate");
 
@@ -145,6 +192,8 @@ namespace SIS.API.Migrations
 
                     b.Property<string>("State");
 
+                    b.Property<string>("StudentLevel");
+
                     b.Property<string>("UserLevel");
 
                     b.Property<string>("Username");
@@ -166,6 +215,14 @@ namespace SIS.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+                });
+
+            modelBuilder.Entity("SIS.API.Models.AdvisorDetails", b =>
+                {
+                    b.HasOne("SIS.API.Models.User", "User")
+                        .WithOne("AdvisorDetails")
+                        .HasForeignKey("SIS.API.Models.AdvisorDetails", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SIS.API.Models.Photo", b =>

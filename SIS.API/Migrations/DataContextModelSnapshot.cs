@@ -263,7 +263,7 @@ namespace SIS.API.Migrations
             modelBuilder.Entity("SIS.API.Models.UserFile", b =>
                 {
                     b.HasOne("SIS.API.Models.User", "User")
-                        .WithMany()
+                        .WithMany("UserFiles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

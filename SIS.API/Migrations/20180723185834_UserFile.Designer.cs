@@ -11,8 +11,8 @@ using System;
 namespace SIS.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180723134224_Advisors")]
-    partial class Advisors
+    [Migration("20180723185834_UserFile")]
+    partial class UserFile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -205,6 +205,34 @@ namespace SIS.API.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("SIS.API.Models.UserFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("FilePath");
+
+                    b.Property<string>("PublicId");
+
+                    b.Property<string>("Url");
+
+                    b.Property<int>("UserId");
+
+                    b.Property<bool>("isProject");
+
+                    b.Property<bool>("isThesis");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserFiles");
+                });
+
             modelBuilder.Entity("SIS.API.Models.Value", b =>
                 {
                     b.Property<int>("Id")
@@ -229,6 +257,14 @@ namespace SIS.API.Migrations
                 {
                     b.HasOne("SIS.API.Models.User", "User")
                         .WithMany("Photos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SIS.API.Models.UserFile", b =>
+                {
+                    b.HasOne("SIS.API.Models.User", "User")
+                        .WithMany("UserFiles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
