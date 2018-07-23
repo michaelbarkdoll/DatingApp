@@ -15,3 +15,9 @@
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }
+
+.wrapflex {
+    display: flex; 
+ flex-flow: row wrap;
+ align-content: flex end;
+}
