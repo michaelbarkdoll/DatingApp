@@ -8,6 +8,26 @@ namespace SIS.API.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "MasterAdvisor",
+                table: "Users",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "MasterFocus",
+                table: "Users",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "MasterProjectTitle",
+                table: "Users",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "StudentLevel",
+                table: "Users",
+                nullable: true);
+
             migrationBuilder.CreateTable(
                 name: "Advisors",
                 columns: table => new
@@ -61,6 +81,22 @@ namespace SIS.API.Migrations
 
             migrationBuilder.DropTable(
                 name: "UserAdvisorDetails");
+
+            migrationBuilder.DropColumn(
+                name: "MasterAdvisor",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "MasterFocus",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "MasterProjectTitle",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "StudentLevel",
+                table: "Users");
         }
     }
 }

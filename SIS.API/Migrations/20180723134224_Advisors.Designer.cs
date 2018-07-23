@@ -11,8 +11,8 @@ using System;
 namespace SIS.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180722144052_Test4")]
-    partial class Test4
+    [Migration("20180723134224_Advisors")]
+    partial class Advisors
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -167,6 +167,8 @@ namespace SIS.API.Migrations
                     b.Property<string>("MasterFocus");
 
                     b.Property<DateTime?>("MasterGraduationDate");
+
+                    b.Property<string>("MasterProjectTitle");
 
                     b.Property<DateTime?>("MasterStartDate");
 
