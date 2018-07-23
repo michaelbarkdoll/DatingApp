@@ -1,4 +1,5 @@
 import { Photo } from './Photo';
+import { UserFile } from './UserFile';
 
 export interface User {
   id: number;
@@ -93,4 +94,6 @@ export interface User {
     masterProjectTitle?: string;
     studentLevel?: string;
     masterFocus?: string;
+    // 7.23.2018
+    files?: UserFile[];
 }

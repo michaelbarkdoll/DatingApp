@@ -105,5 +105,7 @@ namespace SIS.API.Dtos {
         public string MasterProjectTitle { get; set; }
         public string StudentLevel { get; set; }
         public DateTime DateOfBirth { get; set; }
+        // 07.23.2018
+        public ICollection<UserFilesForDetailedDto> UserFiles { get; set; }
     }
 }

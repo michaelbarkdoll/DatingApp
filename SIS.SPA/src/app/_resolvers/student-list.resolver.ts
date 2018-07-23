@@ -17,8 +17,6 @@ export class StudentListResolver implements Resolve<User[]> {
         // We're going out to our member service and getting the user and returning it as an observable to our component.
         // In the case of a component we'd need to subscribe because we're returning an Observable
         // But the route resolver automatically subscribes for us so we dont need to use it here
-
-        // return this.userService.getDetailedUsersAsAdmin().catch(error => {
         return this.userService.getStudentListAsAdmin().catch(error => {
             this.alertify.error('Problem retrieving data');
             this.router.navigate(['/home']);
