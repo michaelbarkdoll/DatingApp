@@ -119,18 +119,61 @@ export class AdminStudentEditComponent implements OnInit {
     return dtr;
   }
 
+  updateValues() {
+    this.user.gender = this.studentEditForm.value['gender'];
+    this.user.knownAs = this.studentEditForm.value['knownAs'];
+    this.user.firstName = this.studentEditForm.value['firstName'];
+    this.user.lastName = this.studentEditForm.value['lastName'];
+    this.user.dateOfBirth = this.studentEditForm.value['dateOfBirth'];
+    this.user.city = this.studentEditForm.value['city'];
+    this.user.country = this.studentEditForm.value['country'];
+    this.user.dawgTag = this.studentEditForm.value['dawgTag'];
+    this.user.advisor = this.studentEditForm.value['advisor'];
+    this.user.studentLevel = this.studentEditForm.value['studentLevel'];
+    this.user.bachelorStartDate = this.studentEditForm.value['bachelorStartDate'];
+    this.user.bachelorFacultyMentor = this.studentEditForm.value['bachelorFacultyMentor'];
+    this.user.seniorProjectAdvisor = this.studentEditForm.value['seniorProjectAdvisor'];
+    this.user.bachelorGraduationDate = this.studentEditForm.value['bachelorGraduationDate'];
+    this.user.seniorProjectTitle = this.studentEditForm.value['seniorProjectTitle'];
+    this.user.seniorProjectURL = this.studentEditForm.value['seniorProjectURL'];
+    this.user.masterFocus = this.studentEditForm.value['masterFocus'];
+    this.user.masterAdvisor = this.studentEditForm.value['masterAdvisor'];
+    this.user.masterCommitteeMember1 = this.studentEditForm.value['masterCommitteeMember1'];
+    this.user.masterCommitteeMember2 = this.studentEditForm.value['masterCommitteeMember2'];
+    this.user.masterCommitteeMember3 = this.studentEditForm.value['masterCommitteeMember3'];
+    this.user.masterDefenseDate = this.studentEditForm.value['masterDefenseDate'];
+    this.user.masterProjectTitle = this.studentEditForm.value['masterProjectTitle'];
+    this.user.masterThesisTitle = this.studentEditForm.value['masterThesisTitle'];
+    this.user.masterGraduationDate = this.studentEditForm.value['masterGraduationDate'];
+    this.user.doctorateStartDate = this.studentEditForm.value['doctorateStartDate'];
+    this.user.doctorateCandidateAcceptDate = this.studentEditForm.value['doctorateCandidateAcceptDate'];
+    this.user.doctorateAdvisor = this.studentEditForm.value['doctorateAdvisor'];
+    this.user.doctorateCommitteeMember1 = this.studentEditForm.value['doctorateCommitteeMember1'];
+    this.user.doctorateCommitteeMember2 = this.studentEditForm.value['doctorateCommitteeMember2'];
+    this.user.doctorateCommitteeMember3 = this.studentEditForm.value['doctorateCommitteeMember3'];
+    this.user.doctorateCommitteeMember4 = this.studentEditForm.value['doctorateCommitteeMember4'];
+    this.user.doctorateCommitteeMember5 = this.studentEditForm.value['doctorateCommitteeMember5'];
+    this.user.doctorateCommitteeMember6 = this.studentEditForm.value['doctorateCommitteeMember6'];
+    this.user.dissertationDefenseDate = this.studentEditForm.value['dissertationDefenseDate'];
+    this.user.dissertationTitle = this.studentEditForm.value['dissertationTitle'];
+    this.user.doctorateGraduationDate = this.studentEditForm.value['doctorateGraduationDate'];
+    this.user.BA = this.studentEditForm.value['BA'];
+    this.user.BS = this.studentEditForm.value['BS'];
+    this.user.MS = this.studentEditForm.value['MS'];
+    this.user.PHD = this.studentEditForm.value['PHD'];
+
+      /*
+      username: [this.user.username, Validators.required],
+      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]],
+      confirmPassword: ['', Validators.required],
+      */
+  }
+
   updateUser() {
     if (this.studentEditForm.valid) {
 
-      /* this.setStudentLevel(this.studentLevel);
-      this.registerForm.patchValue({
-        BA: this.isBA(),
-        BS: this.isBS(),
-        MS: this.isMasters(),
-        PHD: this.isDoctorate()
-      }); */
-
-      this.user = Object.assign({}, this.studentEditForm.value);
+      // this.user = Object.assign({}, this.studentEditForm.value);
+      this.updateValues();
 
       // Set the default knownAs name to their first name
       if (this.user.knownAs === '') {
@@ -155,7 +198,7 @@ export class AdminStudentEditComponent implements OnInit {
       }
 
 
-      // this.route.snapshot.params['id'] = potential admin's userId
+      // this.route.snapshot.params['id'] = student id of the profile being editted.
       this.userService.updateUserAsAdmin(this.route.snapshot.params['id'], this.user).subscribe(next => {
         this.alertify.success('Profile updated successfully');
         this.router.navigate(['/students']);
