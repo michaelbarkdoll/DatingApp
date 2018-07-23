@@ -67,26 +67,46 @@
 
       <!--  <div class="container-fluid"> -->
       <div *ngFor="let user of users">
-        <div class="row">
+        <div class="row vertical-align">
           <!-- btn-xs extra small button -->
           <!--  <button type="button" class="btn btn-xs btn-danger"><i class="fa fa-trash-o"></i></button> -->
           <!--<div class="col-md-1">{{user.seniorProjectAdvisor}}</div>-->
           <!--<div class="col-md-1">s{{user.id}}t</div>-->
 
           <!-- Student Name -->
-          <div class="col-md-2">
+          <!-- <div class="col-md-2">
             <button class="btn btn-primary btn-sm" [routerLink]="['/students/', user.id]" routerLinkActive="router-link-active">
               <i class="fa fa-user"></i>
             </button> 
             {{user.firstName}} {{user.lastName}}
+          </div> -->
+          <div class="col-md-2">
+            <div id="buttonleft">
+                <button class="btn btn-primary btn-sm" [routerLink]="['/students/', user.id]" routerLinkActive="router-link-active">
+                  <i class="fa fa-user"></i>
+                </button> 
+            </div>
+            <div id="textright">
+                {{user.firstName}} {{user.lastName}}
+            </div>
           </div>
 
           <!-- Nickname -->
-          <div class="col-md-1">
+          <!-- <div class="col-md-1">
             {{user.username}}
             <button style="float: right;" class="btn btn-primary btn-sm" [routerLink]="['/student/edit/', user.id]" routerLinkActive="router-link-active">
               <i class="fa fa-edit"></i>
             </button>
+          </div> -->
+          <div class="col-md-1">
+            <div id="textleft">
+                {{user.username}}
+            </div>
+            <div id="buttonright">
+                <button style="float: right;" class="btn btn-primary btn-sm" [routerLink]="['/student/edit/', user.id]" routerLinkActive="router-link-active">
+                  <i class="fa fa-edit"></i>
+                </button>
+            </div>
           </div>
 
           <!-- Advisor -->
