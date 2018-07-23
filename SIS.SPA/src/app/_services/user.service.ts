@@ -108,6 +108,13 @@ export class UserService {
             .catch(this.handleError);
     }
 
+    getStudentListAsAdmin(): Observable<User[]> {
+        return this.authHttp
+            .get(this.baseUrl + 'users/studentlist')
+            .map(response => <User[]>response.json())
+            .catch(this.handleError);
+    }
+
     getAdvisorList(): Observable<Advisors[]> {
         return this.authHttp.get(this.baseUrl + 'users/advisorlist')
         .map(response => <Advisors[]>response.json())

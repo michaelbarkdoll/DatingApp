@@ -45,6 +45,7 @@ import { AdvisorsListResolver } from './_resolvers/advisors-list.resolver';
 import { AdvisorAddComponent } from './advisors/advisor-add/advisor-add.component';
 import { AdminStudentEditComponent } from './admin/admin-student-edit/admin-student-edit.component';
 import { PreventUnsavedChangesAdminStudentEditGuard } from './_guards/prevent-unsaved-changes-admin-student-edit-guard';
+import { AdminStudentUploadComponent } from './admin/admin-student-upload/admin-student-upload.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { PreventUnsavedChangesAdminStudentEditGuard } from './_guards/prevent-un
       AdminAddUserComponent,
       AdvisorsListComponent,
       AdvisorAddComponent,
-      AdminStudentEditComponent
+      AdminStudentEditComponent,
+      AdminStudentUploadComponent
    ],
    imports: [
       BrowserModule,
