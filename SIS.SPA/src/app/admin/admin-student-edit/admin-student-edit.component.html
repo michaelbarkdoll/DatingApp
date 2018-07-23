@@ -16,6 +16,21 @@
 
     <div class="row">
       <div class="col-sm-4">
+
+        <!-- Photo editor panel  -->
+        <div class="tab-panel">
+          <!-- Photo Editor Section -->
+          <h3 class="text-center text-primary">Photo Details:</h3>
+          <hr>
+          <app-admin-photo-editor [photos]="user.photos" [photoUserId]="user.id"></app-admin-photo-editor>
+          <!-- <app-admin-photo-editor [photos]="user.photos"></app-admin-photo-editor> -->
+
+
+        </div>
+        <!-- End of Photo editor panel -->
+        <br>
+
+
         <div class="panel panel-default">
           <div class="form-group">
             <br>
@@ -182,7 +197,6 @@
           </div>
         </div>
         <br>
-
 
         <div class="tab-panel">
 
@@ -489,6 +503,8 @@
 
         </div>
         <!-- End of panel -->
+
+
       </div>
       <!-- End of right column col-sm-8 -->
 
