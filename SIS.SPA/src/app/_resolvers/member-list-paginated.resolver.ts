@@ -6,11 +6,13 @@ import { AlertifyService } from '../_services/alertify.service';
 import { Observable } from '../../../node_modules/rxjs';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/of';
+import { environment } from '../../environments/environment';
 
 // We don't add Injectable to components because there already a subtype of components
 @Injectable()
 export class MemberListPaginatedResolver implements Resolve<User[]> {
-    pageSize = 5;
+    // pageSize = 8;
+    pageSize = environment.pageSize;
     pageNumber = 1;
 
     constructor(private userService: UserService,
