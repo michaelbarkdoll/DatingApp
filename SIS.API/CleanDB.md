@@ -160,3 +160,81 @@ https://github.com/eligrey/FileSaver.js
 dotnet ef migrations add "ExtendUser"
 dotnet ef database update
 ````
+
+
+
+
+https://www.json-generator.com/
+
+````
+[
+  '{{repeat(99)}}',
+  {
+    Username: '{{firstName("female")}}',
+    FirstName: '{{firstName("female")}}',
+    LastName: '{{surname()}}',
+    DawgTag: function(num) {
+      return num.integer(850000000,859999999);
+    },
+    Gender: 'female',
+    DateOfBirth: '{{date(new Date(1950,0,1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+    Password: 'password',
+    KnownAs: function(){ return this.Username; },
+    Created: '{{date(new Date(2017,0,1), new Date(2017, 7, 31), "YYYY-MM-dd")}}',
+    LastActive: function(){return this.DateCreated; },
+    Introduction: '{{lorem(1, "paragraphs")}}',
+    LookingFor: '{{lorem(1, "paragraphs")}}',
+    Interests: '{{lorem(1, "sentences")}}',
+    Address1: '{{integer(100, 999)}} {{street()}}',
+    City: '{{city()}}',
+    Country: '{{country()}}',
+    MasterThesisTitle: '{{lorem(1, "sentences")}}',
+    Photos: [
+        {
+          url: function(num) {
+          return 'https://randomuser.me/api/portraits/women/' + num.integer(1,99) + '.jpg';
+        },
+        isMain: true,
+        description: '{{lorem()}}'
+      }
+    ]
+  }
+]
+````
+
+
+````
+[
+  '{{repeat(99)}}',
+  {
+    Username: '{{firstName("male")}}',
+    FirstName: '{{firstName("male")}}',
+    LastName: '{{surname()}}',
+    DawgTag: function(num) {
+      return num.integer(850000000,859999999);
+    },
+    Gender: 'male',
+    DateOfBirth: '{{date(new Date(1950,0,1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+    Password: 'password',
+    KnownAs: function(){ return this.Username; },
+    Created: '{{date(new Date(2017,0,1), new Date(2017, 7, 31), "YYYY-MM-dd")}}',
+    LastActive: function(){return this.DateCreated; },
+    Introduction: '{{lorem(1, "paragraphs")}}',
+    LookingFor: '{{lorem(1, "paragraphs")}}',
+    Interests: '{{lorem(1, "sentences")}}',
+    Address1: '{{integer(100, 999)}} {{street()}}',
+    City: '{{city()}}',
+    Country: '{{country()}}',
+    MasterThesisTitle: '{{lorem(1, "sentences")}}',
+    Photos: [
+        {
+          url: function(num) {
+          return 'https://randomuser.me/api/portraits/men/' + num.integer(1,99) + '.jpg';
+        },
+        isMain: true,
+        description: '{{lorem()}}'
+      }
+    ]
+  }
+]
+````

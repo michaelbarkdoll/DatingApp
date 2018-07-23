@@ -33,7 +33,7 @@ namespace SIS.API.Data {
                 user.Username = user.Username.ToLower();
 
                 if (user.Username.ToString().Equals("freda")) {
-                    user.SeniorProjectAdvisor = "Dr. None2";
+                    // user.SeniorProjectAdvisor = "Dr. None2";
                     user.UserLevel = "Admin";
                 }
                 else {
