@@ -18,8 +18,8 @@
           -->
           <div class="form-group text-center">
             <button class="btn btn-success" type="button" (click)="userAddToggle()">Add Student</button>
-            <button class="btn btn-danger" type="submit">Delete Student</button>
-            <button type="button" name="orderBy" class="btn btn-primary btn-primary">Newest Members</button>
+            <button class="btn btn-danger" [disabled]="true" type="submit">Delete Student</button>
+            <button type="button" name="orderBy" [disabled]="true" class="btn btn-primary btn-primary">Newest Members</button>
             <!-- <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button> -->
 
             <!--
@@ -29,19 +29,6 @@
           </div>
         </form>
       </div>
-      <!-- End of Button Row -->
-      <!--<div class="row">-->
-      <!--<form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate> -->
-      <!-- <div class="form-group"> -->
-      <!--<label for="minAge">Age From</label>-->
-      <!--<input type="number" class="form-control" style="width: 60px" id="minAge" name="minAge" [(ngModel)]="userParams.minAge">-->
-      <!--     </div> -->
-      <!-- </form> -->
-      <!--</div>-->
-      <!--
-      <button type="submit" class="btn btn-primary" style="margin-left:10px">Apply Filters</button>
-            <button type="button" class="btn btn-info" style="margin-left:10px" (click)="resetFilters()">Reset Filter</button>
-            -->
     </div>
     <!-- End of pull-right div -->
   </div>
