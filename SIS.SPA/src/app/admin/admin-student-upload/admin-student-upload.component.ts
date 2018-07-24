@@ -19,6 +19,7 @@ export class AdminStudentUploadComponent implements OnInit {
   // @Input() photos: Photo[];
   // @Input() photoUserId: number;
   @Input() userFiles: UserFile[];
+  // userFiles: UserFile[] = new Array();
   @Input() userId: number;
   user: User;
 
@@ -80,9 +81,11 @@ export class AdminStudentUploadComponent implements OnInit {
           isProject: res.isProject
         };
         // this.photos.push(photo);
+        console.log('I got here...');
         console.log(userFile);
         // fix it here!!!!
-        // this.userFiles.push(userFile);
+
+        this.userFiles.push(userFile);
 
         // if (photo.isMain) {
         /* if (userFile.isThesis) {
