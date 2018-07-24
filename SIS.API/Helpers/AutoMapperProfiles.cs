@@ -35,6 +35,7 @@ namespace SIS.API.Helpers
             CreateMap<UserForRegisterDto, User>();
 
             CreateMap<UserFilesForCreationDto, UserFile>();
+            CreateMap<UserFile, UserFileForReturnDto>();
             CreateMap<UserFile, UserFilesForDetailedDto>();
         }
     }

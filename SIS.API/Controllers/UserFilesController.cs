@@ -33,14 +33,14 @@ namespace SIS.API.Controllers {
             var fileFromRepo = await _repo.GetUserFile (id);
 
             // we dont want to return the photo itself we want to return a dto
-            var file = _mapper.Map<UserFilesForDetailedDto> (fileFromRepo);
+            var file = _mapper.Map<UserFileForReturnDto> (fileFromRepo);
 
             return Ok (file);
         }
 
         [HttpPost]
         // public async Task<IActionResult> AddPhotoForUser(int userId, PhotoForCreationDto photoDto) {
-        public async Task<IActionResult> AddPhotoForUser(int userId, UserFilesForCreationDto userFileDto) {
+        public async Task<IActionResult> AddFileForUser(int userId, UserFilesForCreationDto userFileDto) {
             var user = await _repo.GetUser(userId);
 
             if(user == null)
@@ -112,8 +112,12 @@ namespace SIS.API.Controllers {
             var addfile = _mapper.Map<UserFile>(userFileDto);   // We create this mapping from PhotoForCreationDto back to photo elsewhere
             // photo.User = user;
             addfile.User = user;
-            System.Console.WriteLine(user.UserFiles.ToString());
+            // System.Console.WriteLine(user.UserFiles.ToString());
+            System.Console.WriteLine("-- Inside AddFileForUser --");
             System.Console.WriteLine(user.UserFiles == null ? "yes" : "no");
+            System.Console.WriteLine(user.UserFiles.Count);
+            // System.Console.WriteLine(user.UserFiles.ToString());
+            System.Console.WriteLine("-- End AddFileForUser --");
 
             // Use repo dot add method
             // user.Photos.Add(photo);
@@ -125,7 +129,17 @@ namespace SIS.API.Controllers {
             if (await _repo.SaveAll()){
                 // We're mapping our photo into photoToReturn
                 // photoToReturn is what we'll pass back and return
-                var userFileToReturn = _mapper.Map<UserFilesForDetailedDto>(addfile);
+
+                var userFileToReturn = _mapper.Map<UserFileForReturnDto>(addfile);
+                System.Console.WriteLine(userFileToReturn.Url);
+                System.Console.WriteLine(userFileToReturn.DateAdded);
+                System.Console.WriteLine(userFileToReturn.Description);
+                System.Console.WriteLine(userFileToReturn.isProject);
+                System.Console.WriteLine(userFileToReturn.isThesis);
+                System.Console.WriteLine(userFileToReturn.PublicId);
+                // System.Console.WriteLine(userFileToReturn);
+                // System.Console.WriteLine(user.UserFiles.ToString());
+                System.Console.WriteLine("-- End AddFileForUser --");
                 
                 //return Ok();    // We fix this later
 

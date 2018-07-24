@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '../../../../nod
 import { AuthHttp } from '../../../../node_modules/angular2-jwt';
 import { User } from '../../_models/User';
 import { DatePipe } from '../../../../node_modules/@angular/common';
+import { UserFile } from '../../_models/UserFile';
 
 @Component({
   selector: 'app-admin-student-edit',
@@ -31,10 +32,22 @@ export class AdminStudentEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
-
+    console.log('- Start of admin-student-edit component');
     console.log('user.files:');
-    console.log(this.user.files);
+    console.log(this.user.files ? 'yes' : 'no');
+    if (this.user.files == null) {
+      console.log('it is null');
+      this.user.files = Array<UserFile>();
+    }
+    if (this.user.files == null) {
+      console.log('it is null');
+    } else {
+      console.log('created user.files');
+      console.log(this.user.files.toString());
+    }
+    console.log('user.username:');
     console.log(this.user.username);
+    console.log('- End of admin-student-edit component');
 
     this.route.data.subscribe(data => {
       this.advisors = data['advisors'];

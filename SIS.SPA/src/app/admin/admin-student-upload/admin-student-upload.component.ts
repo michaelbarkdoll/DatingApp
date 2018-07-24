@@ -18,7 +18,7 @@ import { environment } from '../../../environments/environment';
 export class AdminStudentUploadComponent implements OnInit {
   // @Input() photos: Photo[];
   // @Input() photoUserId: number;
-  @Input() userFiles: UserFile[];
+  @Input() files: UserFile[];
   // userFiles: UserFile[] = new Array();
   @Input() userId: number;
   user: User;
@@ -37,15 +37,32 @@ export class AdminStudentUploadComponent implements OnInit {
     private alertifyService: AlertifyService) { }
 
   ngOnInit() {
-    console.log('userFiles');
-    console.log(this.userFiles);
-    console.log('userFiles');
+    console.log('-- Start of upload component --');
 
     this.initializeUploader();
 
     this.route.data.subscribe(data => {
+      // this.user = data['user'];
+      // this.user.files = data.files;
+      // this.user.id = data.id;
+      // this.userFiles = data['files'];
       this.user = data['user'];
     });
+
+    /* console.log('userFiles for user ' + '{{userId}}');
+    console.log(this.userId);
+    console.log('users files: ');
+    console.log(this.user.files);
+    console.log('username: ');
+    console.log(this.user.username);
+    console.log(this.user.firstName);
+    console.log(this.user.country);
+    console.log(this.user.toString());
+    console.log('userFiles'); */
+
+    // this.files = this.user.files;
+    console.log(this.user.files);
+    console.log('-- End of upload component --');
   }
 
   // Old photo editor
@@ -85,7 +102,8 @@ export class AdminStudentUploadComponent implements OnInit {
         console.log(userFile);
         // fix it here!!!!
 
-        this.userFiles.push(userFile);
+        this.files.push(userFile);
+        // this.user.files.push(userFile);
 
         // if (photo.isMain) {
         /* if (userFile.isThesis) {
@@ -106,7 +124,7 @@ export class AdminStudentUploadComponent implements OnInit {
 
         this.userService.deleteFile(this.userId, userFileId).subscribe(() => {
         // this.userService.deletePhoto(this.photoUserId, photoId).subscribe(() => {
-        this.userFiles.splice(_.findIndex(this.userFiles, {userFileId: userFileId}), 1);
+        this.files.splice(_.findIndex(this.files, {userFileId: userFileId}), 1);
         // this.photos.splice(_.findIndex(this.photos, {photoId: photoId}), 1);
         this.alertifyService.success('File has been deleted');
         // this.alertifyService.success('Photo has been deleted');
