@@ -23,6 +23,8 @@ export class AdminStudentUploadComponent implements OnInit {
   @Input() files: UserFile[];
   @Input() userId: number;
   user: User;
+  testuser: User;
+  namee: string;
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
@@ -41,6 +43,23 @@ export class AdminStudentUploadComponent implements OnInit {
     console.log('-- Start of admin-student-upload component --');
 
     this.initializeUploader();
+
+    console.log('userId');
+    console.log(this.userId);
+
+    this.userService.getUserAsAdmin(this.userId).subscribe(data => {
+      this.namee = data['username'];
+    });
+
+    console.log('testuser username:');
+    console.log(this.namee);
+    // console.log(this.testuser.username);
+
+    /* console.log('testuser photos length:');
+    console.log(this.testuser.photos.length);
+
+    console.log('testuser files length:');
+    console.log(this.testuser.files.length); */
 
     this.route.data.subscribe(data => {
       // this.user = data['user'];
@@ -126,12 +145,6 @@ export class AdminStudentUploadComponent implements OnInit {
     this.alertifyService.confirm('Are you sure you want to delete this file?', () => {
       // this.photoUserId
       // this.userService.deletePhoto(this.authService.decodedToken.nameid, photoId).subscribe(() => {
-
-      console.log('File to be deleted');
-      console.log('userFileId: ');
-      console.log(userFileId);
-      console.log('this.userId: ');
-      console.log(this.userId);
 
         this.userService.deleteFile(this.userId, userFileId).subscribe(() => {
         // this.userService.deletePhoto(this.photoUserId, photoId).subscribe(() => {
