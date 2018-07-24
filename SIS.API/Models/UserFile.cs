@@ -14,5 +14,6 @@ namespace SIS.API.Models
         public User User { get; set; }
         public int UserId { get; set; }
         public string FilePath { get; set; }
+        public string FileName { get; set; }
     }
 }

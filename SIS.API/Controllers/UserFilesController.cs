@@ -26,20 +26,17 @@ namespace SIS.API.Controllers {
             _dataRepoConfig = dataRepoConfig;
         }
 
-        /* [HttpGet("{id}", Name = "GetPhoto")] */
         [HttpGet ("{id}", Name = "GetUserFile")]
-        /* public async Task<IActionResult> GetPhoto(int id) { */
         public async Task<IActionResult> GetUserFile (int id) {
             var fileFromRepo = await _repo.GetUserFile (id);
 
-            // we dont want to return the photo itself we want to return a dto
+            // we dont want to return the file itself we want to return a dto
             var file = _mapper.Map<UserFileForReturnDto> (fileFromRepo);
 
             return Ok (file);
         }
 
         [HttpPost]
-        // public async Task<IActionResult> AddPhotoForUser(int userId, PhotoForCreationDto photoDto) {
         public async Task<IActionResult> AddFileForUser(int userId, UserFilesForCreationDto userFileDto) {
             var user = await _repo.GetUser(userId);
 
@@ -53,75 +50,38 @@ namespace SIS.API.Controllers {
 
             var file = userFileDto.File; 
 
-            // var uploadResult = new ImageUploadResult();
-
             if(file.Length > 0) {
                 // full path to file in temp location
-                var filePath2 = Path.GetTempFileName();
-                // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + DateTime.Now;
-                // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + DateTime.Now.ToString("yyyyMMddHHmmssf");
+                // var filePath2 = Path.GetTempFileName();
                
-               
-                var filePath = _dataRepoConfig.Value.UserFilesDirectory + "\\" + Guid.NewGuid() + "-" + file.FileName; // _dataRepoConfig.Value.UserFilesDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
+                var uniqueGuid = Guid.NewGuid();
+                var filePath = _dataRepoConfig.Value.UserFilesDirectory + "\\" + uniqueGuid + "-" + file.FileName; // _dataRepoConfig.Value.UserFilesDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
                 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     await file.CopyToAsync(fileStream);
                     fileStream.Close();
-
-                    /* var uploadParams = new ImageUploadParams() {
-                        // FileDescription params: we could provide a path if we're retrieve the file from local storage
-                        // or we can provide a stream
-                        File = new FileDescription(filePath)
-                        // File = new FileDescription(file.Name, destination)
-                    }; */
-
-                    // Upload file to cloudinary platofrm
-                    /* uploadResult = _cloudinary.Upload(uploadParams); */
                 }
-                // photoDto.FilePath = filePath;
+
                 userFileDto.FilePath = filePath;
-
-                /*
-                using (var stream = file.OpenReadStream()) {
-
-                    var uploadParams = new ImageUploadParams() {
-                        // FileDescription params: we could provide a path if we're retrieve the file from local storage
-                        // or we can provide a stream
-                        File = new FileDescription(file.Name, stream)
-                        // File = new FileDescription(file.Name, destination)
-                    };
-
-                    // Upload file to cloudinary platofrm
-                    uploadResult = _cloudinary.Upload(uploadParams);
-                }
-                */
+                userFileDto.FileName = uniqueGuid + "-" + file.FileName;
             }
 
-            // If it comes back successfully
-            // photoDto.Url = uploadResult.Uri.ToString();
-            // photoDto.PublicId = uploadResult.PublicId;
+            // Map userFileDto (source) to UserFile (dst)
+            var addfile = _mapper.Map<UserFile>(userFileDto);   // We create this mapping inside AutoMapperProfile.cs
             
-
-            // Now we need to map our PhotoDto to our actual photo entity
-            // photoDto is the source
-            // Photo is the destination
-
-            // Map our photo into our photo entity
-            // var photo = _mapper.Map<Photo>(photoDto);   // We create this mapping from PhotoForCreationDto back to photo elsewhere
-            var addfile = _mapper.Map<UserFile>(userFileDto);   // We create this mapping from PhotoForCreationDto back to photo elsewhere
-            // photo.User = user;
             addfile.User = user;
-            // System.Console.WriteLine(user.UserFiles.ToString());
-            System.Console.WriteLine("-- Inside AddFileForUser --");
+            addfile.UserId = user.Id;
+            
+/*             System.Console.WriteLine("-- Inside AddFileForUser --");
             System.Console.WriteLine(user.UserFiles == null ? "yes" : "no");
             System.Console.WriteLine(user.UserFiles.Count);
-            // System.Console.WriteLine(user.UserFiles.ToString());
-            System.Console.WriteLine("-- End AddFileForUser --");
+            System.Console.WriteLine("-- End AddFileForUser --"); */
 
             // Use repo dot add method
             // user.Photos.Add(photo);
             user.UserFiles.Add(addfile);
+            System.Console.WriteLine($"UserId: {addfile.UserId}");
 
             
 
@@ -131,26 +91,23 @@ namespace SIS.API.Controllers {
                 // photoToReturn is what we'll pass back and return
 
                 var userFileToReturn = _mapper.Map<UserFileForReturnDto>(addfile);
+
+                System.Console.WriteLine("-- Inside AddFileForUser --");
                 System.Console.WriteLine(userFileToReturn.Url);
                 System.Console.WriteLine(userFileToReturn.DateAdded);
                 System.Console.WriteLine(userFileToReturn.Description);
                 System.Console.WriteLine(userFileToReturn.isProject);
                 System.Console.WriteLine(userFileToReturn.isThesis);
                 System.Console.WriteLine(userFileToReturn.PublicId);
-                // System.Console.WriteLine(userFileToReturn);
-                // System.Console.WriteLine(user.UserFiles.ToString());
+                System.Console.WriteLine(userFileToReturn.FileName);
                 System.Console.WriteLine("-- End AddFileForUser --");
-                
-                //return Ok();    // We fix this later
 
                 // Three overload options
                 // We'll use the string of a route name
-                // This is the route to get the photo that we just uploaded
-                // Now we don't have a way to get an individual photo at the moment either so we'll need to create that for starters
+                // This is the route to get the file that we just uploaded
+                // Now we don't have a way to get an individual file at the moment either so we'll need to create that inside GetUserFile()
                 return CreatedAtRoute("GetUserFile", new { id = addfile.Id }, userFileToReturn);
             }
-
-            
 
             return BadRequest("Could not add the photo");
         }
@@ -158,7 +115,8 @@ namespace SIS.API.Controllers {
 
         // [HttpDelete("{photoId}")]
         [HttpDelete("{userFileId}")]
-        public async Task<IActionResult> DeletePhoto(int userId, int userFileId) 
+        // public async Task<IActionResult> DeletePhoto(int userId, int userFileId) 
+        public async Task<IActionResult> DeleteFile(int userId, int userFileId) 
         {
             // UserId from token:
             var currentUserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
@@ -175,6 +133,14 @@ namespace SIS.API.Controllers {
                 return NotFound(); 
             
             _repo.Delete(fileFromRepo);
+
+            var filePath = fileFromRepo.FilePath + "\\" + fileFromRepo.FileName;
+
+            if(System.IO.File.Exists(@filePath)) {
+                System.Console.WriteLine("File Existed");
+                System.IO.File.Delete(@filePath);
+                System.Console.WriteLine($"File Deleted: {{filePath}}");
+            }
 
             if (await _repo.SaveAll())
                 return Ok();     // Success status code of 204

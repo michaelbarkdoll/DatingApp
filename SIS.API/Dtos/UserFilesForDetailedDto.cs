@@ -8,5 +8,6 @@ namespace SIS.API.Dtos {
         public DateTime DateAdded { get; set; }
         public bool isThesis { get; set; }
         public bool isProject { get; set; }
+        public string FileName { get; set; }
     }
 }

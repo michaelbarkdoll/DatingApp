@@ -15,7 +15,8 @@ namespace SIS.API.Data {
             _context.SaveChanges();
 
             // seed users
-            var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
+            // var userData = System.IO.File.ReadAllText("Data/UserSeedData.json");
+            var userData = System.IO.File.ReadAllText("Data/UserSeedDataF.json");
 
             // Deserialize this into objects
             var users = JsonConvert.DeserializeObject<List<User>>(userData);

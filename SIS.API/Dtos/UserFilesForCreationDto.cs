@@ -20,5 +20,7 @@ namespace SIS.API.Dtos
         public string FilePath { get; set; }
         public bool isThesis { get; set; }
         public bool isProject { get; set; }
+        // 07.24.2018
+        public string FileName { get; set; }
     }
 }

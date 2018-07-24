@@ -11,7 +11,7 @@ using System;
 namespace SIS.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20180723185834_UserFile")]
+    [Migration("20180724184014_UserFile")]
     partial class UserFile
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -214,9 +214,9 @@ namespace SIS.API.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("FilePath");
+                    b.Property<string>("FileName");
 
-                    b.Property<string>("PublicId");
+                    b.Property<string>("FilePath");
 
                     b.Property<string>("Url");
 

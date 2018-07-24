@@ -11,5 +11,6 @@ namespace SIS.API.Dtos
         public string PublicId { get; set; }
         public bool isThesis { get; set; }
         public bool isProject { get; set; }
+        public string FileName { get; set; }
     }
 }

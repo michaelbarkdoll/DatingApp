@@ -8,6 +8,7 @@ import { User } from '../../_models/User';
 import _ = require('underscore');
 import { FileUploader } from '../../../../node_modules/ng2-file-upload';
 import { environment } from '../../../environments/environment';
+import { Photo } from '../../_models/Photo';
 
 
 @Component({
@@ -17,9 +18,9 @@ import { environment } from '../../../environments/environment';
 })
 export class AdminStudentUploadComponent implements OnInit {
   // @Input() photos: Photo[];
+  @Input() photos: Photo[];
   // @Input() photoUserId: number;
   @Input() files: UserFile[];
-  // userFiles: UserFile[] = new Array();
   @Input() userId: number;
   user: User;
 
@@ -37,7 +38,7 @@ export class AdminStudentUploadComponent implements OnInit {
     private alertifyService: AlertifyService) { }
 
   ngOnInit() {
-    console.log('-- Start of upload component --');
+    console.log('-- Start of admin-student-upload component --');
 
     this.initializeUploader();
 
@@ -61,8 +62,11 @@ export class AdminStudentUploadComponent implements OnInit {
     console.log('userFiles'); */
 
     // this.files = this.user.files;
+    console.log('this.user.files: ');
     console.log(this.user.files);
-    console.log('-- End of upload component --');
+    console.log('files: ');
+    console.log(this.files);
+    console.log('-- End of admin-student-upload component --');
   }
 
   // Old photo editor
@@ -95,14 +99,15 @@ export class AdminStudentUploadComponent implements OnInit {
           dateAdded: res.dateAdded,
           description: res.description,
           isThesis: res.isThesis,
-          isProject: res.isProject
+          isProject: res.isProject,
+          fileName: res.fileName
         };
         // this.photos.push(photo);
-        console.log('I got here...');
+        console.log('-- Start of upload response component --');
         console.log(userFile);
-        // fix it here!!!!
 
         this.files.push(userFile);
+        console.log('-- End of upload response component --');
         // this.user.files.push(userFile);
 
         // if (photo.isMain) {
@@ -118,7 +123,7 @@ export class AdminStudentUploadComponent implements OnInit {
 
   // deletePhoto(photoId: number) {
   deleteUserFile(userFileId: number) {
-    this.alertifyService.confirm('Are you sure you want to delete this photo?', () => {
+    this.alertifyService.confirm('Are you sure you want to delete this file?', () => {
       // this.photoUserId
       // this.userService.deletePhoto(this.authService.decodedToken.nameid, photoId).subscribe(() => {
 
