@@ -129,6 +129,10 @@ export class UserService {
         return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/photos/' + photoId).catch(this.handleError);
     }
 
+    deleteFile(userId: number, fileId: number) {
+        return this.authHttp.delete(this.baseUrl + 'users/' + userId + '/files/' + fileId).catch(this.handleError);
+    }
+
     getAdvisors() {
         return this.authHttp
         .get(this.baseUrl + 'users/advisors')

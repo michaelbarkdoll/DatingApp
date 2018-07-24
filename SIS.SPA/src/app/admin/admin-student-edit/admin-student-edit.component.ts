@@ -32,6 +32,10 @@ export class AdminStudentEditComponent implements OnInit {
       this.user = data['user'];
     });
 
+    console.log('user.files:');
+    console.log(this.user.files);
+    console.log(this.user.username);
+
     this.route.data.subscribe(data => {
       this.advisors = data['advisors'];
     });

@@ -10,7 +10,7 @@ namespace SIS.API.Models
         public DateTime DateAdded { get; set; }
         public bool isThesis { get; set; }
         public bool isProject { get; set; }
-        public string PublicId { get; set; }
+        /* public string PublicId { get; set; } */
         public User User { get; set; }
         public int UserId { get; set; }
         public string FilePath { get; set; }

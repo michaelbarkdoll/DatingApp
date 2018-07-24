@@ -22,7 +22,7 @@ namespace SIS.API.Data {
         }
 
         public async Task<User> GetUser (int id) {
-            var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == id);
+            var user = await _context.Users.Include(p => p.Photos).Include(p => p.UserFiles).FirstOrDefaultAsync(u => u.Id == id);
 
             return user;
         }
@@ -112,6 +112,12 @@ namespace SIS.API.Data {
         {
             var photo = _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
             return photo;
+        }
+
+        public Task<UserFile> GetUserFile(int id)
+        {
+            var userFile = _context.UserFiles.FirstOrDefaultAsync(p => p.Id == id);
+            return userFile;
         }
 
         public Task<Photo> GetMainPhotoForUser(int userId)
