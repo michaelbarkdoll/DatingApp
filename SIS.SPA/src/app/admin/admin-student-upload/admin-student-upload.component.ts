@@ -127,6 +127,12 @@ export class AdminStudentUploadComponent implements OnInit {
       // this.photoUserId
       // this.userService.deletePhoto(this.authService.decodedToken.nameid, photoId).subscribe(() => {
 
+      console.log('File to be deleted');
+      console.log('userFileId: ');
+      console.log(userFileId);
+      console.log('this.userId: ');
+      console.log(this.userId);
+
         this.userService.deleteFile(this.userId, userFileId).subscribe(() => {
         // this.userService.deletePhoto(this.photoUserId, photoId).subscribe(() => {
         this.files.splice(_.findIndex(this.files, {userFileId: userFileId}), 1);

@@ -55,7 +55,7 @@ namespace SIS.API.Controllers {
                 // var filePath2 = Path.GetTempFileName();
                
                 var uniqueGuid = Guid.NewGuid();
-                var filePath = _dataRepoConfig.Value.UserFilesDirectory + "\\" + uniqueGuid + "-" + file.FileName; // _dataRepoConfig.Value.UserFilesDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
+                var filePath = _dataRepoConfig.Value.UserFilesDirectory + uniqueGuid + "-" + file.FileName; // _dataRepoConfig.Value.UserFilesDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
                 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
@@ -134,13 +134,18 @@ namespace SIS.API.Controllers {
             
             _repo.Delete(fileFromRepo);
 
-            var filePath = fileFromRepo.FilePath + "\\" + fileFromRepo.FileName;
+            var filePath = fileFromRepo.FilePath;
+            /* System.Console.WriteLine("--- Inside delete file ---");
+            System.Console.WriteLine($"filePath: {filePath}"); */
 
-            if(System.IO.File.Exists(@filePath)) {
-                System.Console.WriteLine("File Existed");
-                System.IO.File.Delete(@filePath);
-                System.Console.WriteLine($"File Deleted: {{filePath}}");
+            if (System.IO.File.Exists(filePath)) {
+                // System.Console.WriteLine("File Existed");
+                System.IO.File.Delete(filePath);
+                // System.Console.WriteLine($"File Deleted: {filePath}");
+            } /* else {
+                System.Console.WriteLine($"Couldn't find file: {filePath}");
             }
+            System.Console.WriteLine("--- End delete file ---"); */
 
             if (await _repo.SaveAll())
                 return Ok();     // Success status code of 204
