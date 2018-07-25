@@ -1,6 +1,6 @@
 img.thumbnail {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     margin-bottom: 2px;
 }
 
@@ -12,4 +12,11 @@ input[type=file] {
 
 figcaption {
     font-size: 0.9em;
+}
+
+.panel-body {
+    padding: 0 25px;
+/*     display: flex; 
+ flex-flow: row wrap;
+ align-content: flex end; */
 }

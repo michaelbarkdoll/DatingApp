@@ -22,5 +22,6 @@ namespace SIS.API.Dtos
         public bool isProject { get; set; }
         // 07.24.2018
         public string FileName { get; set; }
+        public string StorageFileName { get; set; }
     }
 }

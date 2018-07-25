@@ -9,5 +9,6 @@ namespace SIS.API.Dtos {
         public bool isThesis { get; set; }
         public bool isProject { get; set; }
         public string FileName { get; set; }
+        public string StorageFileName { get; set; }
     }
 }

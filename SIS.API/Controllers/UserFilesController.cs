@@ -50,10 +50,7 @@ namespace SIS.API.Controllers {
 
             var file = userFileDto.File; 
 
-            if(file.Length > 0) {
-                // full path to file in temp location
-                // var filePath2 = Path.GetTempFileName();
-               
+            if(file.Length > 0) {               
                 var uniqueGuid = Guid.NewGuid();
                 var filePath = _dataRepoConfig.Value.UserFilesDirectory + uniqueGuid + "-" + file.FileName; // _dataRepoConfig.Value.UserFilesDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
                 
@@ -64,7 +61,9 @@ namespace SIS.API.Controllers {
                 }
 
                 userFileDto.FilePath = filePath;
-                userFileDto.FileName = uniqueGuid + "-" + file.FileName;
+
+                userFileDto.FileName = file.FileName;
+                userFileDto.StorageFileName = uniqueGuid + "-" + file.FileName;
             }
 
             // Map userFileDto (source) to UserFile (dst)
@@ -72,16 +71,9 @@ namespace SIS.API.Controllers {
             
             addfile.User = user;
             addfile.UserId = user.Id;
-            
-/*             System.Console.WriteLine("-- Inside AddFileForUser --");
-            System.Console.WriteLine(user.UserFiles == null ? "yes" : "no");
-            System.Console.WriteLine(user.UserFiles.Count);
-            System.Console.WriteLine("-- End AddFileForUser --"); */
 
             // Use repo dot add method
-            // user.Photos.Add(photo);
             user.UserFiles.Add(addfile);
-            System.Console.WriteLine($"UserId: {addfile.UserId}");
 
             
 
@@ -91,16 +83,6 @@ namespace SIS.API.Controllers {
                 // photoToReturn is what we'll pass back and return
 
                 var userFileToReturn = _mapper.Map<UserFileForReturnDto>(addfile);
-
-                System.Console.WriteLine("-- Inside AddFileForUser --");
-                System.Console.WriteLine(userFileToReturn.Url);
-                System.Console.WriteLine(userFileToReturn.DateAdded);
-                System.Console.WriteLine(userFileToReturn.Description);
-                System.Console.WriteLine(userFileToReturn.isProject);
-                System.Console.WriteLine(userFileToReturn.isThesis);
-                System.Console.WriteLine(userFileToReturn.PublicId);
-                System.Console.WriteLine(userFileToReturn.FileName);
-                System.Console.WriteLine("-- End AddFileForUser --");
 
                 // Three overload options
                 // We'll use the string of a route name
@@ -152,14 +134,6 @@ namespace SIS.API.Controllers {
             
             return BadRequest("Failed to delete the file");
         }
-
-
-
-
-
-
-
-
 
 
     }
