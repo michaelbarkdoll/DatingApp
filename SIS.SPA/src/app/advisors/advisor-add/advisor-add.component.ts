@@ -67,7 +67,7 @@ export class AdvisorAddComponent implements OnInit {
 
     // this.authService.registerReturnUser(this.advisor).subscribe(() => {
     this.userService.addAdvisor(this.advisor).subscribe(() => {
-      this.alertifyService.success('Registration successful');
+      this.alertifyService.success('Advisor created successfully');
       this.router.navigate(['/advisors']);
     }, error => {
       this.alertifyService.error(error);
