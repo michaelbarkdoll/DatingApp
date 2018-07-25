@@ -4,18 +4,12 @@
     <figure>
       <img src="../../../assets/file.png" alt="" class="thumbnail">
       <figcaption>{{userFile.fileName}}</figcaption>
-    </figure>
-
-    <!-- <img class="thumbnail" src="../../../assets/user.png" alt=""> -->
-
-
-    <!-- [ngClass]="photo.isMain ? 'btn-success active' : 'btn-default'" -->
-    <div class="text-center">
-      <!-- <button type="button" class="btn btn-xs btn-success active"
-      (click)="downloadFile(userFile)">Download</button> -->
+      <button type="button" class="btn btn-xs" (click)="DownloadFile(userFile.id)">
+          <i class="fa fa-download" aria-hidden="true"></i>
+      </button>
       <button type="button" class="btn btn-xs btn-danger" (click)="deleteUserFile(userFile.id)">
           <i class="fa fa-trash-o"></i></button>
-    </div>
+    </figure>
   </div>
 </div>
 

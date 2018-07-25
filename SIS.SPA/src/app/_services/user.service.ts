@@ -5,11 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { Http, RequestOptions, Headers, Response } from '@angular/http';
+import { Http, RequestOptions, Headers, Response, ResponseContentType } from '@angular/http';
 import { AuthHttp } from 'angular2-jwt';
 import { PaginatedResult } from '../_models/pagination';
 import { UserParams } from '../_models/UserParams';
 import { Advisors } from '../_models/Advisors';
+import { UserFile } from '../_models/UserFile';
 
 
 @Injectable()
@@ -146,6 +147,19 @@ export class UserService {
 
     addAdvisor(advisor: Advisors) {
         return this.authHttp.post(this.baseUrl + 'advisor/addadvisor', advisor).catch(this.handleError);
+    }
+
+    // getFile(fileId: number, userId: number): Observable<UserFile> {
+    // getFile(fileId: number, userId: number): Observable<any> {
+    getFile(fileId: number, userId: number) {
+        const options = new RequestOptions({
+            responseType: ResponseContentType.Blob
+        });
+
+        return this.authHttp.get(this.baseUrl + 'download/' + fileId, options).catch(this.handleError);
+        /* this.authHttp.get(this.baseUrl + 'download/' + fileId, options).subscribe(res => {
+            saveAs((<any>res)._body, filename);
+        }); */
     }
 
     // We passed in the header

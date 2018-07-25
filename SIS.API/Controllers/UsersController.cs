@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SIS.API.Helpers;
 using System.IO;
+using Microsoft.Extensions.Options;
 
 namespace SIS.API.Controllers
 {
@@ -19,11 +20,13 @@ namespace SIS.API.Controllers
     {
         private readonly IDatingRepository _repo;
         private readonly IMapper _mapper;
+        private readonly IOptions<DataRepoSettings> _dataRepoConfig;
 
-        public UsersController(IDatingRepository repo, IMapper mapper)
+        public UsersController(IDatingRepository repo, IMapper mapper, IOptions<DataRepoSettings> dataRepoConfig)
         {
             _repo = repo;
             _mapper = mapper;
+            _dataRepoConfig = dataRepoConfig;
         }
 
         [HttpGet]
@@ -219,18 +222,16 @@ namespace SIS.API.Controllers
             return Ok(advisors);
         }
 
-        [HttpGet("download/{filename}")]
-        public async Task<IActionResult> Download(string filename)
+        [HttpGet("download/{fileId}")]
+        // public async Task<IActionResult> Download(string filename)
+        public async Task<IActionResult> Download(int fileId)
         {
-            if (filename == null)
-                return Content("Filename not present");
+            var path = await _repo.GetFilePath(fileId);
 
-            var path = Path.Combine(
-                           Directory.GetCurrentDirectory(), filename);
             // return Ok(path);
-            /* var path = Path.Combine(
-                           Directory.GetCurrentDirectory(),
-                           "wwwroot", filename); */
+            // var path = Path.Combine(
+            //                Directory.GetCurrentDirectory(),
+            //                "wwwroot", filename);
 
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
@@ -240,6 +241,28 @@ namespace SIS.API.Controllers
             memory.Position = 0;
             return File(memory, GetContentType(path), Path.GetFileName(path));
         }
+
+        /* [HttpGet("download/{filename}")]
+        public async Task<IActionResult> Download(string filename)
+        {
+            if (filename == null)
+                return Content("Filename not present");
+
+            var path = Path.Combine(
+                           Directory.GetCurrentDirectory(), filename);
+            // return Ok(path);
+            // var path = Path.Combine(
+            //                Directory.GetCurrentDirectory(),
+            //                "wwwroot", filename);
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, GetContentType(path), Path.GetFileName(path));
+        } */
 
         private string GetContentType(string path)
         {

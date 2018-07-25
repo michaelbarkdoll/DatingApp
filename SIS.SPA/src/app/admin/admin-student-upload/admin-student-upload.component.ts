@@ -9,6 +9,9 @@ import _ = require('underscore');
 import { FileUploader } from '../../../../node_modules/ng2-file-upload';
 import { environment } from '../../../environments/environment';
 import { Photo } from '../../_models/Photo';
+import { RequestOptions, ResponseContentType } from '../../../../node_modules/@angular/http';
+import { AuthHttp } from '../../../../node_modules/angular2-jwt';
+import { saveAs } from 'file-saver';
 
 
 @Component({
@@ -18,7 +21,7 @@ import { Photo } from '../../_models/Photo';
 })
 export class AdminStudentUploadComponent implements OnInit {
   // @Input() photos: Photo[];
-  @Input() photos: Photo[];
+  // @Input() photos: Photo[];
   // @Input() photoUserId: number;
   @Input() userFiles: UserFile[];
   @Input() userId: number;
@@ -30,12 +33,13 @@ export class AdminStudentUploadComponent implements OnInit {
   baseUrl = environment.apiUrl;
 
   // Add for file setMain
-  currentMain: UserFile;
+  // currentMain: UserFile;
   // @Output() getMemberPhotoChange = new EventEmitter<string>();
 
   constructor(private route: ActivatedRoute,
     private authService: AuthService,
     private userService: UserService,
+    private authHttp: AuthHttp,
     private alertifyService: AlertifyService) { }
 
   ngOnInit() {
@@ -111,6 +115,30 @@ export class AdminStudentUploadComponent implements OnInit {
         this.alertifyService.error('Failed to delete file');
         // this.alertifyService.error('Failed to delete photo');
       });
+    });
+  }
+
+  DownloadFile(fileId: number): void {
+    let fileNameToDownload: string;
+
+    const options = new RequestOptions({
+      responseType: ResponseContentType.Blob
+    });
+
+    this.userFiles.forEach(element => {
+      if ( element.id === fileId) {
+        fileNameToDownload = element.fileName;
+      }
+    });
+
+    if (fileNameToDownload === null) {
+      console.log('Unable to find a filename to download!');
+      return;
+    }
+
+    this.authHttp.get('http://localhost:5000/api/users/download/' + fileId, options).subscribe(res => {
+      saveAs((<any>res)._body, fileNameToDownload);
+      // saveAs((<any>res)._body, 'a.png');
     });
   }
 

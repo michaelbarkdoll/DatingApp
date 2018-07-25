@@ -146,5 +146,11 @@ namespace SIS.API.Data {
             // List<string> mylist = new List<string>(new string[] { "element1", "element2", "element3" });
             // return mylist;
         }
+
+        public async Task<string> GetFilePath(int fileId)
+        {
+            var filePath = await _context.UserFiles.FirstOrDefaultAsync(file => file.Id == fileId);
+            return filePath.FilePath;
+        }
     }
 }

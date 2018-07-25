@@ -23,5 +23,6 @@ namespace SIS.API.Data {
         Task<UserFile> GetUserFile(int id);
         Task<IEnumerable<Advisor>> GetAdvisors ();
         Task<IEnumerable<Advisors>> GetAdvisorsList ();
+        Task<string> GetFilePath(int fileId);
     }
 }

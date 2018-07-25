@@ -6,6 +6,8 @@ import { UserService } from '../../_services/user.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '../../../../node_modules/@angular/forms';
 import { User } from '../../_models/User';
 import { DatePipe } from '../../../../node_modules/@angular/common';
+import { RequestOptions, ResponseContentType } from '../../../../node_modules/@angular/http';
+import { AuthHttp } from '../../../../node_modules/angular2-jwt';
 
 @Component({
   selector: 'app-admin-student-edit',
@@ -21,6 +23,7 @@ export class AdminStudentEditComponent implements OnInit {
     private alertify: AlertifyService,
     private userService: UserService,
     private router: Router,
+    private authHttp: AuthHttp,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
@@ -221,5 +224,17 @@ export class AdminStudentEditComponent implements OnInit {
   cancel() {
     this.router.navigate(['/students']);
   }
+
+  /* DownloadFile(): void {
+
+    const options = new RequestOptions({
+      responseType: ResponseContentType.Blob
+    });
+
+    this.authHttp.get('http://localhost:5000/api/users/download/a.png', options).subscribe(res => {
+      saveAs((<any>res)._body, 'a.png');
+      // this._FileSaverService.save((<any>res)._body);
+    });
+  } */
 
 }

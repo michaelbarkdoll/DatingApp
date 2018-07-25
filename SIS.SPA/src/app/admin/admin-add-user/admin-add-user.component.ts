@@ -42,7 +42,7 @@ export class AdminAddUserComponent implements OnInit {
       this.advisors = data['advisors'];
     });
 
-    console.log(this.advisors);
+    // console.log(this.advisors);
   }
 
   createRegisterForm() {
