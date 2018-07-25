@@ -209,7 +209,7 @@
             <!-- bachelorFacultyMentor Dropdown -->
             <div class="form-group">
               <label for="advisor">Bachelor faculty mentor: </label>
-              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="bachelorFacultyMentor">
+              <select class="form-control" style="width: 200px" id="bachelorFacultyMentor" name="bachelorFacultyMentor" formControlName="bachelorFacultyMentor">
                 <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
                 </option>
               </select>
@@ -221,7 +221,7 @@
             <!-- seniorProjectAdvisor Dropdown -->
             <div class="form-group">
               <label for="advisor">Senior project advisor: </label>
-              <select class="form-control" style="width: 200px" id="advisor" name="advisor" formControlName="seniorProjectAdvisor">
+              <select class="form-control" style="width: 200px" id="seniorProjectAdvisor" name="seniorProjectAdvisor" formControlName="seniorProjectAdvisor">
                 <option *ngFor="let advisor of advisors" [value]="advisor.fullName">{{advisor.fullName}}
                 </option>
               </select>
