@@ -23,7 +23,7 @@ export class AdminStudentUploadComponent implements OnInit {
   @Input() userFiles: UserFile[];
   @Input() userId: number;
   user: User;
-  testuser: User;
+  // testuser: User;
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
@@ -43,9 +43,6 @@ export class AdminStudentUploadComponent implements OnInit {
 
     this.initializeUploader();
 
-    console.log('userId');
-    console.log(this.userId);
-
     this.route.data.subscribe(data => {
       // this.user = data['user'];
       // this.user.userFiles = data.files;
@@ -54,22 +51,6 @@ export class AdminStudentUploadComponent implements OnInit {
       this.user = data['user'];
     });
 
-    /* console.log('userFiles for user ' + '{{userId}}');
-    console.log(this.userId);
-    console.log('users userFiles: ');
-    console.log(this.user.userFiles);
-    console.log('username: ');
-    console.log(this.user.username);
-    console.log(this.user.firstName);
-    console.log(this.user.country);
-    console.log(this.user.toString());
-    console.log('userFiles'); */
-
-    // this.userFiles = this.user.userFiles;
-    console.log('this.user.userFiles: ');
-    console.log(this.user.userFiles);
-    console.log('userFiles: ');
-    console.log(this.userFiles);
     console.log('-- End of admin-student-upload component --');
   }
 
@@ -132,13 +113,8 @@ export class AdminStudentUploadComponent implements OnInit {
       // this.userService.deletePhoto(this.authService.decodedToken.nameid, photoId).subscribe(() => {
 
         this.userService.deleteFile(this.userId, userFileId).subscribe(() => {
-        // this.userService.deletePhoto(this.photoUserId, photoId).subscribe(() => {
-        console.log(this.userFiles);
-        this.userFiles.splice(_.findIndex(this.userFiles, {userFileId: userFileId}), 1);
-        console.log(this.userFiles);
-        // this.photos.splice(_.findIndex(this.photos, {photoId: photoId}), 1);
+        this.userFiles.splice(_.findIndex(this.userFiles, {id: userFileId}), 1);
         this.alertifyService.success('File has been deleted');
-        // this.alertifyService.success('Photo has been deleted');
       }, error => {
         this.alertifyService.error('Failed to delete file');
         // this.alertifyService.error('Failed to delete photo');
