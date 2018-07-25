@@ -39,19 +39,11 @@ export class AdminStudentUploadComponent implements OnInit {
     private alertifyService: AlertifyService) { }
 
   ngOnInit() {
-    console.log('-- Start of admin-student-upload component --');
-
     this.initializeUploader();
 
     this.route.data.subscribe(data => {
-      // this.user = data['user'];
-      // this.user.userFiles = data.files;
-      // this.user.id = data.id;
-      // this.userFiles = data['files'];
       this.user = data['user'];
     });
-
-    console.log('-- End of admin-student-upload component --');
   }
 
   // Old photo editor
