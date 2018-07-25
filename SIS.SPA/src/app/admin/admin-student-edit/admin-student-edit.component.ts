@@ -2,13 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Advisors } from '../../_models/Advisors';
 import { ActivatedRoute, Router } from '../../../../node_modules/@angular/router';
 import { AlertifyService } from '../../_services/alertify.service';
-import { AuthService } from '../../_services/auth.service';
 import { UserService } from '../../_services/user.service';
 import { FormBuilder, FormGroup, Validators, FormControl } from '../../../../node_modules/@angular/forms';
-import { AuthHttp } from '../../../../node_modules/angular2-jwt';
 import { User } from '../../_models/User';
 import { DatePipe } from '../../../../node_modules/@angular/common';
-import { UserFile } from '../../_models/UserFile';
 
 @Component({
   selector: 'app-admin-student-edit',
@@ -19,13 +16,10 @@ export class AdminStudentEditComponent implements OnInit {
   advisors: Advisors[];
   studentEditForm: FormGroup;
   user: User;
-  usertest: User;
 
   constructor(private route: ActivatedRoute,
     private alertify: AlertifyService,
-    private authService: AuthService,
     private userService: UserService,
-    private authHttp: AuthHttp,
     private router: Router,
     private formBuilder: FormBuilder) { }
 
@@ -33,62 +27,10 @@ export class AdminStudentEditComponent implements OnInit {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
-    /* this.route.data.subscribe(data => {
-      this.user = data['user'];
-    }); */
 
-    this.route.data.subscribe( (data: User) => {
+    /* this.route.data.subscribe( (data: User) => {
       this.usertest = data;
-      console.log('Current this.user');
-      console.log(this.user);
-      console.log('Current this.usertest');
-      console.log(this.usertest);
-    });
-
-    // this.userService.getUserAsAdmin
-    /* this.Http.get('http://localhost:5000/api/users/admin/1').subscribe(res => {
-      this.user = res;
-    }); */ // .get<User>('http://localhost:5000/api/' + 'users/admin/' + this.user.id).subscribe(res => {
-            //  this.user = res;
-            // });
-            // .map(response => <User>response.json())
-
-    /* console.log('--- Start of admin-student-edit component ---');
-    console.log('user.files:');
-    console.log(this.user.files ? 'yes' : 'no');
-    if (this.user.files == null) {
-      console.log('user.files is null');
-      this.user.files = Array<UserFile>();
-    }
-    if (this.user.files == null) {
-      console.log('user.files is still null');
-    } else {
-      console.log('created user.files');
-      console.log(this.user.files.toString());
-    }
-    console.log('for-loop');
-    this.user.files.forEach(element => {
-      console.log(element.id);
-      console.log(element.description);
-      console.log(element.fileName);
-    });
-
-    console.log('for-loop');
-    this.user.photos.forEach(element => {
-      console.log(element.description);
-    });
-    if (this.user.photos == null) {
-      console.log('photos is null');
-    }
-    if (this.user.photos != null) {
-      console.log('create user.photos');
-      // console.log(this.user.files.toString());
-    }
-    console.log(this.user.photos);
-
-    console.log('user.username:');
-    console.log(this.user.username);
-    console.log('--- End of admin-student-edit component ---'); */
+    }); */
 
     this.route.data.subscribe(data => {
       this.advisors = data['advisors'];
