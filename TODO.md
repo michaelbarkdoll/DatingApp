@@ -36,3 +36,16 @@ PreventUnsavedChangesGuard
 - Delete students
 - Sort users by adviser
 - Add more fields to user records
+
+
+Showcase:
+https://github.com/michaelbarkdoll/SIS
+http://localhost:4200/members
+https://getbootstrap.com/
+https://angularjs.org/
+https://jwt.io/
+https://valor-software.com/ng2-file-upload/
+https://github.com/valor-software/ng2-file-upload
+https://github.com/valor-software/ng2-dragula
+https://valor-software.com/ng2-dragula/
+https://www.json-generator.com/
