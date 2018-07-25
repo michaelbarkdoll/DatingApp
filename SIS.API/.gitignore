@@ -5,4 +5,8 @@ obj
 *.tar
 *.pdf
 *.png
-userfiles\*
+# exclude everything
+userfiles/*
+
+# exception to the rule
+!userfiles/.gitkeep
