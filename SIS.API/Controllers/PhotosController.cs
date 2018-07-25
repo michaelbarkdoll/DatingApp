@@ -78,7 +78,8 @@ namespace SIS.API.Controllers
                 var filePath2 = Path.GetTempFileName();
                 // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + DateTime.Now;
                 // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + DateTime.Now.ToString("yyyyMMddHHmmssf");
-                var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
+                // var filePath = _dataRepoConfig.Value.PhotosDirectory + "\\" + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
+                var filePath = _dataRepoConfig.Value.PhotosDirectory + user.Id + "-" + Guid.NewGuid() + "-" + file.FileName;
                 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
@@ -221,6 +222,16 @@ namespace SIS.API.Controllers
             // The photos that we seeded are not located in cloudinary
             if(photoFromRepo.PublicId == null) {
                 _repo.Delete(photoFromRepo);
+            }
+
+            var filePath = photoFromRepo.FilePath;
+            /* System.Console.WriteLine("--- Inside delete file ---");
+            System.Console.WriteLine($"filePath: {filePath}"); */
+
+            if (System.IO.File.Exists(filePath)) {
+                // System.Console.WriteLine("File Existed");
+                System.IO.File.Delete(filePath);
+                // System.Console.WriteLine($"File Deleted: {filePath}");
             }
 
             if (await _repo.SaveAll())
