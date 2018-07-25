@@ -95,5 +95,6 @@ export interface User {
     studentLevel?: string;
     masterFocus?: string;
     // 7.23.2018
-    files?: UserFile[];
+    // files?: UserFile[];
+    userFiles?: UserFile[];
 }

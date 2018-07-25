@@ -20,11 +20,10 @@ export class AdminStudentUploadComponent implements OnInit {
   // @Input() photos: Photo[];
   @Input() photos: Photo[];
   // @Input() photoUserId: number;
-  @Input() files: UserFile[];
+  @Input() userFiles: UserFile[];
   @Input() userId: number;
   user: User;
   testuser: User;
-  namee: string;
 
   uploader: FileUploader;
   hasBaseDropZoneOver = false;
@@ -47,23 +46,9 @@ export class AdminStudentUploadComponent implements OnInit {
     console.log('userId');
     console.log(this.userId);
 
-    this.userService.getUserAsAdmin(this.userId).subscribe(data => {
-      this.namee = data['username'];
-    });
-
-    console.log('testuser username:');
-    console.log(this.namee);
-    // console.log(this.testuser.username);
-
-    /* console.log('testuser photos length:');
-    console.log(this.testuser.photos.length);
-
-    console.log('testuser files length:');
-    console.log(this.testuser.files.length); */
-
     this.route.data.subscribe(data => {
       // this.user = data['user'];
-      // this.user.files = data.files;
+      // this.user.userFiles = data.files;
       // this.user.id = data.id;
       // this.userFiles = data['files'];
       this.user = data['user'];
@@ -71,8 +56,8 @@ export class AdminStudentUploadComponent implements OnInit {
 
     /* console.log('userFiles for user ' + '{{userId}}');
     console.log(this.userId);
-    console.log('users files: ');
-    console.log(this.user.files);
+    console.log('users userFiles: ');
+    console.log(this.user.userFiles);
     console.log('username: ');
     console.log(this.user.username);
     console.log(this.user.firstName);
@@ -80,11 +65,11 @@ export class AdminStudentUploadComponent implements OnInit {
     console.log(this.user.toString());
     console.log('userFiles'); */
 
-    // this.files = this.user.files;
-    console.log('this.user.files: ');
-    console.log(this.user.files);
-    console.log('files: ');
-    console.log(this.files);
+    // this.userFiles = this.user.userFiles;
+    console.log('this.user.userFiles: ');
+    console.log(this.user.userFiles);
+    console.log('userFiles: ');
+    console.log(this.userFiles);
     console.log('-- End of admin-student-upload component --');
   }
 
@@ -125,7 +110,7 @@ export class AdminStudentUploadComponent implements OnInit {
         console.log('-- Start of upload response component --');
         console.log(userFile);
 
-        this.files.push(userFile);
+        this.userFiles.push(userFile);
         console.log('-- End of upload response component --');
         // this.user.files.push(userFile);
 
@@ -148,7 +133,9 @@ export class AdminStudentUploadComponent implements OnInit {
 
         this.userService.deleteFile(this.userId, userFileId).subscribe(() => {
         // this.userService.deletePhoto(this.photoUserId, photoId).subscribe(() => {
-        this.files.splice(_.findIndex(this.files, {userFileId: userFileId}), 1);
+        console.log(this.userFiles);
+        this.userFiles.splice(_.findIndex(this.userFiles, {userFileId: userFileId}), 1);
+        console.log(this.userFiles);
         // this.photos.splice(_.findIndex(this.photos, {photoId: photoId}), 1);
         this.alertifyService.success('File has been deleted');
         // this.alertifyService.success('Photo has been deleted');

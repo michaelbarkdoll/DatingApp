@@ -48,8 +48,7 @@ export const appRoutes: Routes = [
                 resolve: {user: StudentEditResolver, advisors: AdvisorsListResolver},
                 canDeactivate: [PreventUnsavedChangesAdminStudentEditGuard] },
             { path: 'adduser', component: AdminAddUserComponent, resolve: {advisors: AdvisorsListResolver} },
-            { path: 'messages', component: MessagesComponent, resolve: {user: StudentEditResolver} },
-            { path: 'messages/:id', component: MessagesComponent, resolve: {user: StudentEditResolver} },
+            { path: 'messages', component: MessagesComponent },
             { path: 'lists', component: ListsComponent },
             { path: 'advisors', component: AdvisorsListComponent, resolve: {advisors: AdvisorsListResolver} },
             { path: 'addadvisor', component: AdvisorAddComponent, resolve: {advisors: AdvisorsListResolver} }
