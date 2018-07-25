@@ -1,9 +1,5 @@
 # ToDo:
 
-- Add students
-- Delete students
-- Sort users by adviser, work-in-progress
-- Add more fields to user records
 
 # Done:
 
@@ -34,3 +30,9 @@ PreventUnsavedChangesGuard
 - need edit page
   - populated with detailed view of member
   - admin users need to be able to edit the page
+
+
+- Add students
+- Delete students
+- Sort users by adviser
+- Add more fields to user records
